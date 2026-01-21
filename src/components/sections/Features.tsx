@@ -54,7 +54,7 @@ const Features = () => {
           <img
             src={logo}
             alt="Construcciones y Reformas Jesús Ortiz S.L."
-            className="h-16 md:h-20 w-auto object-contain"
+            className="h-32 md:h-40 w-auto object-contain"
           />
           <div className="text-center md:text-left">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-2">
