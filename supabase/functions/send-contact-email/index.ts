@@ -1,7 +1,4 @@
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
-import { Resend } from "https://esm.sh/resend@2.0.0";
-
-const resend = new Resend(Deno.env.get("RESEND_API_KEY"));
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -14,6 +11,117 @@ interface ContactEmailRequest {
   phone: string;
   email?: string;
   message: string;
+}
+
+// Simple SMTP implementation for Office365
+async function sendEmailViaSMTP(
+  to: string[],
+  subject: string,
+  htmlBody: string,
+  textBody: string,
+  replyTo?: string
+): Promise<void> {
+  const host = Deno.env.get("SMTP_HOST") || "smtp.office365.com";
+  const port = parseInt(Deno.env.get("SMTP_PORT") || "587");
+  const username = Deno.env.get("SMTP_USER")!;
+  const password = Deno.env.get("SMTP_PASSWORD")!;
+
+  console.log(`Connecting to ${host}:${port}...`);
+
+  // Connect to SMTP server
+  let conn: Deno.Conn = await Deno.connect({ hostname: host, port });
+  
+  const encoder = new TextEncoder();
+  const decoder = new TextDecoder();
+
+  async function readResponse(): Promise<string> {
+    const buffer = new Uint8Array(1024);
+    const n = await conn.read(buffer);
+    if (n === null) throw new Error("Connection closed");
+    const response = decoder.decode(buffer.subarray(0, n));
+    console.log("SMTP Response:", response.trim());
+    return response;
+  }
+
+  async function sendCommand(cmd: string): Promise<string> {
+    console.log("SMTP Command:", cmd.startsWith("AUTH") ? "AUTH ***" : cmd.trim());
+    await conn.write(encoder.encode(cmd + "\r\n"));
+    return await readResponse();
+  }
+
+  // Read greeting
+  await readResponse();
+
+  // EHLO
+  await sendCommand(`EHLO lovable.app`);
+
+  // STARTTLS
+  const starttlsResponse = await sendCommand("STARTTLS");
+  if (!starttlsResponse.startsWith("220")) {
+    throw new Error("STARTTLS not supported: " + starttlsResponse);
+  }
+
+  // Upgrade to TLS
+  conn = await Deno.startTls(conn as Deno.TcpConn, { hostname: host });
+  console.log("TLS connection established");
+
+  // EHLO again after TLS
+  await sendCommand(`EHLO lovable.app`);
+
+  // AUTH LOGIN
+  await sendCommand("AUTH LOGIN");
+  await sendCommand(btoa(username));
+  const authResponse = await sendCommand(btoa(password));
+  
+  if (!authResponse.includes("235")) {
+    throw new Error("Authentication failed: " + authResponse);
+  }
+
+  // MAIL FROM
+  await sendCommand(`MAIL FROM:<${username}>`);
+
+  // RCPT TO for each recipient
+  for (const recipient of to) {
+    await sendCommand(`RCPT TO:<${recipient}>`);
+  }
+
+  // DATA
+  await sendCommand("DATA");
+
+  // Build email with proper MIME structure
+  const boundary = "----=_Part_" + Math.random().toString(36).substring(2);
+  const emailContent = [
+    `From: Construcciones Ortiz <${username}>`,
+    `To: ${to.join(", ")}`,
+    `Subject: ${subject}`,
+    replyTo ? `Reply-To: ${replyTo}` : "",
+    `MIME-Version: 1.0`,
+    `Content-Type: multipart/alternative; boundary="${boundary}"`,
+    "",
+    `--${boundary}`,
+    `Content-Type: text/plain; charset=UTF-8`,
+    "",
+    textBody,
+    "",
+    `--${boundary}`,
+    `Content-Type: text/html; charset=UTF-8`,
+    "",
+    htmlBody,
+    "",
+    `--${boundary}--`,
+    ".",
+  ].filter(Boolean).join("\r\n");
+
+  const dataResponse = await sendCommand(emailContent);
+  if (!dataResponse.includes("250")) {
+    throw new Error("Failed to send email: " + dataResponse);
+  }
+
+  // QUIT
+  await sendCommand("QUIT");
+  conn.close();
+
+  console.log("Email sent successfully!");
 }
 
 const handler = async (req: Request): Promise<Response> => {
@@ -64,17 +172,17 @@ const handler = async (req: Request): Promise<Response> => {
       <p><small>Enviado desde el formulario de contacto de la web</small></p>
     `;
 
-    const emailResponse = await resend.emails.send({
-      from: "Construcciones Ortiz <onboarding@resend.dev>",
-      to: ["ortizsjesus@gmail.com", "josbolumburu@hotmail.com"],
-      subject: `Nueva consulta web de ${name}`,
-      html: emailHtml,
-      reply_to: email || undefined,
-    });
+    const textBody = `Nueva consulta desde la web\n\nNombre: ${name}\nTeléfono: ${phone}\n${email ? `Email: ${email}\n` : ""}Mensaje: ${message}`;
 
-    console.log("Email sent successfully:", emailResponse);
+    await sendEmailViaSMTP(
+      ["josbolumburu@hotmail.com"],
+      `Nueva consulta web de ${name}`,
+      emailHtml,
+      textBody,
+      email || undefined
+    );
 
-    return new Response(JSON.stringify({ success: true, data: emailResponse }), {
+    return new Response(JSON.stringify({ success: true }), {
       status: 200,
       headers: {
         "Content-Type": "application/json",
