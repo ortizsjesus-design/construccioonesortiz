@@ -37,13 +37,22 @@ const Mantenimiento = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1, duration: 0.5 }}
-                className="bg-background rounded-xl p-6 shadow-card text-center"
+                className="bg-background rounded-xl p-4 md:p-6 shadow-card text-center"
               >
                 <div className="w-12 h-12 rounded-full bg-gradient-warm flex items-center justify-center mx-auto mb-4">
                   <service.icon className="w-6 h-6 text-primary-foreground" />
                 </div>
-                <h3 className="font-semibold text-foreground mb-1">{service.title}</h3>
-                <p className="text-sm text-muted-foreground">{service.description}</p>
+                <h3 className="text-xs md:text-base font-semibold text-foreground mb-1 leading-tight">
+                  <span className="hidden md:inline">{service.title}</span>
+                  <span className="md:hidden">
+                    {service.title === "Impermeabilizaciones" ? (
+                      <>Impermeabiliza-<br />ciones</>
+                    ) : (
+                      service.title
+                    )}
+                  </span>
+                </h3>
+                <p className="text-xs md:text-sm text-muted-foreground">{service.description}</p>
               </motion.div>
             ))}
           </div>
