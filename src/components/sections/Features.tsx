@@ -49,18 +49,18 @@ const Features = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="flex flex-col md:flex-row items-center md:items-end gap-4 mb-16"
+          className="relative mb-16"
         >
           <img
             src={logo}
             alt="Construcciones y Reformas Jesús Ortiz S.L."
-            className="h-32 md:h-40 w-auto object-contain"
+            className="absolute left-0 top-0 h-32 md:h-40 w-auto object-contain"
           />
-          <div className="text-center md:text-left md:ml-2">
+          <div className="text-center pt-4">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-1">
               Servicios principales
             </h2>
-            <div className="w-20 h-1 bg-accent rounded-full mx-auto md:mx-0" />
+            <div className="w-20 h-1 bg-accent rounded-full mx-auto" />
           </div>
         </motion.div>
 
