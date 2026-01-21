@@ -54,7 +54,7 @@ const Header = () => {
             }}
           >
             <span className="hidden md:inline">Construcciones, Reformas y Servicios Jesús Ortiz S.L.</span>
-            <span className="md:hidden">Jesús Ortiz S.L.</span>
+            <span className="md:hidden text-xs leading-tight">Construcciones y Servicios Ortiz S.L.</span>
           </a>
 
           {/* Desktop Navigation */}
