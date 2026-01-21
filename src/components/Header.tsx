@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 
 const navLinks = [
   { href: "#servicios", label: "Servicios" },
+  { href: "#maquinaria", label: "Maquinaria" },
   { href: "#trabajos", label: "Trabajos" },
   { href: "#opiniones", label: "Opiniones" },
   { href: "#empresa", label: "Empresa" },
@@ -45,18 +46,19 @@ const Header = () => {
           {/* Logo */}
           <a
             href="#"
-            className="text-lg md:text-xl font-bold transition-colors"
+            className="text-sm md:text-base lg:text-lg font-bold transition-colors leading-tight max-w-[200px] md:max-w-none"
             style={{ color: "#FFFFFF" }}
             onClick={(e) => {
               e.preventDefault();
               window.scrollTo({ top: 0, behavior: "smooth" });
             }}
           >
-            Jesús Ortiz S.L.
+            <span className="hidden md:inline">Construcciones, Reformas y Servicios Jesús Ortiz S.L.</span>
+            <span className="md:hidden">Jesús Ortiz S.L.</span>
           </a>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-8">
+          <nav className="hidden lg:flex items-center gap-6">
             {navLinks.map((link) => (
               <button
                 key={link.href}
@@ -78,7 +80,7 @@ const Header = () => {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden p-2"
+            className="lg:hidden p-2"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle menu"
             style={{ color: "#FFFFFF" }}
@@ -94,7 +96,7 @@ const Header = () => {
           initial={{ opacity: 0, height: 0 }}
           animate={{ opacity: 1, height: "auto" }}
           exit={{ opacity: 0, height: 0 }}
-          className="md:hidden bg-background border-t border-border"
+          className="lg:hidden bg-background border-t border-border"
         >
           <nav className="container mx-auto px-6 py-4 flex flex-col gap-4">
             {navLinks.map((link) => (
