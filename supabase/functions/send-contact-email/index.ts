@@ -21,7 +21,7 @@ async function sendEmailViaSMTP(
   textBody: string,
   replyTo?: string
 ): Promise<void> {
-  const host = Deno.env.get("SMTP_HOST") || "smtp.office365.com";
+  const host = Deno.env.get("SMTP_HOST") || "smtp.gmail.com";
   const port = parseInt(Deno.env.get("SMTP_PORT") || "587");
   const username = Deno.env.get("SMTP_USER")!;
   const password = Deno.env.get("SMTP_PASSWORD")!;
