@@ -49,12 +49,12 @@ const Features = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="relative flex items-center mb-16"
+          className="relative flex flex-col md:flex-row items-center mb-16"
         >
           <img
             src={logo}
             alt="Construcciones y Reformas Jesús Ortiz S.L."
-            className="absolute left-0 h-32 md:h-40 w-auto object-contain"
+            className="md:absolute md:left-0 h-24 md:h-32 lg:h-40 w-auto object-contain mb-2 md:mb-0"
           />
           <div className="text-center w-full">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-1">
@@ -78,7 +78,7 @@ const Features = () => {
               <div className="w-14 h-14 rounded-lg bg-gradient-warm flex items-center justify-center mb-4 mx-auto group-hover:scale-110 transition-transform duration-300">
                 <feature.icon className="w-7 h-7 text-primary-foreground" />
               </div>
-              <h3 className="text-base font-semibold text-foreground mb-1">
+              <h3 className="text-sm md:text-base font-semibold text-foreground mb-1 break-words hyphens-auto">
                 {feature.title}
               </h3>
               <p className="text-sm text-muted-foreground">{feature.description}</p>
