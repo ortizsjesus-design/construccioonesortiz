@@ -9,7 +9,7 @@ const highlights = [
   "Maquinaria propia",
   "Equipo propio",
   "Asesoramiento",
-  "30+ años de experiencia",
+  "+30 años de experiencia",
   "Empresa local",
 ];
 
@@ -17,7 +17,7 @@ const zones = [
   "Haro",
   "Anguciana",
   "Casalarreina",
-  "Cuzcurrita de Río Tirón",
+  "Cuzcurrita del Río Tirón",
   "Tirgo",
   "Sajazarra",
   "Santo Domingo de la Calzada",
@@ -36,7 +36,7 @@ const About = () => {
             className="text-center mb-12"
           >
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-              Quiénes somos
+              Empresa
             </h2>
             <div className="w-20 h-1 bg-accent mx-auto rounded-full" />
           </motion.div>
@@ -50,12 +50,11 @@ const About = () => {
           >
             <p className="text-lg text-foreground leading-relaxed mb-8">
               <span className="font-semibold text-primary">
-                Construcciones y Servicios Ortiz S.L.
+                Construcciones, Reformas y Servicios Jesús Ortiz S.L.
               </span>{" "}
               es una empresa local con más de 30 años de experiencia en construcción,
-              reformas, rehabilitación y obra. Trabajamos para viviendas, locales,
-              comunidades y negocios, con un enfoque claro: acabar fino, cumplir
-              plazos y asesorar bien al cliente.
+              reformas, rehabilitación y obra. Oficio tradicional con acabados finos,
+              cumplimiento de plazos y servicio cercano.
             </p>
 
             <h3 className="text-xl font-semibold text-foreground mb-6">

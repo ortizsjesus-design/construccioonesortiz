@@ -1,8 +1,11 @@
 import Header from "@/components/Header";
 import Hero from "@/components/sections/Hero";
 import Features from "@/components/sections/Features";
-import Manitas from "@/components/sections/Manitas";
+import Reformas from "@/components/sections/Reformas";
+import Construccion from "@/components/sections/Construccion";
+import Rehabilitacion from "@/components/sections/Rehabilitacion";
 import Maquinaria from "@/components/sections/Maquinaria";
+import Mantenimiento from "@/components/sections/Mantenimiento";
 import Portfolio from "@/components/sections/Portfolio";
 import Testimonials from "@/components/sections/Testimonials";
 import About from "@/components/sections/About";
@@ -16,8 +19,11 @@ const Index = () => {
       <main>
         <Hero />
         <Features />
-        <Manitas />
+        <Reformas />
+        <Construccion />
+        <Rehabilitacion />
         <Maquinaria />
+        <Mantenimiento />
         <Portfolio />
         <Testimonials />
         <About />
