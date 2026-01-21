@@ -56,8 +56,8 @@ const Features = () => {
             alt="Construcciones y Reformas Jesús Ortiz S.L."
             className="h-32 md:h-40 w-auto object-contain"
           />
-          <div className="text-center md:text-left">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-2">
+          <div className="text-center md:text-left md:ml-2">
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-1">
               Servicios principales
             </h2>
             <div className="w-20 h-1 bg-accent rounded-full mx-auto md:mx-0" />
