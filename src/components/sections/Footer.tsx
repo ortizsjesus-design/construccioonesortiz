@@ -31,6 +31,12 @@ const Footer = () => {
                 <Phone className="w-4 h-4" />
                 608 918 870
               </a>
+              <a
+                href="mailto:ortizsjesus@gmail.com"
+                className="flex items-center gap-2 text-background/70 hover:text-background transition-colors text-sm"
+              >
+                ortizsjesus@gmail.com
+              </a>
               <div className="flex items-start gap-2 text-background/70 text-sm">
                 <MapPin className="w-4 h-4 mt-0.5 flex-shrink-0" />
                 <span>

@@ -72,6 +72,29 @@ const Contact = () => {
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
+                transition={{ delay: 0.15, duration: 0.5 }}
+                className="bg-background rounded-xl p-6 shadow-card"
+              >
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 rounded-full bg-gradient-warm flex items-center justify-center flex-shrink-0">
+                    <Mail className="w-6 h-6 text-primary-foreground" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-foreground mb-1">Email</h3>
+                    <a
+                      href="mailto:ortizsjesus@gmail.com"
+                      className="text-accent hover:underline text-lg font-medium"
+                    >
+                      ortizsjesus@gmail.com
+                    </a>
+                  </div>
+                </div>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
                 transition={{ delay: 0.2, duration: 0.5 }}
                 className="bg-background rounded-xl p-6 shadow-card"
               >
