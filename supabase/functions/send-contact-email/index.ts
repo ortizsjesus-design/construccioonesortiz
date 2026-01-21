@@ -66,7 +66,7 @@ const handler = async (req: Request): Promise<Response> => {
 
     const emailResponse = await resend.emails.send({
       from: "Construcciones Ortiz <onboarding@resend.dev>",
-      to: ["ortizsjesus@gmail.com"],
+      to: ["ortizsjesus@gmail.com", "josbolumburu@hotmail.com"],
       subject: `Nueva consulta web de ${name}`,
       html: emailHtml,
       reply_to: email || undefined,
