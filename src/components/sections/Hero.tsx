@@ -45,22 +45,18 @@ const Hero = () => {
 
   return (
     <section className="relative h-[60vh] md:h-[70vh] flex items-center justify-center overflow-hidden">
-      {/* Background Carousel */}
+      {/* Background Carousel - Clean crossfade */}
       <div className="absolute inset-0">
-        <AnimatePresence mode="wait">
-          <motion.img
-            key={currentIndex}
-            src={heroImages[currentIndex].src}
-            alt={heroImages[currentIndex].alt}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.7 }}
-            className="w-full h-full object-cover object-center absolute inset-0"
+        {heroImages.map((image, index) => (
+          <img
+            key={index}
+            src={image.src}
+            alt={image.alt}
+            className={`w-full h-full object-cover object-center absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+              index === currentIndex ? "opacity-100" : "opacity-0"
+            }`}
           />
-        </AnimatePresence>
-        {/* Dark overlay 30% */}
-        <div className="absolute inset-0 bg-black/40" />
+        ))}
       </div>
 
       {/* Carousel Controls */}
