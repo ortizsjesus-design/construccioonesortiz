@@ -42,19 +42,19 @@ const Features = () => {
   };
 
   return (
-    <section id="servicios" className="py-24 bg-muted/30">
+    <section id="servicios" className="py-12 md:py-24 bg-muted/30">
       <div className="container mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="relative flex flex-col md:flex-row items-center mb-16"
+          className="relative flex flex-col md:flex-row items-center mb-8 md:mb-16"
         >
           <img
             src={logo}
             alt="Construcciones y Reformas Jesús Ortiz S.L."
-            className="md:absolute md:left-0 h-24 md:h-32 lg:h-40 w-auto object-contain mb-2 md:mb-0"
+            className="md:absolute md:left-0 h-28 md:h-32 lg:h-40 w-auto object-contain mb-1 md:mb-0"
           />
           <div className="text-center w-full">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-1">
@@ -73,15 +73,15 @@ const Features = () => {
               viewport={{ once: true }}
               transition={{ delay: index * 0.1, duration: 0.5 }}
               onClick={() => scrollToSection(feature.href)}
-              className="group bg-background rounded-xl p-6 shadow-card hover:shadow-elevated transition-all duration-300 hover:-translate-y-1 text-center cursor-pointer"
+              className="group bg-background rounded-xl p-4 md:p-6 shadow-card hover:shadow-elevated transition-all duration-300 hover:-translate-y-1 text-center cursor-pointer overflow-hidden"
             >
-              <div className="w-14 h-14 rounded-lg bg-gradient-warm flex items-center justify-center mb-4 mx-auto group-hover:scale-110 transition-transform duration-300">
-                <feature.icon className="w-7 h-7 text-primary-foreground" />
+              <div className="w-12 h-12 md:w-14 md:h-14 rounded-lg bg-gradient-warm flex items-center justify-center mb-3 md:mb-4 mx-auto group-hover:scale-110 transition-transform duration-300">
+                <feature.icon className="w-6 h-6 md:w-7 md:h-7 text-primary-foreground" />
               </div>
-              <h3 className="text-sm md:text-base font-semibold text-foreground mb-1 break-words hyphens-auto">
+              <h3 className="text-xs md:text-base font-semibold text-foreground mb-1 break-words hyphens-auto leading-tight">
                 {feature.title}
               </h3>
-              <p className="text-sm text-muted-foreground">{feature.description}</p>
+              <p className="text-xs md:text-sm text-muted-foreground leading-tight">{feature.description}</p>
             </motion.button>
           ))}
         </div>
