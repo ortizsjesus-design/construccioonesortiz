@@ -175,7 +175,7 @@ const handler = async (req: Request): Promise<Response> => {
     const textBody = `Nueva consulta desde la web\n\nNombre: ${name}\nTeléfono: ${phone}\n${email ? `Email: ${email}\n` : ""}Mensaje: ${message}`;
 
     await sendEmailViaSMTP(
-      ["josbolumburu@hotmail.com"],
+      ["josbolumburu@hotmail.com", "ortizsjesus@gmail.com", "viveconia.oficial@gmail.com"],
       `Nueva consulta web de ${name}`,
       emailHtml,
       textBody,
