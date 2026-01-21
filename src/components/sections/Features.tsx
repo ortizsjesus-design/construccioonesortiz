@@ -1,36 +1,51 @@
 import { motion } from "framer-motion";
-import { Home, Hammer, Building2, Layers, Waves, ClipboardCheck } from "lucide-react";
+import { Home, Hammer, Building2, Layers, Wrench, Grid3X3, HardHat, Settings, Truck } from "lucide-react";
 
 const features = [
   {
     icon: Home,
-    title: "Rehabilitación integral",
-    description: "Viviendas y caseríos",
-  },
-  {
-    icon: Hammer,
-    title: "Reformas interiores",
-    description: "Transformación completa",
+    title: "Reformas integrales",
+    description: "Transformación completa de espacios",
   },
   {
     icon: Building2,
-    title: "Obra nueva",
-    description: "Construcción residencial",
+    title: "Rehabilitación",
+    description: "Viviendas y locales comerciales",
   },
   {
     icon: Layers,
-    title: "Fachadas y cubiertas",
-    description: "Impermeabilización y acabados",
+    title: "Tejados y cubiertas",
+    description: "Impermeabilización y reparación",
   },
   {
-    icon: Waves,
-    title: "Piscinas y exteriores",
-    description: "Solados y jardines",
+    icon: Hammer,
+    title: "Fachadas y piedra",
+    description: "Acabados exteriores de calidad",
   },
   {
-    icon: ClipboardCheck,
-    title: "Asesoramiento técnico",
-    description: "Gestión integral de obra",
+    icon: Grid3X3,
+    title: "Albañilería fina",
+    description: "Detalles y terminaciones",
+  },
+  {
+    icon: HardHat,
+    title: "Soleras y pavimentos",
+    description: "Suelos industriales y residenciales",
+  },
+  {
+    icon: Wrench,
+    title: "Obra menor",
+    description: "Pequeñas reformas y arreglos",
+  },
+  {
+    icon: Settings,
+    title: "Servicio Manitas",
+    description: "Reparaciones rápidas",
+  },
+  {
+    icon: Truck,
+    title: "Alquiler de maquinaria",
+    description: "Equipos profesionales",
   },
 ];
 
@@ -46,7 +61,7 @@ const Features = () => {
           className="text-center mb-16"
         >
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Qué hacemos
+            Servicios principales
           </h2>
           <div className="w-20 h-1 bg-accent mx-auto rounded-full" />
         </motion.div>
