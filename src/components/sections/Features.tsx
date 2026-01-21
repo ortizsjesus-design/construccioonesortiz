@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Home, Hammer, Building2, Layers, Wrench, Truck } from "lucide-react";
+import logo from "@/assets/logo.png";
 
 const features = [
   {
@@ -48,12 +49,19 @@ const Features = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="flex flex-col md:flex-row items-center md:items-end gap-4 mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Servicios principales
-          </h2>
-          <div className="w-20 h-1 bg-accent mx-auto rounded-full" />
+          <img
+            src={logo}
+            alt="Construcciones y Reformas Jesús Ortiz S.L."
+            className="h-16 md:h-20 w-auto object-contain"
+          />
+          <div className="text-center md:text-left">
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-2">
+              Servicios principales
+            </h2>
+            <div className="w-20 h-1 bg-accent rounded-full mx-auto md:mx-0" />
+          </div>
         </motion.div>
 
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">

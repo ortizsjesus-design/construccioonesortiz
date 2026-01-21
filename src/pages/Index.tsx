@@ -1,6 +1,5 @@
 import Header from "@/components/Header";
 import Hero from "@/components/sections/Hero";
-import LogoBanner from "@/components/sections/LogoBanner";
 import Features from "@/components/sections/Features";
 import Reformas from "@/components/sections/Reformas";
 import Construccion from "@/components/sections/Construccion";
@@ -12,6 +11,7 @@ import Testimonials from "@/components/sections/Testimonials";
 import About from "@/components/sections/About";
 import Contact from "@/components/sections/Contact";
 import Footer from "@/components/sections/Footer";
+import ScrollToTop from "@/components/ScrollToTop";
 
 const Index = () => {
   return (
@@ -19,7 +19,6 @@ const Index = () => {
       <Header />
       <main>
         <Hero />
-        <LogoBanner />
         <Features />
         <Reformas />
         <Construccion />
@@ -32,6 +31,7 @@ const Index = () => {
         <Contact />
       </main>
       <Footer />
+      <ScrollToTop />
     </div>
   );
 };
