@@ -6,7 +6,7 @@
 
 @layer base {
   :root {
-    /* Core brand colors - warm earth tones */
+    /* Core brand colors - blue corporate tones */
     --background: 40 33% 96%; /* #F8F5EF */
     --foreground: 30 8% 11%; /* #1D1C1A */
 
@@ -16,17 +16,17 @@
     --popover: 40 33% 96%;
     --popover-foreground: 30 8% 11%;
 
-    /* Primary - Rich brown */
-    --primary: 27 52% 23%; /* #5C3A1B */
-    --primary-foreground: 40 33% 96%;
+    /* Primary - Corporate blue (from logo) */
+    --primary: 205 100% 35%; /* #0066b3 */
+    --primary-foreground: 0 0% 100%;
 
-    /* Secondary - Light tan */
-    --secondary: 35 24% 69%; /* #C6B399 */
-    --secondary-foreground: 27 52% 23%;
+    /* Secondary - Light blue */
+    --secondary: 205 40% 75%; /* Light blue */
+    --secondary-foreground: 205 100% 25%;
 
-    /* Accent - Golden brown */
-    --accent: 32 43% 60%; /* #C89C67 */
-    --accent-foreground: 30 8% 11%;
+    /* Accent - Bright blue */
+    --accent: 205 85% 45%; /* #1a7dc4 */
+    --accent-foreground: 0 0% 100%;
 
     /* Muted - Cream tones */
     --muted: 35 35% 84%; /* #E6D8C3 */
@@ -37,16 +37,16 @@
 
     --border: 35 24% 80%;
     --input: 35 24% 80%;
-    --ring: 27 52% 23%;
+    --ring: 205 100% 35%;
 
     --radius: 0.5rem;
 
     /* Custom design tokens */
-    --gradient-warm: linear-gradient(135deg, hsl(27 52% 23%) 0%, hsl(32 43% 45%) 100%);
+    --gradient-warm: linear-gradient(135deg, hsl(205 100% 35%) 0%, hsl(205 85% 50%) 100%);
     --gradient-hero: linear-gradient(180deg, hsl(40 33% 96% / 0) 0%, hsl(40 33% 96% / 0.9) 70%, hsl(40 33% 96%) 100%);
-    --shadow-soft: 0 4px 20px hsl(27 52% 23% / 0.08);
-    --shadow-elevated: 0 12px 40px hsl(27 52% 23% / 0.12);
-    --shadow-card: 0 2px 12px hsl(27 52% 23% / 0.06);
+    --shadow-soft: 0 4px 20px hsl(205 100% 35% / 0.08);
+    --shadow-elevated: 0 12px 40px hsl(205 100% 35% / 0.15);
+    --shadow-card: 0 2px 12px hsl(205 100% 35% / 0.06);
   }
 
   .dark {
@@ -56,17 +56,17 @@
     --card-foreground: 40 33% 96%;
     --popover: 30 10% 15%;
     --popover-foreground: 40 33% 96%;
-    --primary: 32 43% 60%;
+    --primary: 205 85% 55%;
     --primary-foreground: 30 8% 11%;
-    --secondary: 27 52% 23%;
+    --secondary: 205 100% 25%;
     --secondary-foreground: 40 33% 96%;
     --muted: 30 10% 20%;
     --muted-foreground: 35 24% 69%;
-    --accent: 32 43% 50%;
+    --accent: 205 85% 50%;
     --accent-foreground: 40 33% 96%;
     --border: 30 10% 25%;
     --input: 30 10% 25%;
-    --ring: 32 43% 60%;
+    --ring: 205 85% 55%;
   }
 }
 
