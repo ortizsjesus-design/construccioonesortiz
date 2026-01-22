@@ -21,10 +21,12 @@ const Hero = () => {
           alt="Estructura de madera en caserío de piedra"
           className="w-full h-full object-cover object-center"
         />
+        {/* Dark overlay gradient for better text readability */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/50" />
       </div>
 
-      {/* Content */}
-      <div className="relative z-10 w-full max-w-[1200px] mx-auto px-6 text-center pt-20 pb-10">
+      {/* Content - moved down with pt-32 */}
+      <div className="relative z-10 w-full max-w-[1200px] mx-auto px-6 text-center pt-32 md:pt-36 pb-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
