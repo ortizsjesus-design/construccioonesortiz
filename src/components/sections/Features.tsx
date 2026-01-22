@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import { Home, Building2, Layers, Wrench, Truck } from "lucide-react";
-import logoOrtiz from "@/assets/logo-ortiz.png";
 
 const features = [
   {
@@ -49,19 +48,12 @@ const Features = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="relative flex flex-col md:flex-row items-center mb-6 md:mb-12"
+          className="text-center mb-6 md:mb-12"
         >
-          <img
-            src={logoOrtiz}
-            alt="Construcciones y Servicios Ortiz"
-            className="md:absolute md:left-0 h-28 md:h-36 lg:h-44 w-auto object-contain mb-2 md:mb-0"
-          />
-          <div className="text-center w-full">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-1">
-              Servicios principales
-            </h2>
-            <div className="w-20 h-1 bg-accent rounded-full mx-auto" />
-          </div>
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-1">
+            Servicios principales
+          </h2>
+          <div className="w-20 h-1 bg-accent rounded-full mx-auto" />
         </motion.div>
 
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
