@@ -49,12 +49,7 @@ const About = () => {
             className="bg-muted/40 rounded-2xl p-8 md:p-12 mb-12"
           >
             <p className="text-lg text-foreground leading-relaxed mb-8">
-              <span className="font-semibold text-primary">
-                Construcciones, Reformas y Servicios Jesús Ortiz S.L.
-              </span>{" "}
-              es una empresa local con más de 30 años de experiencia en construcción,
-              reformas, rehabilitación y obra. Oficio tradicional con acabados finos,
-              cumplimiento de plazos y servicio cercano.
+              Empresa con más de 30 años de experiencia en el sector. Especialistas en reformas integrales de todo tipo. Recientemente hemos incluido un servicio de alquiler de maquinaria para profesionales de la construcción, trabajos agrícolas y particulares. Calidad y eficacia garantizada en cada trabajo.
             </p>
 
             <h3 className="text-xl font-semibold text-foreground mb-6">

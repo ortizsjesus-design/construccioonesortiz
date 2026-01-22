@@ -2,10 +2,10 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import logoOrtiz from "@/assets/logo-ortiz.png";
 
 const navLinks = [
   { href: "#servicios", label: "Servicios" },
-  { href: "#maquinaria", label: "Maquinaria" },
   { href: "#trabajos", label: "Trabajos" },
   { href: "#opiniones", label: "Opiniones" },
   { href: "#empresa", label: "Empresa" },
@@ -46,15 +46,23 @@ const Header = () => {
           {/* Logo */}
           <a
             href="#"
-            className="text-sm md:text-base lg:text-lg font-bold transition-colors leading-tight max-w-[200px] md:max-w-none"
-            style={{ color: "#FFFFFF" }}
+            className="flex items-center gap-2 md:gap-3 transition-colors"
             onClick={(e) => {
               e.preventDefault();
               window.scrollTo({ top: 0, behavior: "smooth" });
             }}
           >
-            <span className="hidden md:inline">Construcciones, Reformas y Servicios Jesús Ortiz S.L.</span>
-            <span className="md:hidden text-xs leading-tight">Construcciones y Servicios Ortiz S.L.</span>
+            <img 
+              src={logoOrtiz} 
+              alt="Logo Construcciones y Servicios Ortiz" 
+              className="h-10 md:h-12 w-auto"
+            />
+            <span 
+              className="text-xs md:text-sm lg:text-base font-bold leading-tight"
+              style={{ color: "#FFFFFF" }}
+            >
+              Construcciones y Servicios Ortiz
+            </span>
           </a>
 
           {/* Desktop Navigation */}
