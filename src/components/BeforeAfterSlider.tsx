@@ -55,7 +55,7 @@ const BeforeAfterSlider = ({
       )}
       <div
         ref={containerRef}
-        className="relative w-full aspect-[4/3] overflow-hidden rounded-xl cursor-ew-resize select-none"
+        className="relative w-full aspect-auto overflow-hidden rounded-xl cursor-ew-resize select-none shadow-md"
         onMouseDown={handleMouseDown}
         onMouseUp={handleMouseUp}
         onMouseLeave={handleMouseUp}
@@ -69,7 +69,7 @@ const BeforeAfterSlider = ({
         <img
           src={afterImage}
           alt={afterLabel}
-          className="absolute inset-0 w-full h-full object-cover"
+          className="w-full h-auto object-contain"
           draggable={false}
         />
 
@@ -81,7 +81,7 @@ const BeforeAfterSlider = ({
           <img
             src={beforeImage}
             alt={beforeLabel}
-            className="absolute inset-0 w-full h-full object-cover"
+            className="w-full h-full object-contain"
             draggable={false}
           />
         </div>
