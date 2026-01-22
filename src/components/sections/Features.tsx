@@ -41,7 +41,7 @@ const Features = () => {
   };
 
   return (
-    <section id="servicios" className="py-8 md:py-16 bg-muted/30">
+    <section id="servicios" className="pt-4 pb-8 md:pt-8 md:pb-16 bg-muted/30">
       <div className="container mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
