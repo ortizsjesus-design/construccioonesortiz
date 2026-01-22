@@ -25,8 +25,8 @@ const Hero = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/50" />
       </div>
 
-      {/* Content - moved down with pt-32 */}
-      <div className="relative z-10 w-full max-w-[1200px] mx-auto px-6 text-center pt-32 md:pt-36 pb-10">
+      {/* Content - responsive padding: mobile stays, desktop +40px more */}
+      <div className="relative z-10 w-full max-w-[1200px] mx-auto px-6 text-center pt-32 md:pt-48 pb-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -36,7 +36,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}
-            className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6"
+            className="text-[2.1rem] md:text-5xl lg:text-6xl font-bold leading-tight mb-6"
             style={{ color: "#FFFFFF" }}
           >
             Construcciones y Servicios Jesús Ortiz
