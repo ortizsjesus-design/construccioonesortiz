@@ -65,7 +65,7 @@ const comparisons = [
 
 const BeforeAfter = () => {
   return (
-    <section id="antes-despues" className="py-24 bg-background">
+    <section id="trabajos" className="py-24 bg-background">
       <div className="container mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -75,12 +75,8 @@ const BeforeAfter = () => {
           className="text-center mb-16"
         >
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Antes y Después
+            Trabajos realizados
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
-            Desliza para comparar el estado inicial y el resultado final de
-            nuestros proyectos
-          </p>
           <div className="w-20 h-1 bg-accent mx-auto rounded-full mt-4" />
         </motion.div>
 
