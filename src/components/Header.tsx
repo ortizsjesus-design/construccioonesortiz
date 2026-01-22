@@ -52,10 +52,11 @@ const Header = () => {
               window.scrollTo({ top: 0, behavior: "smooth" });
             }}
           >
+            {/* Original logo size was: h-10 md:h-12 (40px mobile, 48px desktop) */}
             <img 
               src={logoOrtiz} 
               alt="Logo Construcciones y Servicios Ortiz" 
-              className="h-10 md:h-12 w-auto"
+              className="h-28 md:h-36 w-auto"
             />
             <span 
               className="text-xs md:text-sm lg:text-base font-bold leading-tight"
