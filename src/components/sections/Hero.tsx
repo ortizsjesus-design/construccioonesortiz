@@ -103,7 +103,7 @@ const Hero = () => {
             className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-6"
             style={{ color: "#FFFFFF" }}
           >
-            Construcción, Reformas y Maquinaria en Rioja Alta
+            Construcciones y Servicios Ortiz
           </motion.h1>
 
           <motion.p
@@ -113,7 +113,7 @@ const Hero = () => {
             className="text-lg md:text-xl max-w-2xl mx-auto mb-4"
             style={{ color: "#FFFFFF" }}
           >
-            +30 años de oficio · Acabados finos · Plazos cumplidos
+            +30 años de experiencia · Eficacia y calidad garantizada
           </motion.p>
 
           <motion.a
