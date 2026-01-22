@@ -42,24 +42,23 @@ const Header = () => {
       }}
     >
       <div className="w-full max-w-full px-3">
-        <div className="flex items-center justify-between h-16 md:h-20 w-full">
-          {/* Logo */}
+        <div className="flex items-center justify-between py-2 md:py-3 w-full">
+          {/* Logo y texto */}
           <a
             href="#"
-            className="flex items-center gap-2 md:gap-3 transition-colors"
+            className="flex items-center gap-2 md:gap-3 transition-colors flex-shrink-0"
             onClick={(e) => {
               e.preventDefault();
               window.scrollTo({ top: 0, behavior: "smooth" });
             }}
           >
-            {/* Original logo size was: h-10 md:h-12 (40px mobile, 48px desktop) */}
             <img 
               src={logoOrtiz} 
               alt="Logo Construcciones y Servicios Ortiz" 
-              className="h-28 md:h-36 w-auto"
+              className="h-20 sm:h-24 md:h-28 lg:h-36 w-auto object-contain"
             />
             <span 
-              className="text-xs md:text-sm lg:text-base font-bold leading-tight"
+              className="text-xs sm:text-sm md:text-base font-bold leading-tight max-w-[140px] sm:max-w-none"
               style={{ color: "#FFFFFF" }}
             >
               Construcciones y Servicios Ortiz
