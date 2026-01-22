@@ -28,6 +28,7 @@ const Index = () => {
         <Maquinaria />
         <Mantenimiento />
         <Portfolio />
+        <BeforeAfter />
         <VideoSection />
         <Testimonials />
         <About />
