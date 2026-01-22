@@ -38,7 +38,7 @@ const Header = () => {
       transition={{ duration: 0.5 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300`}
       style={{
-        backgroundColor: isScrolled ? "rgba(0,0,0,0.85)" : "rgba(0,0,0,0.35)",
+        backgroundColor: isScrolled ? "rgba(255,255,255,0.95)" : "rgba(255,255,255,0.75)",
       }}
     >
       <div className="w-full max-w-full px-3">
@@ -59,7 +59,7 @@ const Header = () => {
             />
             <span 
               className="text-xs sm:text-sm md:text-base font-bold leading-tight max-w-[140px] sm:max-w-none"
-              style={{ color: "#FFFFFF" }}
+              style={{ color: "#000000" }}
             >
               Construcciones y Servicios Ortiz
             </span>
@@ -72,7 +72,7 @@ const Header = () => {
                 key={link.href}
                 onClick={() => scrollToSection(link.href)}
                 className="text-sm font-medium transition-colors hover:opacity-80"
-                style={{ color: "#FFFFFF" }}
+                style={{ color: "#000000" }}
               >
                 {link.label}
               </button>
@@ -91,7 +91,7 @@ const Header = () => {
             className="lg:hidden p-2"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle menu"
-            style={{ color: "#FFFFFF" }}
+            style={{ color: "#000000" }}
           >
             {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>

@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
-import { Home, Hammer, Building2, Layers, Wrench, Truck } from "lucide-react";
-import logo from "@/assets/logo.png";
+import { Home, Building2, Layers, Wrench, Truck } from "lucide-react";
+import logoOrtiz from "@/assets/logo-ortiz.png";
 
 const features = [
   {
@@ -42,19 +42,19 @@ const Features = () => {
   };
 
   return (
-    <section id="servicios" className="py-12 md:py-24 bg-muted/30">
+    <section id="servicios" className="py-8 md:py-16 bg-muted/30">
       <div className="container mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="relative flex flex-col md:flex-row items-center mb-8 md:mb-16"
+          className="relative flex flex-col md:flex-row items-center mb-6 md:mb-12"
         >
           <img
-            src={logo}
-            alt="Construcciones y Reformas Jesús Ortiz S.L."
-            className="md:absolute md:left-0 h-36 md:h-44 lg:h-52 w-auto object-contain mb-2 md:mb-0"
+            src={logoOrtiz}
+            alt="Construcciones y Servicios Ortiz"
+            className="md:absolute md:left-0 h-28 md:h-36 lg:h-44 w-auto object-contain mb-2 md:mb-0"
           />
           <div className="text-center w-full">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-1">
