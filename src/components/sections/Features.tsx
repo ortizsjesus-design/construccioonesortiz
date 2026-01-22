@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Home, Building2, Layers, Wrench, Truck } from "lucide-react";
+import { Home, Building2, Wrench, Truck, Leaf } from "lucide-react";
 
 const features = [
   {
@@ -15,12 +15,6 @@ const features = [
     href: "#construccion",
   },
   {
-    icon: Layers,
-    title: "Rehabilitación integral",
-    description: "Viviendas y locales comerciales",
-    href: "#rehabilitacion",
-  },
-  {
     icon: Truck,
     title: "Alquiler de maquinaria",
     description: "Equipos profesionales",
@@ -28,9 +22,15 @@ const features = [
   },
   {
     icon: Wrench,
-    title: "Mantenimiento y reparaciones",
+    title: "Mantenimiento, reparaciones y trabajos de bricolaje",
     description: "Soluciones rápidas",
     href: "#mantenimiento",
+  },
+  {
+    icon: Leaf,
+    title: "Instalación de césped artificial",
+    description: "Jardines y espacios verdes",
+    href: "#contacto",
   },
 ];
 

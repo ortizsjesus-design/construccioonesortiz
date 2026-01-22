@@ -40,12 +40,11 @@ const machinery = [
   {
     name: "Rodillo compactador Escalibur",
     icon: "🛞",
-    features: [],
-  },
-  {
-    name: "Generador modelo SVR700",
-    icon: "⚡",
-    features: [],
+    features: [
+      "Rodillo compactador de empuje SVR 700",
+      "Ofrece una fuerza de 20 Kn",
+      "Acondicionamiento hidráulico de doble dirección",
+    ],
   },
 ];
 

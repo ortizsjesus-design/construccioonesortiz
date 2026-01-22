@@ -2,25 +2,21 @@ import { motion } from "framer-motion";
 import { CheckCircle2, MapPin } from "lucide-react";
 
 const highlights = [
-  "Acabados finos",
+  "Seriedad",
   "Profesionalidad",
-  "Plazos cumplidos",
-  "Buen precio",
-  "Maquinaria propia",
-  "Equipo propio",
+  "Acabados de calidad",
+  "Económicos",
+  "Infraestructura",
   "Asesoramiento",
-  "+30 años de experiencia",
-  "Empresa local",
+  "Por qué la experiencia marca la diferencia",
 ];
 
 const zones = [
-  "Haro",
-  "Anguciana",
-  "Casalarreina",
-  "Cuzcurrita del Río Tirón",
-  "Tirgo",
-  "Sajazarra",
-  "Santo Domingo de la Calzada",
+  "La Rioja",
+  "País Vasco",
+  "Navarra",
+  "Castilla y León",
+  "Cantabria",
 ];
 
 const About = () => {
@@ -49,11 +45,14 @@ const About = () => {
             className="bg-muted/40 rounded-2xl p-8 md:p-12 mb-12"
           >
             <p className="text-lg text-foreground leading-relaxed mb-8">
-              Empresa con más de 30 años de experiencia en el sector. Especialistas en reformas integrales de todo tipo. Recientemente hemos incluido un servicio de alquiler de maquinaria para profesionales de la construcción, trabajos agrícolas y particulares. Calidad y eficacia garantizada en cada trabajo.
+              Más de 30 años de experiencia en el sector de la construcción y la reforma integral.
+              Soluciones completas, planificación rigurosa y ejecución con altos estándares de calidad.
+              Además, ponemos a disposición un servicio de alquiler de maquinaria para profesionales, particulares y trabajos agrícolas, garantizando fiabilidad, seguridad y rendimiento.
+              Completamos nuestra oferta con servicios de mantenimiento, reparación y pequeños trabajos de bricolaje para particulares y empresas.
             </p>
 
             <h3 className="text-xl font-semibold text-foreground mb-6">
-              Por qué nos llaman
+              Por qué confían en nosotros
             </h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
               {highlights.map((highlight, index) => (
@@ -91,7 +90,7 @@ const About = () => {
               </h3>
             </div>
             <p className="text-muted-foreground mb-4">
-              Trabajamos en toda la Rioja Alta y alrededores:
+              Trabajamos en:
             </p>
             <div className="flex flex-wrap gap-2">
               {zones.map((zone) => (
@@ -102,9 +101,6 @@ const About = () => {
                   {zone}
                 </span>
               ))}
-              <span className="bg-accent/20 px-4 py-2 rounded-full text-sm font-medium text-accent">
-                y alrededores
-              </span>
             </div>
           </motion.div>
         </div>
