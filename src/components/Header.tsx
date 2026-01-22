@@ -7,6 +7,7 @@ import logoOrtiz from "@/assets/logo-ortiz.png";
 const navLinks = [
   { href: "#servicios", label: "Servicios" },
   { href: "#trabajos", label: "Trabajos" },
+  { href: "#video", label: "Vídeo" },
   { href: "#opiniones", label: "Opiniones" },
   { href: "#empresa", label: "Empresa" },
   { href: "#contacto", label: "Contacto" },
@@ -54,14 +55,14 @@ const Header = () => {
           >
             <img 
               src={logoOrtiz} 
-              alt="Logo Construcciones y Servicios Ortiz" 
-              className="h-20 sm:h-24 md:h-28 lg:h-36 w-auto object-contain"
+              alt="Logo Construcciones y Servicios Jesús Ortiz" 
+              className="h-24 sm:h-28 md:h-32 lg:h-44 w-auto object-contain"
             />
             <span 
-              className="text-xs sm:text-sm md:text-base font-bold leading-tight max-w-[140px] sm:max-w-none"
+              className="text-sm sm:text-base md:text-lg lg:text-xl font-bold leading-tight max-w-[160px] sm:max-w-none"
               style={{ color: "#000000" }}
             >
-              Construcciones y Servicios Ortiz
+              Construcciones y Servicios Jesús Ortiz
             </span>
           </a>
 
@@ -71,7 +72,7 @@ const Header = () => {
               <button
                 key={link.href}
                 onClick={() => scrollToSection(link.href)}
-                className="text-sm font-medium transition-colors hover:opacity-80"
+                className="text-base font-medium transition-colors hover:opacity-80"
                 style={{ color: "#000000" }}
               >
                 {link.label}
@@ -79,7 +80,7 @@ const Header = () => {
             ))}
             <Button
               variant="cta"
-              size="sm"
+              size="default"
               onClick={() => scrollToSection("#contacto")}
             >
               Contactar
@@ -111,7 +112,7 @@ const Header = () => {
               <button
                 key={link.href}
                 onClick={() => scrollToSection(link.href)}
-                className="text-left text-foreground/80 hover:text-primary py-2 transition-colors"
+                className="text-left text-foreground/80 hover:text-primary py-2 transition-colors text-base"
               >
                 {link.label}
               </button>

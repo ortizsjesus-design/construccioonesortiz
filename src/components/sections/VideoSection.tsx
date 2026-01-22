@@ -1,11 +1,10 @@
 import { motion } from "framer-motion";
 
 const VideoSection = () => {
-  // Extract video ID from YouTube URL
   const videoId = "XY_nSw5Vg1w";
 
   return (
-    <section className="w-full bg-background py-12 md:py-16">
+    <section id="video" className="w-full bg-background py-12 md:py-16">
       <div className="max-w-[1200px] mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -32,7 +31,7 @@ const VideoSection = () => {
           <div className="relative w-full aspect-video rounded-lg overflow-hidden shadow-lg">
             <iframe
               src={`https://www.youtube-nocookie.com/embed/${videoId}?rel=0&modestbranding=1`}
-              title="Te lo contamos con imágenes - Construcciones y Servicios Ortiz"
+              title="Te lo contamos con imágenes - Construcciones y Servicios Jesús Ortiz"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
               className="absolute inset-0 w-full h-full"

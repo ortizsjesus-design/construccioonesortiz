@@ -1,6 +1,5 @@
 import Header from "@/components/Header";
 import Hero from "@/components/sections/Hero";
-import VideoSection from "@/components/sections/VideoSection";
 import Features from "@/components/sections/Features";
 import Reformas from "@/components/sections/Reformas";
 import Construccion from "@/components/sections/Construccion";
@@ -8,6 +7,7 @@ import Rehabilitacion from "@/components/sections/Rehabilitacion";
 import Maquinaria from "@/components/sections/Maquinaria";
 import Mantenimiento from "@/components/sections/Mantenimiento";
 import Portfolio from "@/components/sections/Portfolio";
+import VideoSection from "@/components/sections/VideoSection";
 import Testimonials from "@/components/sections/Testimonials";
 import About from "@/components/sections/About";
 import Contact from "@/components/sections/Contact";
@@ -20,7 +20,6 @@ const Index = () => {
       <Header />
       <main>
         <Hero />
-        <VideoSection />
         <Features />
         <Reformas />
         <Construccion />
@@ -28,6 +27,7 @@ const Index = () => {
         <Maquinaria />
         <Mantenimiento />
         <Portfolio />
+        <VideoSection />
         <Testimonials />
         <About />
         <Contact />

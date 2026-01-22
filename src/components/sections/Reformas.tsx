@@ -1,13 +1,13 @@
 import { motion } from "framer-motion";
-import { Home, Store, Bath, Grid3X3, Thermometer, Sparkles } from "lucide-react";
+import { Home, Store, Bath, Grid3X3, Hammer, Mountain } from "lucide-react";
 
 const services = [
   { icon: Home, title: "Viviendas", description: "Reformas completas de hogares" },
   { icon: Store, title: "Locales comerciales", description: "Adaptación y renovación" },
   { icon: Bath, title: "Baños y cocinas", description: "Instalaciones modernas" },
   { icon: Grid3X3, title: "Solados y alicatados", description: "Pavimentos y revestimientos" },
-  { icon: Thermometer, title: "Aislamientos", description: "Eficiencia energética" },
-  { icon: Sparkles, title: "Acabados finos", description: "Terminaciones de calidad" },
+  { icon: Hammer, title: "Albañilería", description: "Trabajos de albañilería" },
+  { icon: Mountain, title: "Fachada de Piedra", description: "Acabados de calidad" },
 ];
 
 const Reformas = () => {

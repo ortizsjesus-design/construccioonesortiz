@@ -4,7 +4,7 @@ import { Wrench, Droplets, Hammer, Zap } from "lucide-react";
 const services = [
   { icon: Wrench, title: "Reparaciones", description: "Arreglos de todo tipo" },
   { icon: Droplets, title: "Impermeabilizaciones", description: "Solución a humedades" },
-  { icon: Hammer, title: "Pequeña albañilería", description: "Trabajos puntuales" },
+  { icon: Hammer, title: "Trabajos de Bricolaje", description: "Trabajos puntuales" },
   { icon: Zap, title: "Soluciones rápidas", description: "Respuesta inmediata" },
 ];
 
@@ -47,6 +47,8 @@ const Mantenimiento = () => {
                   <span className="md:hidden">
                     {service.title === "Impermeabilizaciones" ? (
                       <>Impermeabiliza-<br />ciones</>
+                    ) : service.title === "Trabajos de Bricolaje" ? (
+                      <>Trabajos de<br />Bricolaje</>
                     ) : (
                       service.title
                     )}

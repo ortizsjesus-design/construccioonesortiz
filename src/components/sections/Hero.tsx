@@ -34,20 +34,20 @@ const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}
-            className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-6"
+            className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6"
             style={{ color: "#FFFFFF" }}
           >
-            Construcciones y Servicios Ortiz
+            Construcciones y Servicios Jesús Ortiz
           </motion.h1>
 
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.6 }}
-            className="text-lg md:text-xl max-w-2xl mx-auto mb-4"
+            className="text-xl md:text-2xl max-w-3xl mx-auto mb-4"
             style={{ color: "#FFFFFF" }}
           >
-            +30 años de experiencia · Eficacia y calidad garantizada
+            Confía tu proyecto a una empresa con más de 30 años de experiencia en el sector.
           </motion.p>
 
           <motion.a
@@ -74,7 +74,7 @@ const Hero = () => {
               onClick={scrollToContact}
               className="group mx-auto w-fit"
             >
-              Pedir valoración sin compromiso
+              Contacta con Nosotros
               <svg
                 className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1"
                 fill="none"
