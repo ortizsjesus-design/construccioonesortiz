@@ -1,7 +1,5 @@
 import { useEffect } from "react";
 import { motion } from "framer-motion";
-import { ExternalLink } from "lucide-react";
-import { Button } from "@/components/ui/button";
 
 const Testimonials = () => {
   useEffect(() => {
@@ -23,7 +21,7 @@ const Testimonials = () => {
   }, []);
 
   return (
-    <section id="opiniones" className="py-24 bg-muted/30">
+    <section id="opiniones" className="py-24 bg-muted/30 overflow-hidden">
       <div className="container mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -44,37 +42,14 @@ const Testimonials = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.2, duration: 0.6 }}
-          className="max-w-5xl mx-auto mb-12"
+          className="max-w-full mx-auto"
+          style={{ maxWidth: "100%", overflow: "hidden" }}
         >
           <div
             className="elfsight-app-5e0f714b-aefd-4475-95f0-11a7abc0a0d5"
             data-elfsight-app-lazy
+            style={{ maxWidth: "100%", overflow: "hidden" }}
           />
-        </motion.div>
-
-        {/* CTA Button */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.4, duration: 0.5 }}
-          className="text-center"
-        >
-          <Button
-            variant="cta"
-            size="lg"
-            asChild
-            className="group shadow-soft hover:shadow-elevated"
-          >
-            <a
-              href="https://www.google.com/search?q=Construcciones+y+reformas+Jesús+Ortiz+S.L#lrd=0xd6e06915b223f2f:0x6f11191b10791b1a,3,"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              ¡Déjanos tu opinión en Google!
-              <ExternalLink className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
-            </a>
-          </Button>
         </motion.div>
       </div>
     </section>
