@@ -26,7 +26,7 @@ const Hero = () => {
       </div>
 
       {/* Content - responsive padding: mobile stays, desktop +40px more */}
-      <div className="relative z-10 w-full max-w-[1200px] mx-auto px-6 text-center pt-32 md:pt-48 pb-10">
+      <div className="relative z-10 w-full max-w-[1200px] mx-auto px-6 text-center pt-40 md:pt-48 pb-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
