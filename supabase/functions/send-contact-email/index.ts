@@ -25,6 +25,40 @@ function escapeHtml(text: string): string {
   return text.replace(/[&<>"']/g, m => map[m]);
 }
 
+// Simple in-memory rate limiter
+// Note: In production with multiple instances, use Redis or a database
+const rateLimitMap = new Map<string, { count: number; resetTime: number }>();
+const RATE_LIMIT_WINDOW_MS = 60 * 60 * 1000; // 1 hour
+const RATE_LIMIT_MAX_REQUESTS = 5; // 5 requests per hour per IP
+
+function checkRateLimit(identifier: string): { allowed: boolean; retryAfter?: number } {
+  const now = Date.now();
+  const entry = rateLimitMap.get(identifier);
+  
+  // Clean up old entries periodically
+  if (rateLimitMap.size > 1000) {
+    for (const [key, value] of rateLimitMap.entries()) {
+      if (now > value.resetTime) {
+        rateLimitMap.delete(key);
+      }
+    }
+  }
+  
+  if (!entry || now > entry.resetTime) {
+    // First request or window expired
+    rateLimitMap.set(identifier, { count: 1, resetTime: now + RATE_LIMIT_WINDOW_MS });
+    return { allowed: true };
+  }
+  
+  if (entry.count >= RATE_LIMIT_MAX_REQUESTS) {
+    const retryAfter = Math.ceil((entry.resetTime - now) / 1000);
+    return { allowed: false, retryAfter };
+  }
+  
+  entry.count++;
+  return { allowed: true };
+}
+
 // Simple SMTP implementation for Office365
 async function sendEmailViaSMTP(
   to: string[],
@@ -144,6 +178,29 @@ const handler = async (req: Request): Promise<Response> => {
     return new Response(null, { headers: corsHeaders });
   }
 
+  // Rate limiting based on IP address
+  const clientIP = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || 
+                   req.headers.get("x-real-ip") || 
+                   "anonymous";
+  
+  const rateLimitResult = checkRateLimit(clientIP);
+  if (!rateLimitResult.allowed) {
+    console.warn(`Rate limit exceeded for IP: ${clientIP}`);
+    return new Response(
+      JSON.stringify({ 
+        error: "Has enviado demasiadas solicitudes. Por favor, espera un momento antes de intentarlo de nuevo." 
+      }),
+      {
+        status: 429,
+        headers: { 
+          "Content-Type": "application/json",
+          "Retry-After": String(rateLimitResult.retryAfter || 3600),
+          ...corsHeaders 
+        },
+      }
+    );
+  }
+
   try {
     const { name, phone, email, message }: ContactEmailRequest = await req.json();
     
@@ -208,9 +265,14 @@ const handler = async (req: Request): Promise<Response> => {
       },
     });
   } catch (error: any) {
+    // Log full error details server-side only for debugging
     console.error("Error in send-contact-email function:", error);
+    
+    // Return generic error message to client (don't expose internal details)
     return new Response(
-      JSON.stringify({ error: error.message }),
+      JSON.stringify({ 
+        error: "No pudimos enviar tu mensaje. Por favor, inténtalo de nuevo o contáctanos directamente por teléfono." 
+      }),
       {
         status: 500,
         headers: { "Content-Type": "application/json", ...corsHeaders },
