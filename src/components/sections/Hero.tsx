@@ -36,10 +36,12 @@ const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}
-            className="text-[2.1rem] md:text-5xl lg:text-6xl font-bold leading-tight mb-6"
+            className="text-[2rem] md:text-5xl lg:text-6xl font-bold leading-tight mb-6 text-center"
             style={{ color: "#FFFFFF" }}
           >
-            Construcciones y Servicios Jesús Ortiz
+            Construcciones y Servicios
+            <br />
+            Jesús Ortiz
           </motion.h1>
 
           <motion.p

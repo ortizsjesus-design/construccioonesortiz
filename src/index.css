@@ -82,6 +82,17 @@
     max-width: 100vw;
   }
 
+  /* Offset for anchor scroll to account for fixed header */
+  section[id] {
+    scroll-margin-top: 140px;
+  }
+
+  @media (min-width: 768px) {
+    section[id] {
+      scroll-margin-top: 150px;
+    }
+  }
+
   body {
     @apply bg-background text-foreground font-sans antialiased;
     font-family: 'Montserrat', sans-serif;
