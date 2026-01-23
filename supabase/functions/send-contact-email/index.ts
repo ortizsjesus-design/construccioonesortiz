@@ -13,6 +13,18 @@ interface ContactEmailRequest {
   message: string;
 }
 
+// HTML escape function to prevent XSS attacks
+function escapeHtml(text: string): string {
+  const map: Record<string, string> = {
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#39;'
+  };
+  return text.replace(/[&<>"']/g, m => map[m]);
+}
+
 // Simple SMTP implementation for Office365
 async function sendEmailViaSMTP(
   to: string[],
@@ -161,13 +173,19 @@ const handler = async (req: Request): Promise<Response> => {
       );
     }
 
+    // Sanitize user inputs to prevent XSS
+    const safeName = escapeHtml(name);
+    const safePhone = escapeHtml(phone);
+    const safeEmail = email ? escapeHtml(email) : "";
+    const safeMessage = escapeHtml(message);
+
     const emailHtml = `
       <h2>Nueva consulta desde la web</h2>
-      <p><strong>Nombre:</strong> ${name}</p>
-      <p><strong>Teléfono:</strong> ${phone}</p>
-      ${email ? `<p><strong>Email:</strong> ${email}</p>` : ""}
+      <p><strong>Nombre:</strong> ${safeName}</p>
+      <p><strong>Teléfono:</strong> ${safePhone}</p>
+      ${safeEmail ? `<p><strong>Email:</strong> ${safeEmail}</p>` : ""}
       <p><strong>Mensaje:</strong></p>
-      <p>${message.replace(/\n/g, "<br>")}</p>
+      <p>${safeMessage.replace(/\n/g, "<br>")}</p>
       <hr>
       <p><small>Enviado desde el formulario de contacto de la web</small></p>
     `;
