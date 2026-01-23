@@ -38,7 +38,7 @@ const Features = () => {
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href);
     if (element) {
-      const headerOffset = window.innerWidth < 768 ? 100 : 120;
+      const headerOffset = window.innerWidth < 768 ? 70 : 120;
       const elementPosition = element.getBoundingClientRect().top + window.scrollY;
       const offsetPosition = elementPosition - headerOffset;
       
