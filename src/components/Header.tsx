@@ -42,12 +42,12 @@ const Header = () => {
         backgroundColor: isScrolled ? "rgba(255,255,255,0.95)" : "rgba(255,255,255,0.75)",
       }}
     >
-      <div className="container mx-auto px-4 lg:px-6">
+      <div className="w-full px-3 lg:px-4 xl:px-6">
         <div className="flex items-center justify-between py-2 md:py-3 w-full">
           {/* Logo y texto - Izquierda */}
           <a
             href="#"
-            className="flex items-center gap-2 md:gap-3 transition-colors flex-shrink-0"
+            className="flex items-center gap-2 transition-colors flex-shrink-0"
             onClick={(e) => {
               e.preventDefault();
               window.scrollTo({ top: 0, behavior: "smooth" });
@@ -56,23 +56,23 @@ const Header = () => {
             <img 
               src={logoOrtiz} 
               alt="Logo Construcciones y Servicios Jesús Ortiz" 
-              className="h-24 sm:h-28 md:h-32 lg:h-36 w-auto object-contain"
+              className="h-24 sm:h-28 md:h-32 lg:h-28 xl:h-32 w-auto object-contain"
             />
             <span 
-              className="text-sm sm:text-base md:text-lg lg:text-xl font-bold leading-tight max-w-[160px] sm:max-w-none"
+              className="text-sm sm:text-base md:text-lg lg:text-base xl:text-lg font-bold leading-tight max-w-[160px] sm:max-w-none lg:max-w-[180px] xl:max-w-none"
               style={{ color: "#000000" }}
             >
               Construcciones y Servicios Jesús Ortiz
             </span>
           </a>
 
-          {/* Desktop Navigation - Centro y Derecha */}
-          <nav className="hidden lg:flex items-center gap-4 xl:gap-6 flex-shrink-0">
+          {/* Desktop Navigation - Derecha */}
+          <nav className="hidden lg:flex items-center gap-2 xl:gap-4 flex-shrink-0">
             {navLinks.map((link) => (
               <button
                 key={link.href}
                 onClick={() => scrollToSection(link.href)}
-                className="text-sm xl:text-base font-medium transition-colors hover:opacity-80 whitespace-nowrap"
+                className="text-[13px] xl:text-sm font-medium transition-colors hover:opacity-80 whitespace-nowrap px-1 xl:px-2"
                 style={{ color: "#000000" }}
               >
                 {link.label}
@@ -80,9 +80,9 @@ const Header = () => {
             ))}
             <Button
               variant="cta"
-              size="default"
+              size="sm"
               onClick={() => scrollToSection("#contacto")}
-              className="ml-2 whitespace-nowrap"
+              className="ml-1 xl:ml-2 whitespace-nowrap text-[13px] xl:text-sm px-3 xl:px-4"
             >
               Contactar
             </Button>
