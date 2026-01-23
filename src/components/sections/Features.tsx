@@ -30,7 +30,7 @@ const features = [
     icon: Leaf,
     title: "Instalación de césped artificial",
     description: "Jardines y espacios verdes",
-    href: "#contacto",
+    href: "#cesped-artificial",
   },
 ];
 

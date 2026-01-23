@@ -4,6 +4,7 @@ import Features from "@/components/sections/Features";
 import Reformas from "@/components/sections/Reformas";
 import Construccion from "@/components/sections/Construccion";
 import Rehabilitacion from "@/components/sections/Rehabilitacion";
+import CespedArtificial from "@/components/sections/CespedArtificial";
 import Maquinaria from "@/components/sections/Maquinaria";
 import Mantenimiento from "@/components/sections/Mantenimiento";
 import BeforeAfter from "@/components/sections/BeforeAfter";
@@ -24,6 +25,7 @@ const Index = () => {
         <Reformas />
         <Construccion />
         <Rehabilitacion />
+        <CespedArtificial />
         <Maquinaria />
         <Mantenimiento />
         <BeforeAfter />
