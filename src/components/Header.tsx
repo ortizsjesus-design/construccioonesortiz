@@ -67,7 +67,7 @@ const Header = () => {
           </a>
 
           {/* Desktop Navigation - Derecha */}
-          <nav className="hidden lg:flex items-center gap-1.5 xl:gap-3 flex-shrink-0">
+          <nav className="hidden lg:flex items-center gap-1 xl:gap-2 flex-shrink-0">
             {navLinks.map((link) => (
               <button
                 key={link.href}
@@ -82,7 +82,7 @@ const Header = () => {
               variant="cta"
               size="sm"
               onClick={() => scrollToSection("#contacto")}
-              className="ml-1 xl:ml-2 whitespace-nowrap text-[13px] xl:text-sm px-3 xl:px-4"
+              className="ml-0.5 xl:ml-1 whitespace-nowrap text-[13px] xl:text-sm px-3 xl:px-4"
             >
               Contactar
             </Button>
