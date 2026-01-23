@@ -78,7 +78,7 @@ const Maquinaria = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1, duration: 0.5 }}
-            className="mb-10"
+            className="mb-10 -mt-4"
           >
             <img
               src={maquinariaGeneral}
@@ -95,17 +95,18 @@ const Maquinaria = () => {
             transition={{ delay: 0.2, duration: 0.5 }}
             className="mb-16"
           >
-            <div className="flex flex-wrap gap-3 justify-center">
+            <ul className="flex flex-col items-center space-y-4">
               {machines.map((machine) => (
-                <button
-                  key={machine.id}
-                  onClick={() => handleScroll(machine.id)}
-                  className="px-5 py-2.5 rounded-full border-2 border-accent bg-accent/5 text-accent font-medium text-base md:text-lg transition-all duration-300 hover:bg-accent hover:text-white hover:shadow-md"
-                >
-                  {machine.name}
-                </button>
+                <li key={machine.id}>
+                  <button
+                    onClick={() => handleScroll(machine.id)}
+                    className="text-accent font-semibold text-base md:text-lg uppercase tracking-wide transition-colors duration-300 hover:text-accent/70"
+                  >
+                    {machine.name}
+                  </button>
+                </li>
               ))}
-            </div>
+            </ul>
           </motion.nav>
 
           {/* Fichas técnicas de cada máquina */}
