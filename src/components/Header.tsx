@@ -42,7 +42,7 @@ const Header = () => {
         backgroundColor: isScrolled ? "rgba(255,255,255,0.95)" : "rgba(255,255,255,0.75)",
       }}
     >
-      <div className="w-full px-3 lg:px-6 xl:px-8">
+      <div className="w-full px-3 lg:pl-4 lg:pr-8 xl:pl-6 xl:pr-10">
         <div className="flex items-center justify-between py-2 md:py-3 w-full gap-2">
           {/* Logo y texto - Izquierda */}
           <a
