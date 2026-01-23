@@ -1,4 +1,6 @@
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { X } from "lucide-react";
 import maquinariaGeneral from "@/assets/maquinaria-general.png";
 import miniexcavadora from "@/assets/miniexcavadora-kubota.png";
 import dumper from "@/assets/dumper-escalibur.png";
@@ -35,11 +37,21 @@ const machines = [
 ];
 
 const Maquinaria = () => {
+  const [selectedImage, setSelectedImage] = useState<{ src: string; alt: string } | null>(null);
+
   const handleScroll = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
     }
+  };
+
+  const openLightbox = (src: string, alt: string) => {
+    setSelectedImage({ src, alt });
+  };
+
+  const closeLightbox = () => {
+    setSelectedImage(null);
   };
 
   return (
@@ -75,7 +87,7 @@ const Maquinaria = () => {
             />
           </motion.div>
 
-          {/* Lista de enlaces a máquinas */}
+          {/* Lista de enlaces a máquinas - estilo elegante */}
           <motion.nav
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -83,23 +95,22 @@ const Maquinaria = () => {
             transition={{ delay: 0.2, duration: 0.5 }}
             className="mb-16"
           >
-            <ul className="space-y-3">
+            <div className="flex flex-wrap gap-3 justify-center">
               {machines.map((machine) => (
-                <li key={machine.id}>
-                  <button
-                    onClick={() => handleScroll(machine.id)}
-                    className="text-accent hover:text-accent/80 underline underline-offset-4 text-left text-base md:text-lg transition-colors"
-                  >
-                    {machine.name}
-                  </button>
-                </li>
+                <button
+                  key={machine.id}
+                  onClick={() => handleScroll(machine.id)}
+                  className="px-5 py-2.5 rounded-full border-2 border-accent bg-accent/5 text-accent font-medium text-base md:text-lg transition-all duration-300 hover:bg-accent hover:text-white hover:shadow-md"
+                >
+                  {machine.name}
+                </button>
               ))}
-            </ul>
+            </div>
           </motion.nav>
 
           {/* Fichas técnicas de cada máquina */}
           <div className="space-y-16">
-            {machines.map((machine, index) => (
+            {machines.map((machine) => (
               <motion.div
                 key={machine.id}
                 id={machine.id}
@@ -115,13 +126,44 @@ const Maquinaria = () => {
                 <img
                   src={machine.image}
                   alt={`Ficha técnica - ${machine.name}`}
-                  className="w-full rounded-xl shadow-card"
+                  className="w-full rounded-xl shadow-card cursor-pointer transition-transform duration-300 hover:scale-[1.01] hover:shadow-elevated"
+                  onClick={() => openLightbox(machine.image, `Ficha técnica - ${machine.name}`)}
                 />
               </motion.div>
             ))}
           </div>
         </div>
       </div>
+
+      {/* Lightbox */}
+      <AnimatePresence>
+        {selectedImage && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4"
+            onClick={closeLightbox}
+          >
+            <button
+              onClick={closeLightbox}
+              className="absolute top-4 right-4 z-50 p-2 rounded-full bg-white/10 text-white hover:bg-white/20 transition-colors"
+              aria-label="Cerrar"
+            >
+              <X className="w-6 h-6" />
+            </button>
+            <motion.img
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              src={selectedImage.src}
+              alt={selectedImage.alt}
+              className="max-w-full max-h-[90vh] object-contain rounded-lg"
+              onClick={(e) => e.stopPropagation()}
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 };
