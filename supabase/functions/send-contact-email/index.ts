@@ -1,10 +1,21 @@
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
 
-const corsHeaders = {
-  "Access-Control-Allow-Origin": "*",
-  "Access-Control-Allow-Headers":
-    "authorization, x-client-info, apikey, content-type",
-};
+// Allowed origins for CORS - restrict to known domains
+const ALLOWED_ORIGINS = [
+  "https://construccioonesortiz.lovable.app",
+  "https://id-preview--6ac0f481-48fb-4d46-beb5-41dad4240d51.lovable.app",
+  "http://localhost:5173",
+  "http://localhost:8080"
+];
+
+function getCorsHeaders(origin: string | null): Record<string, string> {
+  const allowedOrigin = origin && ALLOWED_ORIGINS.includes(origin) ? origin : ALLOWED_ORIGINS[0];
+  return {
+    "Access-Control-Allow-Origin": allowedOrigin,
+    "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
+    "Vary": "Origin"
+  };
+}
 
 interface ContactEmailRequest {
   name: string;
@@ -72,8 +83,6 @@ async function sendEmailViaSMTP(
   const username = Deno.env.get("SMTP_USER")!;
   const password = Deno.env.get("SMTP_PASSWORD")!;
 
-  console.log(`Connecting to ${host}:${port}...`);
-
   // Connect to SMTP server
   let conn: Deno.Conn = await Deno.connect({ hostname: host, port });
   
@@ -84,13 +93,10 @@ async function sendEmailViaSMTP(
     const buffer = new Uint8Array(1024);
     const n = await conn.read(buffer);
     if (n === null) throw new Error("Connection closed");
-    const response = decoder.decode(buffer.subarray(0, n));
-    console.log("SMTP Response:", response.trim());
-    return response;
+    return decoder.decode(buffer.subarray(0, n));
   }
 
   async function sendCommand(cmd: string): Promise<string> {
-    console.log("SMTP Command:", cmd.startsWith("AUTH") ? "AUTH ***" : cmd.trim());
     await conn.write(encoder.encode(cmd + "\r\n"));
     return await readResponse();
   }
@@ -104,12 +110,11 @@ async function sendEmailViaSMTP(
   // STARTTLS
   const starttlsResponse = await sendCommand("STARTTLS");
   if (!starttlsResponse.startsWith("220")) {
-    throw new Error("STARTTLS not supported: " + starttlsResponse);
+    throw new Error("STARTTLS failed");
   }
 
   // Upgrade to TLS
   conn = await Deno.startTls(conn as Deno.TcpConn, { hostname: host });
-  console.log("TLS connection established");
 
   // EHLO again after TLS
   await sendCommand(`EHLO lovable.app`);
@@ -160,18 +165,17 @@ async function sendEmailViaSMTP(
 
   const dataResponse = await sendCommand(emailContent);
   if (!dataResponse.includes("250")) {
-    throw new Error("Failed to send email: " + dataResponse);
+    throw new Error("Email delivery failed");
   }
 
   // QUIT
   await sendCommand("QUIT");
   conn.close();
-
-  console.log("Email sent successfully!");
 }
 
 const handler = async (req: Request): Promise<Response> => {
-  console.log("Received request to send-contact-email function");
+  const origin = req.headers.get("origin");
+  const corsHeaders = getCorsHeaders(origin);
   
   // Handle CORS preflight requests
   if (req.method === "OPTIONS") {
