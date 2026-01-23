@@ -42,8 +42,8 @@ const Header = () => {
         backgroundColor: isScrolled ? "rgba(255,255,255,0.95)" : "rgba(255,255,255,0.75)",
       }}
     >
-      <div className="w-full px-3 lg:px-4 xl:px-6">
-        <div className="flex items-center justify-between py-2 md:py-3 w-full">
+      <div className="w-full px-3 lg:px-6 xl:px-8">
+        <div className="flex items-center justify-between py-2 md:py-3 w-full gap-2">
           {/* Logo y texto - Izquierda */}
           <a
             href="#"
@@ -67,7 +67,7 @@ const Header = () => {
           </a>
 
           {/* Desktop Navigation - Derecha */}
-          <nav className="hidden lg:flex items-center gap-2 xl:gap-4 flex-shrink-0">
+          <nav className="hidden lg:flex items-center gap-1.5 xl:gap-3 flex-shrink-0">
             {navLinks.map((link) => (
               <button
                 key={link.href}
