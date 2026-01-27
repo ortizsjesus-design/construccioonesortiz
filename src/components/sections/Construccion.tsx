@@ -4,7 +4,7 @@ import { Hammer, Building, Layers, Home, HardHat } from "lucide-react";
 const services = [
   { icon: HardHat, title: "Cimentación y estructura" },
   { icon: Hammer, title: "Albañilería completa" },
-  { icon: Layers, title: "Envolventes exteriores" },
+  { icon: Layers, title: "Envolventes" },
   { icon: Home, title: "Cubiertas y tejados" },
   { icon: Building, title: "Obra civil" },
 ];

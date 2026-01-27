@@ -7,7 +7,7 @@ const services = [
   { icon: Bath, title: "Baños y cocinas", description: "Instalaciones modernas" },
   { icon: Grid3X3, title: "Solados y alicatados", description: "Pavimentos y revestimientos" },
   { icon: Hammer, title: "Albañilería", description: "Trabajos de albañilería" },
-  { icon: Mountain, title: "Fachada de Piedra", description: "Acabados de calidad" },
+  { icon: Mountain, title: "Todo tipo de Fachadas", description: "Acabados de calidad" },
 ];
 
 const Reformas = () => {

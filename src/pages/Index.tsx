@@ -8,7 +8,6 @@ import CespedArtificial from "@/components/sections/CespedArtificial";
 import Maquinaria from "@/components/sections/Maquinaria";
 import Mantenimiento from "@/components/sections/Mantenimiento";
 import BeforeAfter from "@/components/sections/BeforeAfter";
-import VideoSection from "@/components/sections/VideoSection";
 import Testimonials from "@/components/sections/Testimonials";
 import About from "@/components/sections/About";
 import Contact from "@/components/sections/Contact";
@@ -29,7 +28,6 @@ const Index = () => {
         <Maquinaria />
         <Mantenimiento />
         <BeforeAfter />
-        <VideoSection />
         <Testimonials />
         <About />
         <Contact />

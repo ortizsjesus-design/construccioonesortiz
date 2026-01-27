@@ -1,64 +1,45 @@
 import { motion } from "framer-motion";
 import BeforeAfterSlider from "@/components/BeforeAfterSlider";
 
-// Imágenes "después" existentes
-import proyectoVigasMadera from "@/assets/proyecto-vigas-madera.webp";
-import proyectoBanoPiedra from "@/assets/proyecto-bano-piedra.webp";
-import proyectoInteriorModerno from "@/assets/proyecto-interior-moderno.webp";
-import proyectoEstructuraMadera from "@/assets/proyecto-estructura-madera.webp";
-import proyectoTejadoCubierta from "@/assets/proyecto-tejado-cubierta.webp";
-import proyectoFachadaPiedra from "@/assets/proyecto-fachada-piedra.webp";
+// Nuevas imágenes de fachadas
+import fachada1Antes from "@/assets/fachada-1-antes.png";
+import fachada1Despues from "@/assets/fachada-1-despues.png";
+import fachada2Antes from "@/assets/fachada-2-antes.png";
+import fachada2Despues from "@/assets/fachada-2-despues.png";
 
-// Imágenes "antes"
-import antesFachadaPiedra from "@/assets/antes-fachada-piedra.png";
-import antesBanoPiedra from "@/assets/antes-bano-piedra.png";
-import antesInteriorModerno from "@/assets/antes-interior-moderno.png";
-import antesEstructuraTechumbre from "@/assets/antes-estructura-techumbre.png";
-import antesTejadoCubierta from "@/assets/antes-tejado-cubierta.png";
-import antesEstructuraMadera from "@/assets/antes-estructura-madera.png";
+// Nuevas imágenes de cocinas
+import cocina1Antes from "@/assets/cocina-1-antes.png";
+import cocina1Despues from "@/assets/cocina-1-despues.png";
+import cocina2Antes from "@/assets/cocina-2-antes.png";
+import cocina2Despues from "@/assets/cocina-2-despues.png";
 
-// Emparejamientos según orden indicado por el usuario
 const comparisons = [
   {
     id: 1,
-    title: "Rehabilitación fachada",
-    before: antesFachadaPiedra,
-    after: proyectoFachadaPiedra,
+    title: "Rehabilitación fachada 1",
+    before: fachada1Antes,
+    after: fachada1Despues,
     description: "Trabajos realizados en La Rioja Alta para cliente particular.",
   },
   {
     id: 2,
-    title: "Baño piedra natural",
-    before: antesBanoPiedra,
-    after: proyectoBanoPiedra,
+    title: "Rehabilitación fachada 2",
+    before: fachada2Antes,
+    after: fachada2Despues,
     description: "Trabajos realizados en La Rioja Alta para cliente particular.",
   },
   {
     id: 3,
-    title: "Interior moderno",
-    before: antesInteriorModerno,
-    after: proyectoInteriorModerno,
+    title: "Reforma de cocina 1",
+    before: cocina1Antes,
+    after: cocina1Despues,
     description: "Trabajos realizados en La Rioja Alta para cliente particular.",
   },
   {
     id: 4,
-    title: "Estructura techumbre",
-    before: antesEstructuraTechumbre,
-    after: proyectoVigasMadera,
-    description: "Trabajos realizados en La Rioja Alta para cliente particular.",
-  },
-  {
-    id: 5,
-    title: "Tejado cubierta",
-    before: antesTejadoCubierta,
-    after: proyectoTejadoCubierta,
-    description: "Trabajos realizados en La Rioja Alta para cliente particular.",
-  },
-  {
-    id: 6,
-    title: "Estructura madera y piedra",
-    before: antesEstructuraMadera,
-    after: proyectoEstructuraMadera,
+    title: "Reforma de cocina 2",
+    before: cocina2Antes,
+    after: cocina2Despues,
     description: "Trabajos realizados en La Rioja Alta para cliente particular.",
   },
 ];
