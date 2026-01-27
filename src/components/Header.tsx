@@ -7,7 +7,6 @@ import logoOrtiz from "@/assets/logo-ortiz.png";
 const navLinks = [
   { href: "#servicios", label: "Servicios" },
   { href: "#trabajos", label: "Trabajos" },
-  { href: "#video", label: "Vídeo" },
   { href: "#opiniones", label: "Opiniones" },
   { href: "#empresa", label: "Empresa" },
   { href: "#contacto", label: "Contacto" },
