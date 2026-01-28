@@ -31,8 +31,8 @@ import cocina2Antes from "@/assets/cocina-2-antes.png";
 import cocina2Despues from "@/assets/cocina-2-despues.png";
 
 // Nuevas imágenes
-import iglesia2Antes from "@/assets/iglesia-2-antes.jpg";
-import iglesia2Despues from "@/assets/iglesia-2-despues.jpg";
+import iglesia1Antes from "@/assets/iglesia-1-antes.jpg";
+import iglesia1Despues from "@/assets/iglesia-1-despues.jpg";
 import bano2Antes from "@/assets/bano-2-antes.jpg";
 import bano2Despues from "@/assets/bano-2-despues.jpg";
 import bano3Antes from "@/assets/bano-3-antes.jpg";
@@ -51,15 +51,22 @@ import alicatadosExteriores from "@/assets/alicatados-exteriores.jpg";
 import trabajosAlbanileria from "@/assets/trabajos-albanileria.jpg";
 import localEsteticaAntes from "@/assets/local-estetica-antes.jpg";
 import localEsteticaDespues from "@/assets/local-estetica-despues.jpg";
-import localBarAntes from "@/assets/local-bar-antes.jpg";
-import localBarDespues from "@/assets/local-bar-despues.jpg";
 
 // Nuevas imágenes - tercera tanda
 import localPanaderiaAntes from "@/assets/local-panaderia-antes.jpg";
 import localPanaderiaDespues from "@/assets/local-panaderia-despues.jpg";
-import iglesia1Antes from "@/assets/iglesia-1-antes.jpg";
-import iglesia1Despues from "@/assets/iglesia-1-despues.jpg";
 import alicatadoInterior from "@/assets/alicatado-interior.jpg";
+
+// Nuevas imágenes - cuarta tanda
+import cimentacion from "@/assets/cimentacion.png";
+import envolventes from "@/assets/envolventes.png";
+import obraCivil from "@/assets/obra-civil.png";
+import fachadasTrabajo from "@/assets/fachadas-trabajo.jpg";
+import fachadasTrabajo2 from "@/assets/fachadas-trabajo-2.jpg";
+import vivienda3Antes from "@/assets/vivienda-3-antes.png";
+import vivienda3Despues from "@/assets/vivienda-3-despues.jpg";
+import reformaIntegral from "@/assets/reforma-integral.png";
+import alicatadoInterior2 from "@/assets/alicatado-interior-2.png";
 
 type WorkItem = {
   id: number;
@@ -97,6 +104,19 @@ const sections: Section[] = [
       },
       {
         id: 3,
+        title: "Reforma interior sótano",
+        before: vivienda3Antes,
+        after: vivienda3Despues,
+        description: "Trabajos realizados en La Rioja Alta para cliente particular.",
+      },
+      {
+        id: 4,
+        title: "Reforma integral",
+        image: reformaIntegral,
+        description: "Trabajos realizados en La Rioja Alta para cliente particular.",
+      },
+      {
+        id: 5,
         title: "Reforma interior moderno",
         before: antesInteriorModerno,
         after: proyectoInteriorModerno,
@@ -109,21 +129,14 @@ const sections: Section[] = [
     title: "Locales comerciales",
     items: [
       {
-        id: 4,
+        id: 6,
         title: "Reforma local estética",
         before: localEsteticaAntes,
         after: localEsteticaDespues,
         description: "Trabajos realizados en La Rioja Alta para cliente particular.",
       },
       {
-        id: 5,
-        title: "Reforma local bar",
-        before: localBarAntes,
-        after: localBarDespues,
-        description: "Trabajos realizados en La Rioja Alta para cliente particular.",
-      },
-      {
-        id: 6,
+        id: 7,
         title: "Reforma local panadería",
         before: localPanaderiaAntes,
         after: localPanaderiaDespues,
@@ -136,35 +149,35 @@ const sections: Section[] = [
     title: "Baños y cocinas",
     items: [
       {
-        id: 7,
+        id: 8,
         title: "Reforma de baño 2",
         before: bano2Antes,
         after: bano2Despues,
         description: "Trabajos realizados en La Rioja Alta para cliente particular.",
       },
       {
-        id: 8,
+        id: 9,
         title: "Reforma de baño 3",
         before: bano3Antes,
         after: bano3Despues,
         description: "Trabajos realizados en La Rioja Alta para cliente particular.",
       },
       {
-        id: 9,
+        id: 10,
         title: "Baño piedra natural",
         before: antesBanoPiedra,
         after: proyectoBanoPiedra,
         description: "Trabajos realizados en La Rioja Alta para cliente particular.",
       },
       {
-        id: 10,
+        id: 11,
         title: "Reforma de cocina 1",
         before: cocina1Antes,
         after: cocina1Despues,
         description: "Trabajos realizados en La Rioja Alta para cliente particular.",
       },
       {
-        id: 11,
+        id: 12,
         title: "Reforma de cocina 2",
         before: cocina2Antes,
         after: cocina2Despues,
@@ -177,15 +190,21 @@ const sections: Section[] = [
     title: "Solados y alicatados",
     items: [
       {
-        id: 12,
+        id: 13,
         title: "Alicatados exteriores",
         image: alicatadosExteriores,
         description: "Trabajos realizados en La Rioja Alta para cliente particular.",
       },
       {
-        id: 13,
+        id: 14,
         title: "Alicatados interiores",
         image: alicatadoInterior,
+        description: "Trabajos realizados en La Rioja Alta para cliente particular.",
+      },
+      {
+        id: 15,
+        title: "Alicatados interiores 2",
+        image: alicatadoInterior2,
         description: "Trabajos realizados en La Rioja Alta para cliente particular.",
       },
     ],
@@ -195,21 +214,57 @@ const sections: Section[] = [
     title: "Albañilería",
     items: [
       {
-        id: 14,
+        id: 16,
         title: "Trabajos de albañilería",
         image: trabajosAlbanileria,
         description: "Trabajos realizados en La Rioja Alta para cliente particular.",
       },
       {
-        id: 15,
+        id: 17,
         title: "Montaje de armarios",
         image: trabajoManitas2,
         description: "Trabajos realizados en La Rioja Alta para cliente particular.",
       },
       {
-        id: 16,
+        id: 18,
         title: "Instalación de radiadores",
         image: trabajoManitas1,
+        description: "Trabajos realizados en La Rioja Alta para cliente particular.",
+      },
+    ],
+  },
+  {
+    id: "cimentacion",
+    title: "Cimentación y estructura",
+    items: [
+      {
+        id: 19,
+        title: "Cimentación",
+        image: cimentacion,
+        description: "Trabajos realizados en La Rioja Alta para cliente particular.",
+      },
+    ],
+  },
+  {
+    id: "envolventes",
+    title: "Envolventes",
+    items: [
+      {
+        id: 20,
+        title: "Envolventes y aislamiento",
+        image: envolventes,
+        description: "Trabajos realizados en La Rioja Alta para cliente particular.",
+      },
+    ],
+  },
+  {
+    id: "obra-civil",
+    title: "Obra civil",
+    items: [
+      {
+        id: 21,
+        title: "Obra civil",
+        image: obraCivil,
         description: "Trabajos realizados en La Rioja Alta para cliente particular.",
       },
     ],
@@ -219,34 +274,46 @@ const sections: Section[] = [
     title: "Todo tipo de fachadas",
     items: [
       {
-        id: 17,
+        id: 22,
         title: "Rehabilitación fachada piedra",
         before: antesFachadaPiedra,
         after: proyectoFachadaPiedra,
         description: "Trabajos realizados en La Rioja Alta para cliente particular.",
       },
       {
-        id: 18,
+        id: 23,
         title: "Rehabilitación fachada 2",
         before: fachada1Antes,
         after: fachada1Despues,
         description: "Trabajos realizados en La Rioja Alta para cliente particular.",
       },
       {
-        id: 19,
+        id: 24,
         title: "Rehabilitación fachada 3",
         before: fachada2Antes,
         after: fachada2Despues,
         description: "Trabajos realizados en La Rioja Alta para cliente particular.",
       },
       {
-        id: 20,
+        id: 25,
+        title: "Trabajo en fachada",
+        image: fachadasTrabajo,
+        description: "Trabajos realizados en La Rioja Alta para cliente particular.",
+      },
+      {
+        id: 26,
+        title: "Fachada piedra terminada",
+        image: fachadasTrabajo2,
+        description: "Trabajos realizados en La Rioja Alta para cliente particular.",
+      },
+      {
+        id: 27,
         title: "Muros de piedra",
         image: murosPiedra,
         description: "Trabajos realizados en La Rioja Alta para cliente particular.",
       },
       {
-        id: 21,
+        id: 28,
         title: "Muros de piedra exterior",
         image: murosPiedraExterior,
         description: "Trabajos realizados en La Rioja Alta para cliente particular.",
@@ -258,21 +325,21 @@ const sections: Section[] = [
     title: "Cubiertas",
     items: [
       {
-        id: 22,
+        id: 29,
         title: "Estructura techumbre",
         before: antesEstructuraTechumbre,
         after: proyectoVigasMadera,
         description: "Trabajos realizados en La Rioja Alta para cliente particular.",
       },
       {
-        id: 23,
+        id: 30,
         title: "Tejado cubierta",
         before: antesTejadoCubierta,
         after: proyectoTejadoCubierta,
         description: "Trabajos realizados en La Rioja Alta para cliente particular.",
       },
       {
-        id: 24,
+        id: 31,
         title: "Estructura madera y piedra",
         before: antesEstructuraMadera,
         after: proyectoEstructuraMadera,
@@ -285,17 +352,10 @@ const sections: Section[] = [
     title: "Patrimonio rural",
     items: [
       {
-        id: 25,
-        title: "Reforma cubierta iglesia 1",
+        id: 32,
+        title: "Reforma cubierta iglesia",
         before: iglesia1Antes,
         after: iglesia1Despues,
-        description: "Trabajos realizados en La Rioja Alta para cliente particular.",
-      },
-      {
-        id: 26,
-        title: "Reforma cubierta iglesia 2",
-        before: iglesia2Antes,
-        after: iglesia2Despues,
         description: "Trabajos realizados en La Rioja Alta para cliente particular.",
       },
     ],
@@ -323,7 +383,7 @@ const TrabajosRealizados = () => {
           </motion.div>
 
           {sections.map((section) => (
-            <div key={section.id} id={section.id} className="mb-20 scroll-mt-40 md:scroll-mt-44">
+            <div key={section.id} id={section.id} className="mb-20 scroll-mt-44 md:scroll-mt-48">
               <motion.h3
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
