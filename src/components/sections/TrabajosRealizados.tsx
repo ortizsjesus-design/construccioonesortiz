@@ -54,6 +54,13 @@ import localEsteticaDespues from "@/assets/local-estetica-despues.jpg";
 import localBarAntes from "@/assets/local-bar-antes.jpg";
 import localBarDespues from "@/assets/local-bar-despues.jpg";
 
+// Nuevas imágenes - tercera tanda
+import localPanaderiaAntes from "@/assets/local-panaderia-antes.jpg";
+import localPanaderiaDespues from "@/assets/local-panaderia-despues.jpg";
+import iglesia1Antes from "@/assets/iglesia-1-antes.jpg";
+import iglesia1Despues from "@/assets/iglesia-1-despues.jpg";
+import alicatadoInterior from "@/assets/alicatado-interior.jpg";
+
 type WorkItem = {
   id: number;
   title: string;
@@ -67,7 +74,6 @@ type Section = {
   id: string;
   title: string;
   items: WorkItem[];
-  singleRow?: boolean;
 };
 
 const sections: Section[] = [
@@ -77,23 +83,23 @@ const sections: Section[] = [
     items: [
       {
         id: 1,
-        title: "Reforma interior moderno",
-        before: antesInteriorModerno,
-        after: proyectoInteriorModerno,
-        description: "Trabajos realizados en La Rioja Alta para cliente particular.",
-      },
-      {
-        id: 2,
         title: "Reforma integral vivienda 1",
         before: vivienda1Antes,
         after: vivienda1Despues,
         description: "Trabajos realizados en La Rioja Alta para cliente particular.",
       },
       {
-        id: 3,
+        id: 2,
         title: "Reforma integral vivienda 2",
         before: vivienda2Antes,
         after: vivienda2Despues,
+        description: "Trabajos realizados en La Rioja Alta para cliente particular.",
+      },
+      {
+        id: 3,
+        title: "Reforma interior moderno",
+        before: antesInteriorModerno,
+        after: proyectoInteriorModerno,
         description: "Trabajos realizados en La Rioja Alta para cliente particular.",
       },
     ],
@@ -116,20 +122,19 @@ const sections: Section[] = [
         after: localBarDespues,
         description: "Trabajos realizados en La Rioja Alta para cliente particular.",
       },
+      {
+        id: 6,
+        title: "Reforma local panadería",
+        before: localPanaderiaAntes,
+        after: localPanaderiaDespues,
+        description: "Trabajos realizados en La Rioja Alta para cliente particular.",
+      },
     ],
   },
   {
     id: "banos-cocinas",
     title: "Baños y cocinas",
-    singleRow: true,
     items: [
-      {
-        id: 6,
-        title: "Baño piedra natural",
-        before: antesBanoPiedra,
-        after: proyectoBanoPiedra,
-        description: "Trabajos realizados en La Rioja Alta para cliente particular.",
-      },
       {
         id: 7,
         title: "Reforma de baño 2",
@@ -158,6 +163,13 @@ const sections: Section[] = [
         after: cocina2Despues,
         description: "Trabajos realizados en La Rioja Alta para cliente particular.",
       },
+      {
+        id: 11,
+        title: "Baño piedra natural",
+        before: antesBanoPiedra,
+        after: proyectoBanoPiedra,
+        description: "Trabajos realizados en La Rioja Alta para cliente particular.",
+      },
     ],
   },
   {
@@ -165,9 +177,15 @@ const sections: Section[] = [
     title: "Solados y alicatados",
     items: [
       {
-        id: 11,
+        id: 12,
         title: "Alicatados exteriores",
         image: alicatadosExteriores,
+        description: "Trabajos realizados en La Rioja Alta para cliente particular.",
+      },
+      {
+        id: 13,
+        title: "Alicatados interiores",
+        image: alicatadoInterior,
         description: "Trabajos realizados en La Rioja Alta para cliente particular.",
       },
     ],
@@ -177,19 +195,19 @@ const sections: Section[] = [
     title: "Albañilería",
     items: [
       {
-        id: 12,
+        id: 14,
         title: "Trabajos de albañilería",
         image: trabajosAlbanileria,
         description: "Trabajos realizados en La Rioja Alta para cliente particular.",
       },
       {
-        id: 13,
+        id: 15,
         title: "Montaje de armarios",
         image: trabajoManitas2,
         description: "Trabajos realizados en La Rioja Alta para cliente particular.",
       },
       {
-        id: 14,
+        id: 16,
         title: "Instalación de radiadores",
         image: trabajoManitas1,
         description: "Trabajos realizados en La Rioja Alta para cliente particular.",
@@ -201,34 +219,34 @@ const sections: Section[] = [
     title: "Todo tipo de fachadas",
     items: [
       {
-        id: 15,
+        id: 17,
         title: "Rehabilitación fachada piedra",
         before: antesFachadaPiedra,
         after: proyectoFachadaPiedra,
         description: "Trabajos realizados en La Rioja Alta para cliente particular.",
       },
       {
-        id: 16,
+        id: 18,
         title: "Rehabilitación fachada 2",
         before: fachada1Antes,
         after: fachada1Despues,
         description: "Trabajos realizados en La Rioja Alta para cliente particular.",
       },
       {
-        id: 17,
+        id: 19,
         title: "Rehabilitación fachada 3",
         before: fachada2Antes,
         after: fachada2Despues,
         description: "Trabajos realizados en La Rioja Alta para cliente particular.",
       },
       {
-        id: 18,
+        id: 20,
         title: "Muros de piedra",
         image: murosPiedra,
         description: "Trabajos realizados en La Rioja Alta para cliente particular.",
       },
       {
-        id: 19,
+        id: 21,
         title: "Muros de piedra exterior",
         image: murosPiedraExterior,
         description: "Trabajos realizados en La Rioja Alta para cliente particular.",
@@ -240,21 +258,21 @@ const sections: Section[] = [
     title: "Cubiertas",
     items: [
       {
-        id: 20,
+        id: 22,
         title: "Estructura techumbre",
         before: antesEstructuraTechumbre,
         after: proyectoVigasMadera,
         description: "Trabajos realizados en La Rioja Alta para cliente particular.",
       },
       {
-        id: 21,
+        id: 23,
         title: "Tejado cubierta",
         before: antesTejadoCubierta,
         after: proyectoTejadoCubierta,
         description: "Trabajos realizados en La Rioja Alta para cliente particular.",
       },
       {
-        id: 22,
+        id: 24,
         title: "Estructura madera y piedra",
         before: antesEstructuraMadera,
         after: proyectoEstructuraMadera,
@@ -267,8 +285,15 @@ const sections: Section[] = [
     title: "Patrimonio rural",
     items: [
       {
-        id: 23,
-        title: "Reforma cubierta iglesia",
+        id: 25,
+        title: "Reforma cubierta iglesia 1",
+        before: iglesia1Antes,
+        after: iglesia1Despues,
+        description: "Trabajos realizados en La Rioja Alta para cliente particular.",
+      },
+      {
+        id: 26,
+        title: "Reforma cubierta iglesia 2",
         before: iglesia2Antes,
         after: iglesia2Despues,
         description: "Trabajos realizados en La Rioja Alta para cliente particular.",
@@ -309,11 +334,7 @@ const TrabajosRealizados = () => {
                 {section.title}
               </motion.h3>
               
-              <div className={`grid gap-8 max-w-6xl mx-auto ${
-                section.singleRow 
-                  ? "grid-cols-1" 
-                  : "grid-cols-1 md:grid-cols-2"
-              }`}>
+              <div className="grid grid-cols-1 gap-8 max-w-4xl mx-auto">
                 {section.items.map((item, index) => (
                   <motion.div
                     key={item.id}
