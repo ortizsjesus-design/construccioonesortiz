@@ -44,9 +44,16 @@ const Features = () => {
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href);
     if (element) {
-      const headerOffset = window.innerWidth < 768 ? 70 : 120;
+      const headerOffset = window.innerWidth < 768 ? 100 : 160;
       const elementPosition = element.getBoundingClientRect().top + window.scrollY;
       const offsetPosition = elementPosition - headerOffset;
+      
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth"
+      });
+    }
+  };
       
       window.scrollTo({
         top: offsetPosition,
