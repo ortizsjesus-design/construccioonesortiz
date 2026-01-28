@@ -151,23 +151,23 @@ const sections: Section[] = [
       },
       {
         id: 9,
+        title: "Baño piedra natural",
+        before: antesBanoPiedra,
+        after: proyectoBanoPiedra,
+        description: "Trabajos realizados en La Rioja Alta para cliente particular.",
+      },
+      {
+        id: 10,
         title: "Reforma de cocina 1",
         before: cocina1Antes,
         after: cocina1Despues,
         description: "Trabajos realizados en La Rioja Alta para cliente particular.",
       },
       {
-        id: 10,
+        id: 11,
         title: "Reforma de cocina 2",
         before: cocina2Antes,
         after: cocina2Despues,
-        description: "Trabajos realizados en La Rioja Alta para cliente particular.",
-      },
-      {
-        id: 11,
-        title: "Baño piedra natural",
-        before: antesBanoPiedra,
-        after: proyectoBanoPiedra,
         description: "Trabajos realizados en La Rioja Alta para cliente particular.",
       },
     ],
@@ -323,7 +323,7 @@ const TrabajosRealizados = () => {
           </motion.div>
 
           {sections.map((section) => (
-            <div key={section.id} id={section.id} className="mb-20 scroll-mt-36">
+            <div key={section.id} id={section.id} className="mb-20 scroll-mt-40 md:scroll-mt-44">
               <motion.h3
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
