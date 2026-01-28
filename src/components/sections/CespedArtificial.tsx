@@ -20,7 +20,7 @@ const CespedArtificial = () => {
   };
 
   return (
-    <section id="cesped-artificial" className="py-12 md:py-20 bg-muted/30 scroll-mt-[140px] md:scroll-mt-[150px]">
+    <section id="cesped-artificial" className="py-12 md:py-20 bg-muted/30 scroll-mt-44 md:scroll-mt-48">
       <div className="container mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
