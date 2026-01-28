@@ -13,7 +13,7 @@ const Rehabilitacion = () => {
   const scrollToSection = (sectionId: string) => {
     const section = document.getElementById(sectionId);
     if (section) {
-      const headerOffset = window.innerWidth < 768 ? 70 : 120;
+      const headerOffset = window.innerWidth < 768 ? 100 : 160;
       const elementPosition = section.getBoundingClientRect().top + window.scrollY;
       const offsetPosition = elementPosition - headerOffset;
       
@@ -25,7 +25,7 @@ const Rehabilitacion = () => {
   };
 
   return (
-    <section id="rehabilitacion" className="py-24 bg-background">
+    <section id="rehabilitacion" className="py-24 bg-background scroll-mt-44 md:scroll-mt-48">
       <div className="container mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

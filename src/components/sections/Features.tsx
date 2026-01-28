@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Home, Building2, Wrench, Truck, Leaf } from "lucide-react";
+import { Home, Building2, Wrench, Truck, Leaf, Users } from "lucide-react";
 
 const features = [
   {
@@ -31,6 +31,12 @@ const features = [
     title: "Instalación de césped artificial",
     description: "Jardines y espacios verdes",
     href: "#cesped-artificial",
+  },
+  {
+    icon: Users,
+    title: "Coordinación de Gremios",
+    description: "Gestión integral de oficios",
+    href: "#coordinacion-gremios",
   },
 ];
 
