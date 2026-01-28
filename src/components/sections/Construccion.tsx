@@ -2,18 +2,18 @@ import { motion } from "framer-motion";
 import { Hammer, Building, Layers, Home, HardHat } from "lucide-react";
 
 const services = [
-  { icon: HardHat, title: "Cimentación y estructura", sectionId: "albanileria" },
+  { icon: HardHat, title: "Cimentación y estructura", sectionId: "cimentacion" },
   { icon: Hammer, title: "Albañilería completa", sectionId: "albanileria" },
-  { icon: Layers, title: "Envolventes", sectionId: "fachadas" },
+  { icon: Layers, title: "Envolventes", sectionId: "envolventes" },
   { icon: Home, title: "Cubiertas y tejados", sectionId: "cubiertas" },
-  { icon: Building, title: "Obra civil", sectionId: "albanileria" },
+  { icon: Building, title: "Obra civil", sectionId: "obra-civil" },
 ];
 
 const Construccion = () => {
   const scrollToSection = (sectionId: string) => {
     const section = document.getElementById(sectionId);
     if (section) {
-      const headerOffset = window.innerWidth < 768 ? 70 : 120;
+      const headerOffset = window.innerWidth < 768 ? 100 : 160;
       const elementPosition = section.getBoundingClientRect().top + window.scrollY;
       const offsetPosition = elementPosition - headerOffset;
       
@@ -25,7 +25,7 @@ const Construccion = () => {
   };
 
   return (
-    <section id="construccion" className="py-24 bg-muted/30">
+    <section id="construccion" className="py-24 bg-muted/30 scroll-mt-44 md:scroll-mt-48">
       <div className="container mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

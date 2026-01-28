@@ -55,7 +55,7 @@ const Maquinaria = () => {
   };
 
   return (
-    <section id="maquinaria" className="py-24 bg-muted/30">
+    <section id="maquinaria" className="py-24 bg-muted/30 scroll-mt-44 md:scroll-mt-48">
       <div className="container mx-auto px-6">
         <div className="max-w-5xl mx-auto">
           {/* Título de sección */}
@@ -119,7 +119,7 @@ const Maquinaria = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.1, duration: 0.5 }}
-                className="scroll-mt-[140px] md:scroll-mt-[150px]"
+                className="scroll-mt-44 md:scroll-mt-48"
               >
                 <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-4">
                   {machine.name}

@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Home, Building2, Wrench, Truck, Leaf } from "lucide-react";
+import { Home, Building2, Wrench, Truck, Leaf, Users } from "lucide-react";
 
 const features = [
   {
@@ -32,13 +32,19 @@ const features = [
     description: "Jardines y espacios verdes",
     href: "#cesped-artificial",
   },
+  {
+    icon: Users,
+    title: "Coordinación de Gremios",
+    description: "Gestión integral de oficios",
+    href: "#coordinacion-gremios",
+  },
 ];
 
 const Features = () => {
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href);
     if (element) {
-      const headerOffset = window.innerWidth < 768 ? 70 : 120;
+      const headerOffset = window.innerWidth < 768 ? 100 : 160;
       const elementPosition = element.getBoundingClientRect().top + window.scrollY;
       const offsetPosition = elementPosition - headerOffset;
       
@@ -65,7 +71,7 @@ const Features = () => {
           <div className="w-20 h-1 bg-accent rounded-full mx-auto" />
         </motion.div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
           {features.map((feature, index) => (
             <motion.button
               key={feature.title}
