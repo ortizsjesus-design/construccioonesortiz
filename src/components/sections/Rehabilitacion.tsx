@@ -2,14 +2,35 @@ import { motion } from "framer-motion";
 import { Home, Store, Building2, Layers, TreePine } from "lucide-react";
 
 const services = [
-  { icon: Home, title: "Viviendas antiguas" },
-  { icon: Store, title: "Locales comerciales" },
-  { icon: Building2, title: "Fachadas" },
-  { icon: Layers, title: "Cubiertas" },
-  { icon: TreePine, title: "Patrimonio rural" },
+  { icon: Home, title: "Viviendas antiguas", category: "viviendas" },
+  { icon: Store, title: "Locales comerciales", category: "viviendas" },
+  { icon: Building2, title: "Fachadas", category: "fachadas" },
+  { icon: Layers, title: "Cubiertas", category: "cubiertas" },
+  { icon: TreePine, title: "Patrimonio rural", category: "patrimonio" },
 ];
 
 const Rehabilitacion = () => {
+  const scrollToCategory = (category: string) => {
+    const trabajosSection = document.getElementById("trabajos");
+    if (trabajosSection) {
+      const headerOffset = window.innerWidth < 768 ? 70 : 120;
+      const elementPosition = trabajosSection.getBoundingClientRect().top + window.scrollY;
+      const offsetPosition = elementPosition - headerOffset;
+      
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth"
+      });
+      
+      setTimeout(() => {
+        const tabTrigger = document.querySelector(`[data-state][value="${category}"]`) as HTMLButtonElement;
+        if (tabTrigger) {
+          tabTrigger.click();
+        }
+      }, 500);
+    }
+  };
+
   return (
     <section id="rehabilitacion" className="py-24 bg-background">
       <div className="container mx-auto px-6">
@@ -28,19 +49,20 @@ const Rehabilitacion = () => {
 
         <div className="flex flex-wrap justify-center gap-6 max-w-4xl mx-auto">
           {services.map((service, index) => (
-            <motion.div
+            <motion.button
               key={service.title}
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1, duration: 0.5 }}
-              className="bg-muted/30 rounded-xl p-6 flex items-center gap-4 min-w-[220px] hover:bg-muted/50 transition-colors"
+              onClick={() => scrollToCategory(service.category)}
+              className="bg-muted/30 rounded-xl p-6 flex items-center gap-4 min-w-[220px] hover:bg-muted/50 transition-colors cursor-pointer"
             >
               <div className="w-12 h-12 rounded-full bg-gradient-warm flex items-center justify-center flex-shrink-0">
                 <service.icon className="w-6 h-6 text-primary-foreground" />
               </div>
               <h3 className="font-semibold text-foreground">{service.title}</h3>
-            </motion.div>
+            </motion.button>
           ))}
         </div>
       </div>

@@ -2,15 +2,37 @@ import { motion } from "framer-motion";
 import { Home, Store, Bath, Grid3X3, Hammer, Mountain } from "lucide-react";
 
 const services = [
-  { icon: Home, title: "Viviendas", description: "Reformas completas de hogares" },
-  { icon: Store, title: "Locales comerciales", description: "Adaptación y renovación" },
-  { icon: Bath, title: "Baños y cocinas", description: "Instalaciones modernas" },
-  { icon: Grid3X3, title: "Solados y alicatados", description: "Pavimentos y revestimientos" },
-  { icon: Hammer, title: "Albañilería", description: "Trabajos de albañilería" },
-  { icon: Mountain, title: "Todo tipo de Fachadas", description: "Acabados de calidad" },
+  { icon: Home, title: "Viviendas", description: "Reformas completas de hogares", category: "viviendas" },
+  { icon: Store, title: "Locales comerciales", description: "Adaptación y renovación", category: "viviendas" },
+  { icon: Bath, title: "Baños y cocinas", description: "Instalaciones modernas", category: "banos-cocinas" },
+  { icon: Grid3X3, title: "Solados y alicatados", description: "Pavimentos y revestimientos", category: "albanileria" },
+  { icon: Hammer, title: "Albañilería", description: "Trabajos de albañilería", category: "albanileria" },
+  { icon: Mountain, title: "Todo tipo de Fachadas", description: "Acabados de calidad", category: "fachadas" },
 ];
 
 const Reformas = () => {
+  const scrollToCategory = (category: string) => {
+    const trabajosSection = document.getElementById("trabajos");
+    if (trabajosSection) {
+      const headerOffset = window.innerWidth < 768 ? 70 : 120;
+      const elementPosition = trabajosSection.getBoundingClientRect().top + window.scrollY;
+      const offsetPosition = elementPosition - headerOffset;
+      
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth"
+      });
+      
+      // Activar la pestaña correspondiente después de hacer scroll
+      setTimeout(() => {
+        const tabTrigger = document.querySelector(`[data-state][value="${category}"]`) as HTMLButtonElement;
+        if (tabTrigger) {
+          tabTrigger.click();
+        }
+      }, 500);
+    }
+  };
+
   return (
     <section id="reformas" className="py-24 bg-background">
       <div className="container mx-auto px-6">
@@ -29,20 +51,21 @@ const Reformas = () => {
 
         <div className="grid grid-cols-2 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
           {services.map((service, index) => (
-            <motion.div
+            <motion.button
               key={service.title}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1, duration: 0.5 }}
-              className="bg-muted/30 rounded-xl p-6 text-center hover:bg-muted/50 transition-colors"
+              onClick={() => scrollToCategory(service.category)}
+              className="bg-muted/30 rounded-xl p-6 text-center hover:bg-muted/50 transition-colors cursor-pointer"
             >
               <div className="w-12 h-12 rounded-full bg-gradient-warm flex items-center justify-center mx-auto mb-4">
                 <service.icon className="w-6 h-6 text-primary-foreground" />
               </div>
               <h3 className="font-semibold text-foreground mb-1">{service.title}</h3>
               <p className="text-sm text-muted-foreground">{service.description}</p>
-            </motion.div>
+            </motion.button>
           ))}
         </div>
       </div>
