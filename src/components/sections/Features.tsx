@@ -54,13 +54,6 @@ const Features = () => {
       });
     }
   };
-      
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth"
-      });
-    }
-  };
 
   return (
     <section id="servicios" className="pt-4 pb-8 md:pt-8 md:pb-16 bg-muted/30">
