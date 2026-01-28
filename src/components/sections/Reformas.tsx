@@ -2,34 +2,26 @@ import { motion } from "framer-motion";
 import { Home, Store, Bath, Grid3X3, Hammer, Mountain } from "lucide-react";
 
 const services = [
-  { icon: Home, title: "Viviendas", description: "Reformas completas de hogares", category: "viviendas" },
-  { icon: Store, title: "Locales comerciales", description: "Adaptación y renovación", category: "viviendas" },
-  { icon: Bath, title: "Baños y cocinas", description: "Instalaciones modernas", category: "banos-cocinas" },
-  { icon: Grid3X3, title: "Solados y alicatados", description: "Pavimentos y revestimientos", category: "albanileria" },
-  { icon: Hammer, title: "Albañilería", description: "Trabajos de albañilería", category: "albanileria" },
-  { icon: Mountain, title: "Todo tipo de Fachadas", description: "Acabados de calidad", category: "fachadas" },
+  { icon: Home, title: "Viviendas", description: "Reformas completas de hogares", sectionId: "viviendas" },
+  { icon: Store, title: "Locales comerciales", description: "Adaptación y renovación", sectionId: "locales" },
+  { icon: Bath, title: "Baños y cocinas", description: "Instalaciones modernas", sectionId: "banos-cocinas" },
+  { icon: Grid3X3, title: "Solados y alicatados", description: "Pavimentos y revestimientos", sectionId: "solados" },
+  { icon: Hammer, title: "Albañilería", description: "Trabajos de albañilería", sectionId: "albanileria" },
+  { icon: Mountain, title: "Todo tipo de Fachadas", description: "Acabados de calidad", sectionId: "fachadas" },
 ];
 
 const Reformas = () => {
-  const scrollToCategory = (category: string) => {
-    const trabajosSection = document.getElementById("trabajos");
-    if (trabajosSection) {
+  const scrollToSection = (sectionId: string) => {
+    const section = document.getElementById(sectionId);
+    if (section) {
       const headerOffset = window.innerWidth < 768 ? 70 : 120;
-      const elementPosition = trabajosSection.getBoundingClientRect().top + window.scrollY;
+      const elementPosition = section.getBoundingClientRect().top + window.scrollY;
       const offsetPosition = elementPosition - headerOffset;
       
       window.scrollTo({
         top: offsetPosition,
         behavior: "smooth"
       });
-      
-      // Activar la pestaña correspondiente después de hacer scroll
-      setTimeout(() => {
-        const tabTrigger = document.querySelector(`[data-state][value="${category}"]`) as HTMLButtonElement;
-        if (tabTrigger) {
-          tabTrigger.click();
-        }
-      }, 500);
     }
   };
 
@@ -57,7 +49,7 @@ const Reformas = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1, duration: 0.5 }}
-              onClick={() => scrollToCategory(service.category)}
+              onClick={() => scrollToSection(service.sectionId)}
               className="bg-muted/30 rounded-xl p-6 text-center hover:bg-muted/50 transition-colors cursor-pointer"
             >
               <div className="w-12 h-12 rounded-full bg-gradient-warm flex items-center justify-center mx-auto mb-4">

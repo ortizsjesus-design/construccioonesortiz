@@ -2,32 +2,25 @@ import { motion } from "framer-motion";
 import { Home, Store, Building2, Layers, TreePine } from "lucide-react";
 
 const services = [
-  { icon: Home, title: "Viviendas antiguas", category: "viviendas" },
-  { icon: Store, title: "Locales comerciales", category: "viviendas" },
-  { icon: Building2, title: "Fachadas", category: "fachadas" },
-  { icon: Layers, title: "Cubiertas", category: "cubiertas" },
-  { icon: TreePine, title: "Patrimonio rural", category: "patrimonio" },
+  { icon: Home, title: "Viviendas antiguas", sectionId: "viviendas" },
+  { icon: Store, title: "Locales comerciales", sectionId: "locales" },
+  { icon: Building2, title: "Fachadas", sectionId: "fachadas" },
+  { icon: Layers, title: "Cubiertas", sectionId: "cubiertas" },
+  { icon: TreePine, title: "Patrimonio rural", sectionId: "patrimonio" },
 ];
 
 const Rehabilitacion = () => {
-  const scrollToCategory = (category: string) => {
-    const trabajosSection = document.getElementById("trabajos");
-    if (trabajosSection) {
+  const scrollToSection = (sectionId: string) => {
+    const section = document.getElementById(sectionId);
+    if (section) {
       const headerOffset = window.innerWidth < 768 ? 70 : 120;
-      const elementPosition = trabajosSection.getBoundingClientRect().top + window.scrollY;
+      const elementPosition = section.getBoundingClientRect().top + window.scrollY;
       const offsetPosition = elementPosition - headerOffset;
       
       window.scrollTo({
         top: offsetPosition,
         behavior: "smooth"
       });
-      
-      setTimeout(() => {
-        const tabTrigger = document.querySelector(`[data-state][value="${category}"]`) as HTMLButtonElement;
-        if (tabTrigger) {
-          tabTrigger.click();
-        }
-      }, 500);
     }
   };
 
@@ -55,7 +48,7 @@ const Rehabilitacion = () => {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1, duration: 0.5 }}
-              onClick={() => scrollToCategory(service.category)}
+              onClick={() => scrollToSection(service.sectionId)}
               className="bg-muted/30 rounded-xl p-6 flex items-center gap-4 min-w-[220px] hover:bg-muted/50 transition-colors cursor-pointer"
             >
               <div className="w-12 h-12 rounded-full bg-gradient-warm flex items-center justify-center flex-shrink-0">

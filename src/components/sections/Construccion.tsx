@@ -2,32 +2,25 @@ import { motion } from "framer-motion";
 import { Hammer, Building, Layers, Home, HardHat } from "lucide-react";
 
 const services = [
-  { icon: HardHat, title: "Cimentación y estructura", category: "albanileria" },
-  { icon: Hammer, title: "Albañilería completa", category: "albanileria" },
-  { icon: Layers, title: "Envolventes", category: "fachadas" },
-  { icon: Home, title: "Cubiertas y tejados", category: "cubiertas" },
-  { icon: Building, title: "Obra civil", category: "albanileria" },
+  { icon: HardHat, title: "Cimentación y estructura", sectionId: "albanileria" },
+  { icon: Hammer, title: "Albañilería completa", sectionId: "albanileria" },
+  { icon: Layers, title: "Envolventes", sectionId: "fachadas" },
+  { icon: Home, title: "Cubiertas y tejados", sectionId: "cubiertas" },
+  { icon: Building, title: "Obra civil", sectionId: "albanileria" },
 ];
 
 const Construccion = () => {
-  const scrollToCategory = (category: string) => {
-    const trabajosSection = document.getElementById("trabajos");
-    if (trabajosSection) {
+  const scrollToSection = (sectionId: string) => {
+    const section = document.getElementById(sectionId);
+    if (section) {
       const headerOffset = window.innerWidth < 768 ? 70 : 120;
-      const elementPosition = trabajosSection.getBoundingClientRect().top + window.scrollY;
+      const elementPosition = section.getBoundingClientRect().top + window.scrollY;
       const offsetPosition = elementPosition - headerOffset;
       
       window.scrollTo({
         top: offsetPosition,
         behavior: "smooth"
       });
-      
-      setTimeout(() => {
-        const tabTrigger = document.querySelector(`[data-state][value="${category}"]`) as HTMLButtonElement;
-        if (tabTrigger) {
-          tabTrigger.click();
-        }
-      }, 500);
     }
   };
 
@@ -55,7 +48,7 @@ const Construccion = () => {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1, duration: 0.5 }}
-              onClick={() => scrollToCategory(service.category)}
+              onClick={() => scrollToSection(service.sectionId)}
               className="bg-background rounded-xl p-6 shadow-card flex items-center gap-4 min-w-[250px] hover:shadow-elevated transition-all cursor-pointer"
             >
               <div className="w-12 h-12 rounded-full bg-gradient-warm flex items-center justify-center flex-shrink-0">

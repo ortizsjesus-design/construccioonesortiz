@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import BeforeAfterSlider from "@/components/BeforeAfterSlider";
 
 // Imágenes existentes "después"
@@ -40,8 +39,20 @@ import bano3Antes from "@/assets/bano-3-antes.jpg";
 import bano3Despues from "@/assets/bano-3-despues.jpg";
 import trabajoManitas1 from "@/assets/trabajo-manitas-1.jpg";
 import trabajoManitas2 from "@/assets/trabajo-manitas-2.jpg";
-import vivienda1Antes from "@/assets/vivienda-1-antes.jpg";
 import murosPiedra from "@/assets/muros-piedra.jpg";
+
+// Nuevas imágenes - segunda tanda
+import vivienda1Antes from "@/assets/vivienda-1-antes.jpg";
+import vivienda1Despues from "@/assets/vivienda-1-despues.jpg";
+import vivienda2Antes from "@/assets/vivienda-2-antes.jpg";
+import vivienda2Despues from "@/assets/vivienda-2-despues.jpg";
+import murosPiedraExterior from "@/assets/muros-piedra-exterior.jpg";
+import alicatadosExteriores from "@/assets/alicatados-exteriores.jpg";
+import trabajosAlbanileria from "@/assets/trabajos-albanileria.jpg";
+import localEsteticaAntes from "@/assets/local-estetica-antes.jpg";
+import localEsteticaDespues from "@/assets/local-estetica-despues.jpg";
+import localBarAntes from "@/assets/local-bar-antes.jpg";
+import localBarDespues from "@/assets/local-bar-despues.jpg";
 
 type WorkItem = {
   id: number;
@@ -52,16 +63,17 @@ type WorkItem = {
   description: string;
 };
 
-type Category = {
+type Section = {
   id: string;
-  label: string;
+  title: string;
   items: WorkItem[];
+  singleRow?: boolean;
 };
 
-const categories: Category[] = [
+const sections: Section[] = [
   {
     id: "viviendas",
-    label: "Reforma integral viviendas",
+    title: "Reforma integral de viviendas",
     items: [
       {
         id: 1,
@@ -72,46 +84,75 @@ const categories: Category[] = [
       },
       {
         id: 2,
-        title: "Reforma integral vivienda",
-        image: vivienda1Antes,
+        title: "Reforma integral vivienda 1",
+        before: vivienda1Antes,
+        after: vivienda1Despues,
+        description: "Trabajos realizados en La Rioja Alta para cliente particular.",
+      },
+      {
+        id: 3,
+        title: "Reforma integral vivienda 2",
+        before: vivienda2Antes,
+        after: vivienda2Despues,
+        description: "Trabajos realizados en La Rioja Alta para cliente particular.",
+      },
+    ],
+  },
+  {
+    id: "locales",
+    title: "Locales comerciales",
+    items: [
+      {
+        id: 4,
+        title: "Reforma local estética",
+        before: localEsteticaAntes,
+        after: localEsteticaDespues,
+        description: "Trabajos realizados en La Rioja Alta para cliente particular.",
+      },
+      {
+        id: 5,
+        title: "Reforma local bar",
+        before: localBarAntes,
+        after: localBarDespues,
         description: "Trabajos realizados en La Rioja Alta para cliente particular.",
       },
     ],
   },
   {
     id: "banos-cocinas",
-    label: "Baños y cocinas",
+    title: "Baños y cocinas",
+    singleRow: true,
     items: [
       {
-        id: 3,
+        id: 6,
         title: "Baño piedra natural",
         before: antesBanoPiedra,
         after: proyectoBanoPiedra,
         description: "Trabajos realizados en La Rioja Alta para cliente particular.",
       },
       {
-        id: 4,
+        id: 7,
         title: "Reforma de baño 2",
         before: bano2Antes,
         after: bano2Despues,
         description: "Trabajos realizados en La Rioja Alta para cliente particular.",
       },
       {
-        id: 5,
+        id: 8,
         title: "Reforma de baño 3",
         before: bano3Antes,
         after: bano3Despues,
         description: "Trabajos realizados en La Rioja Alta para cliente particular.",
       },
       {
-        id: 6,
+        id: 9,
         title: "Reforma de cocina 1",
         before: cocina1Antes,
         after: cocina1Despues,
         description: "Trabajos realizados en La Rioja Alta para cliente particular.",
       },
       {
-        id: 7,
+        id: 10,
         title: "Reforma de cocina 2",
         before: cocina2Antes,
         after: cocina2Despues,
@@ -120,76 +161,100 @@ const categories: Category[] = [
     ],
   },
   {
-    id: "albanileria",
-    label: "Albañilería",
+    id: "solados",
+    title: "Solados y alicatados",
     items: [
       {
-        id: 8,
+        id: 11,
+        title: "Alicatados exteriores",
+        image: alicatadosExteriores,
+        description: "Trabajos realizados en La Rioja Alta para cliente particular.",
+      },
+    ],
+  },
+  {
+    id: "albanileria",
+    title: "Albañilería",
+    items: [
+      {
+        id: 12,
+        title: "Trabajos de albañilería",
+        image: trabajosAlbanileria,
+        description: "Trabajos realizados en La Rioja Alta para cliente particular.",
+      },
+      {
+        id: 13,
         title: "Montaje de armarios",
         image: trabajoManitas2,
         description: "Trabajos realizados en La Rioja Alta para cliente particular.",
       },
       {
-        id: 9,
+        id: 14,
         title: "Instalación de radiadores",
         image: trabajoManitas1,
-        description: "Trabajos realizados en La Rioja Alta para cliente particular.",
-      },
-      {
-        id: 10,
-        title: "Muros de piedra",
-        image: murosPiedra,
         description: "Trabajos realizados en La Rioja Alta para cliente particular.",
       },
     ],
   },
   {
     id: "fachadas",
-    label: "Todo tipo de fachadas",
+    title: "Todo tipo de fachadas",
     items: [
       {
-        id: 11,
+        id: 15,
         title: "Rehabilitación fachada piedra",
         before: antesFachadaPiedra,
         after: proyectoFachadaPiedra,
         description: "Trabajos realizados en La Rioja Alta para cliente particular.",
       },
       {
-        id: 12,
+        id: 16,
         title: "Rehabilitación fachada 2",
         before: fachada1Antes,
         after: fachada1Despues,
         description: "Trabajos realizados en La Rioja Alta para cliente particular.",
       },
       {
-        id: 13,
+        id: 17,
         title: "Rehabilitación fachada 3",
         before: fachada2Antes,
         after: fachada2Despues,
+        description: "Trabajos realizados en La Rioja Alta para cliente particular.",
+      },
+      {
+        id: 18,
+        title: "Muros de piedra",
+        image: murosPiedra,
+        description: "Trabajos realizados en La Rioja Alta para cliente particular.",
+      },
+      {
+        id: 19,
+        title: "Muros de piedra exterior",
+        image: murosPiedraExterior,
         description: "Trabajos realizados en La Rioja Alta para cliente particular.",
       },
     ],
   },
   {
     id: "cubiertas",
-    label: "Cubiertas",
+    title: "Cubiertas",
     items: [
       {
-        id: 14,
+        id: 20,
         title: "Estructura techumbre",
         before: antesEstructuraTechumbre,
         after: proyectoVigasMadera,
         description: "Trabajos realizados en La Rioja Alta para cliente particular.",
       },
       {
-        id: 15,
+        id: 21,
         title: "Tejado cubierta",
         before: antesTejadoCubierta,
         after: proyectoTejadoCubierta,
         description: "Trabajos realizados en La Rioja Alta para cliente particular.",
       },
       {
-        id: 16,
+        id: 22,
         title: "Estructura madera y piedra",
         before: antesEstructuraMadera,
         after: proyectoEstructuraMadera,
@@ -199,10 +264,10 @@ const categories: Category[] = [
   },
   {
     id: "patrimonio",
-    label: "Patrimonio rural",
+    title: "Patrimonio rural",
     items: [
       {
-        id: 17,
+        id: 23,
         title: "Reforma cubierta iglesia",
         before: iglesia2Antes,
         after: iglesia2Despues,
@@ -224,7 +289,7 @@ const TrabajosRealizados = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-12"
+            className="text-center mb-16"
           >
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
               Trabajos realizados
@@ -232,67 +297,63 @@ const TrabajosRealizados = () => {
             <div className="w-20 h-1 bg-accent mx-auto rounded-full" />
           </motion.div>
 
-          <Tabs defaultValue="viviendas" className="w-full">
-            <TabsList className="flex flex-wrap justify-center gap-2 mb-8 h-auto bg-transparent">
-              {categories.map((category) => (
-                <TabsTrigger
-                  key={category.id}
-                  value={category.id}
-                  className="px-4 py-2 text-sm md:text-base data-[state=active]:bg-accent data-[state=active]:text-accent-foreground rounded-full border border-muted-foreground/20 data-[state=inactive]:bg-muted/30"
-                >
-                  {category.label}
-                </TabsTrigger>
-              ))}
-            </TabsList>
-
-            {categories.map((category) => (
-              <TabsContent key={category.id} value={category.id}>
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ duration: 0.3 }}
-                  className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto"
-                >
-                  {category.items.map((item, index) => (
-                    <motion.div
-                      key={item.id}
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: index * 0.1, duration: 0.5 }}
-                      className="flex flex-col"
-                    >
-                      {item.before && item.after ? (
-                        <BeforeAfterSlider
-                          beforeImage={item.before}
-                          afterImage={item.after}
-                          title={item.title}
-                        />
-                      ) : item.image ? (
-                        <div className="w-full">
-                          <h3 className="text-lg font-semibold text-foreground mb-3 text-center">
-                            {item.title}
-                          </h3>
-                          <div
-                            className="relative w-full overflow-hidden rounded-xl cursor-pointer shadow-md group"
-                            onClick={() => setSelectedImage(item.image!)}
-                          >
-                            <img
-                              src={item.image}
-                              alt={item.title}
-                              className="w-full h-auto object-contain transition-transform duration-300 group-hover:scale-105"
-                            />
-                          </div>
+          {sections.map((section) => (
+            <div key={section.id} id={section.id} className="mb-20 scroll-mt-36">
+              <motion.h3
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
+                className="text-2xl md:text-3xl font-semibold text-foreground mb-8 text-center"
+              >
+                {section.title}
+              </motion.h3>
+              
+              <div className={`grid gap-8 max-w-6xl mx-auto ${
+                section.singleRow 
+                  ? "grid-cols-1" 
+                  : "grid-cols-1 md:grid-cols-2"
+              }`}>
+                {section.items.map((item, index) => (
+                  <motion.div
+                    key={item.id}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.1, duration: 0.5 }}
+                    className="flex flex-col"
+                  >
+                    {item.before && item.after ? (
+                      <BeforeAfterSlider
+                        beforeImage={item.before}
+                        afterImage={item.after}
+                        title={item.title}
+                      />
+                    ) : item.image ? (
+                      <div className="w-full">
+                        <h4 className="text-lg font-semibold text-foreground mb-3 text-center">
+                          {item.title}
+                        </h4>
+                        <div
+                          className="relative w-full overflow-hidden rounded-xl cursor-pointer shadow-md group"
+                          onClick={() => setSelectedImage(item.image!)}
+                        >
+                          <img
+                            src={item.image}
+                            alt={item.title}
+                            className="w-full h-auto object-contain transition-transform duration-300 group-hover:scale-105"
+                          />
                         </div>
-                      ) : null}
-                      <p className="text-sm text-muted-foreground text-center mt-3">
-                        {item.description}
-                      </p>
-                    </motion.div>
-                  ))}
-                </motion.div>
-              </TabsContent>
-            ))}
-          </Tabs>
+                      </div>
+                    ) : null}
+                    <p className="text-sm text-muted-foreground text-center mt-3">
+                      {item.description}
+                    </p>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          ))}
         </div>
       </section>
 
