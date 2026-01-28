@@ -68,6 +68,13 @@ import vivienda3Despues from "@/assets/vivienda-3-despues.jpg";
 import reformaIntegral from "@/assets/reforma-integral.png";
 import alicatadoInterior2 from "@/assets/alicatado-interior-2.png";
 
+// Nuevas imágenes - quinta tanda
+import estructuraMaderaPiedra1 from "@/assets/estructura-madera-piedra-1.jpg";
+import estructuraTechumbre1 from "@/assets/estructura-techumbre-1.jpg";
+import estructuraTechumbre2 from "@/assets/estructura-techumbre-2.jpg";
+import fachadasTrabajo3 from "@/assets/fachadas-trabajo-3.jpg";
+import trabajosAlbanileria2 from "@/assets/trabajos-albanileria-2.png";
+
 type WorkItem = {
   id: number;
   title: string;
@@ -111,12 +118,6 @@ const sections: Section[] = [
       },
       {
         id: 4,
-        title: "Reforma integral",
-        image: reformaIntegral,
-        description: "Trabajos realizados en La Rioja Alta para cliente particular.",
-      },
-      {
-        id: 5,
         title: "Reforma interior moderno",
         before: antesInteriorModerno,
         after: proyectoInteriorModerno,
@@ -221,12 +222,18 @@ const sections: Section[] = [
       },
       {
         id: 17,
+        title: "Trabajos de albañilería 2",
+        image: trabajosAlbanileria2,
+        description: "Trabajos realizados en La Rioja Alta para cliente particular.",
+      },
+      {
+        id: 18,
         title: "Montaje de armarios",
         image: trabajoManitas2,
         description: "Trabajos realizados en La Rioja Alta para cliente particular.",
       },
       {
-        id: 18,
+        id: 19,
         title: "Instalación de radiadores",
         image: trabajoManitas1,
         description: "Trabajos realizados en La Rioja Alta para cliente particular.",
@@ -238,9 +245,15 @@ const sections: Section[] = [
     title: "Cimentación y estructura",
     items: [
       {
-        id: 19,
+        id: 20,
         title: "Cimentación",
         image: cimentacion,
+        description: "Trabajos realizados en La Rioja Alta para cliente particular.",
+      },
+      {
+        id: 21,
+        title: "Reforma integral",
+        image: reformaIntegral,
         description: "Trabajos realizados en La Rioja Alta para cliente particular.",
       },
     ],
@@ -318,6 +331,12 @@ const sections: Section[] = [
         image: murosPiedraExterior,
         description: "Trabajos realizados en La Rioja Alta para cliente particular.",
       },
+      {
+        id: 29,
+        title: "Fachada piedra",
+        image: fachadasTrabajo3,
+        description: "Trabajos realizados en La Rioja Alta para cliente particular.",
+      },
     ],
   },
   {
@@ -325,24 +344,42 @@ const sections: Section[] = [
     title: "Cubiertas",
     items: [
       {
-        id: 29,
+        id: 30,
         title: "Estructura techumbre",
         before: antesEstructuraTechumbre,
         after: proyectoVigasMadera,
         description: "Trabajos realizados en La Rioja Alta para cliente particular.",
       },
       {
-        id: 30,
+        id: 31,
         title: "Tejado cubierta",
         before: antesTejadoCubierta,
         after: proyectoTejadoCubierta,
         description: "Trabajos realizados en La Rioja Alta para cliente particular.",
       },
       {
-        id: 31,
+        id: 32,
         title: "Estructura madera y piedra",
         before: antesEstructuraMadera,
         after: proyectoEstructuraMadera,
+        description: "Trabajos realizados en La Rioja Alta para cliente particular.",
+      },
+      {
+        id: 33,
+        title: "Estructura madera y piedra 2",
+        image: estructuraMaderaPiedra1,
+        description: "Trabajos realizados en La Rioja Alta para cliente particular.",
+      },
+      {
+        id: 34,
+        title: "Estructura techumbre interior",
+        image: estructuraTechumbre1,
+        description: "Trabajos realizados en La Rioja Alta para cliente particular.",
+      },
+      {
+        id: 35,
+        title: "Estructura techumbre forjado",
+        image: estructuraTechumbre2,
         description: "Trabajos realizados en La Rioja Alta para cliente particular.",
       },
     ],
@@ -352,7 +389,7 @@ const sections: Section[] = [
     title: "Patrimonio rural",
     items: [
       {
-        id: 32,
+        id: 36,
         title: "Reforma cubierta iglesia",
         before: iglesia1Antes,
         after: iglesia1Despues,
