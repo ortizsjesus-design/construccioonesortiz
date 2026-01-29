@@ -37,7 +37,6 @@ import bano2Antes from "@/assets/bano-2-antes.jpg";
 import bano2Despues from "@/assets/bano-2-despues.jpg";
 import bano3Antes from "@/assets/bano-3-antes.jpg";
 import bano3Despues from "@/assets/bano-3-despues.jpg";
-import trabajoManitas1 from "@/assets/trabajo-manitas-1.jpg";
 import trabajoManitas2 from "@/assets/trabajo-manitas-2.jpg";
 import murosPiedra from "@/assets/muros-piedra.jpg";
 
@@ -55,7 +54,6 @@ import localEsteticaDespues from "@/assets/local-estetica-despues.jpg";
 // Nuevas imágenes - tercera tanda
 import localPanaderiaAntes from "@/assets/local-panaderia-antes.jpg";
 import localPanaderiaDespues from "@/assets/local-panaderia-despues.jpg";
-import alicatadoInterior from "@/assets/alicatado-interior.jpg";
 
 // Nuevas imágenes - cuarta tanda
 import cimentacion from "@/assets/cimentacion.png";
@@ -81,7 +79,6 @@ type WorkItem = {
   before?: string;
   after?: string;
   image?: string;
-  description: string;
 };
 
 type Section = {
@@ -100,28 +97,24 @@ const sections: Section[] = [
         title: "Reforma integral vivienda 1",
         before: vivienda1Antes,
         after: vivienda1Despues,
-        description: "Trabajos realizados en La Rioja Alta para cliente particular.",
       },
       {
         id: 2,
         title: "Reforma integral vivienda 2",
         before: vivienda2Antes,
         after: vivienda2Despues,
-        description: "Trabajos realizados en La Rioja Alta para cliente particular.",
       },
       {
         id: 3,
         title: "Reforma interior sótano",
         before: vivienda3Antes,
         after: vivienda3Despues,
-        description: "Trabajos realizados en La Rioja Alta para cliente particular.",
       },
       {
         id: 4,
         title: "Reforma interior moderno",
         before: antesInteriorModerno,
         after: proyectoInteriorModerno,
-        description: "Trabajos realizados en La Rioja Alta para cliente particular.",
       },
     ],
   },
@@ -130,18 +123,16 @@ const sections: Section[] = [
     title: "Locales comerciales",
     items: [
       {
-        id: 6,
+        id: 5,
         title: "Reforma local estética",
         before: localEsteticaAntes,
         after: localEsteticaDespues,
-        description: "Trabajos realizados en La Rioja Alta para cliente particular.",
       },
       {
-        id: 7,
+        id: 6,
         title: "Reforma local panadería",
         before: localPanaderiaAntes,
         after: localPanaderiaDespues,
-        description: "Trabajos realizados en La Rioja Alta para cliente particular.",
       },
     ],
   },
@@ -150,39 +141,34 @@ const sections: Section[] = [
     title: "Baños y cocinas",
     items: [
       {
-        id: 8,
+        id: 7,
         title: "Reforma de baño 2",
         before: bano2Antes,
         after: bano2Despues,
-        description: "Trabajos realizados en La Rioja Alta para cliente particular.",
       },
       {
-        id: 9,
+        id: 8,
         title: "Reforma de baño 3",
         before: bano3Antes,
         after: bano3Despues,
-        description: "Trabajos realizados en La Rioja Alta para cliente particular.",
       },
       {
-        id: 10,
+        id: 9,
         title: "Baño piedra natural",
         before: antesBanoPiedra,
         after: proyectoBanoPiedra,
-        description: "Trabajos realizados en La Rioja Alta para cliente particular.",
       },
       {
-        id: 11,
+        id: 10,
         title: "Reforma de cocina 1",
         before: cocina1Antes,
         after: cocina1Despues,
-        description: "Trabajos realizados en La Rioja Alta para cliente particular.",
       },
       {
-        id: 12,
+        id: 11,
         title: "Reforma de cocina 2",
         before: cocina2Antes,
         after: cocina2Despues,
-        description: "Trabajos realizados en La Rioja Alta para cliente particular.",
       },
     ],
   },
@@ -194,19 +180,11 @@ const sections: Section[] = [
         id: 13,
         title: "Alicatados exteriores",
         image: alicatadosExteriores,
-        description: "Trabajos realizados en La Rioja Alta para cliente particular.",
       },
       {
         id: 14,
         title: "Alicatados interiores",
-        image: alicatadoInterior,
-        description: "Trabajos realizados en La Rioja Alta para cliente particular.",
-      },
-      {
-        id: 15,
-        title: "Alicatados interiores 2",
         image: alicatadoInterior2,
-        description: "Trabajos realizados en La Rioja Alta para cliente particular.",
       },
     ],
   },
@@ -215,28 +193,19 @@ const sections: Section[] = [
     title: "Albañilería",
     items: [
       {
-        id: 16,
+        id: 15,
         title: "Trabajos de albañilería",
         image: trabajosAlbanileria,
-        description: "Trabajos realizados en La Rioja Alta para cliente particular.",
+      },
+      {
+        id: 16,
+        title: "Trabajos de albañilería 2",
+        image: trabajosAlbanileria2,
       },
       {
         id: 17,
-        title: "Trabajos de albañilería 2",
-        image: trabajosAlbanileria2,
-        description: "Trabajos realizados en La Rioja Alta para cliente particular.",
-      },
-      {
-        id: 18,
-        title: "Montaje de armarios",
+        title: "Todo tipo de trabajos de bricolaje",
         image: trabajoManitas2,
-        description: "Trabajos realizados en La Rioja Alta para cliente particular.",
-      },
-      {
-        id: 19,
-        title: "Instalación de radiadores",
-        image: trabajoManitas1,
-        description: "Trabajos realizados en La Rioja Alta para cliente particular.",
       },
     ],
   },
@@ -245,16 +214,14 @@ const sections: Section[] = [
     title: "Cimentación y estructura",
     items: [
       {
-        id: 20,
+        id: 18,
         title: "Cimentación",
         image: cimentacion,
-        description: "Trabajos realizados en La Rioja Alta para cliente particular.",
       },
       {
-        id: 21,
+        id: 19,
         title: "Reforma integral",
         image: reformaIntegral,
-        description: "Trabajos realizados en La Rioja Alta para cliente particular.",
       },
     ],
   },
@@ -266,7 +233,6 @@ const sections: Section[] = [
         id: 20,
         title: "Envolventes y aislamiento",
         image: envolventes,
-        description: "Trabajos realizados en La Rioja Alta para cliente particular.",
       },
     ],
   },
@@ -278,7 +244,6 @@ const sections: Section[] = [
         id: 21,
         title: "Obra civil",
         image: obraCivil,
-        description: "Trabajos realizados en La Rioja Alta para cliente particular.",
       },
     ],
   },
@@ -291,51 +256,43 @@ const sections: Section[] = [
         title: "Rehabilitación fachada piedra",
         before: antesFachadaPiedra,
         after: proyectoFachadaPiedra,
-        description: "Trabajos realizados en La Rioja Alta para cliente particular.",
       },
       {
         id: 23,
         title: "Rehabilitación fachada 2",
         before: fachada1Antes,
         after: fachada1Despues,
-        description: "Trabajos realizados en La Rioja Alta para cliente particular.",
       },
       {
         id: 24,
         title: "Rehabilitación fachada 3",
         before: fachada2Antes,
         after: fachada2Despues,
-        description: "Trabajos realizados en La Rioja Alta para cliente particular.",
       },
       {
         id: 25,
         title: "Trabajo en fachada",
         image: fachadasTrabajo,
-        description: "Trabajos realizados en La Rioja Alta para cliente particular.",
       },
       {
         id: 26,
         title: "Fachada piedra terminada",
         image: fachadasTrabajo2,
-        description: "Trabajos realizados en La Rioja Alta para cliente particular.",
       },
       {
         id: 27,
         title: "Muros de piedra",
         image: murosPiedra,
-        description: "Trabajos realizados en La Rioja Alta para cliente particular.",
       },
       {
         id: 28,
         title: "Muros de piedra exterior",
         image: murosPiedraExterior,
-        description: "Trabajos realizados en La Rioja Alta para cliente particular.",
       },
       {
         id: 29,
         title: "Fachada piedra",
         image: fachadasTrabajo3,
-        description: "Trabajos realizados en La Rioja Alta para cliente particular.",
       },
     ],
   },
@@ -348,39 +305,33 @@ const sections: Section[] = [
         title: "Estructura techumbre",
         before: antesEstructuraTechumbre,
         after: proyectoVigasMadera,
-        description: "Trabajos realizados en La Rioja Alta para cliente particular.",
       },
       {
         id: 31,
         title: "Tejado cubierta",
         before: antesTejadoCubierta,
         after: proyectoTejadoCubierta,
-        description: "Trabajos realizados en La Rioja Alta para cliente particular.",
       },
       {
         id: 32,
         title: "Estructura madera y piedra",
         before: antesEstructuraMadera,
         after: proyectoEstructuraMadera,
-        description: "Trabajos realizados en La Rioja Alta para cliente particular.",
       },
       {
         id: 33,
         title: "Estructura madera y piedra 2",
         image: estructuraMaderaPiedra1,
-        description: "Trabajos realizados en La Rioja Alta para cliente particular.",
       },
       {
         id: 34,
         title: "Estructura techumbre interior",
         image: estructuraTechumbre1,
-        description: "Trabajos realizados en La Rioja Alta para cliente particular.",
       },
       {
         id: 35,
         title: "Estructura techumbre forjado",
         image: estructuraTechumbre2,
-        description: "Trabajos realizados en La Rioja Alta para cliente particular.",
       },
     ],
   },
@@ -393,7 +344,6 @@ const sections: Section[] = [
         title: "Reforma cubierta iglesia",
         before: iglesia1Antes,
         after: iglesia1Despues,
-        description: "Trabajos realizados en La Rioja Alta para cliente particular.",
       },
     ],
   },
@@ -464,9 +414,6 @@ const TrabajosRealizados = () => {
                         </div>
                       </div>
                     ) : null}
-                    <p className="text-sm text-muted-foreground text-center mt-3">
-                      {item.description}
-                    </p>
                   </motion.div>
                 ))}
               </div>
