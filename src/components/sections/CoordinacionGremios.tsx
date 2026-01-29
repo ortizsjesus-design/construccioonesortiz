@@ -21,7 +21,7 @@ const CoordinacionGremios = () => {
             </h2>
             <div className="w-20 h-1 bg-accent mx-auto rounded-full mb-6" />
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Gestionamos y coordinamos todos los oficios necesarios para tu proyecto: electricistas, fontaneros, carpinteros y más. Un único interlocutor para toda tu obra.
+              Gestionamos todos los gremios necesarios para tu proyecto.
             </p>
           </motion.div>
 
@@ -42,9 +42,6 @@ const CoordinacionGremios = () => {
                 className="w-full h-auto object-contain transition-transform duration-300 group-hover:scale-105"
               />
             </div>
-            <p className="text-sm text-muted-foreground text-center mt-3">
-              Trabajos realizados en La Rioja Alta para cliente particular.
-            </p>
           </motion.div>
         </div>
       </section>
