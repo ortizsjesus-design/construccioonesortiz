@@ -37,6 +37,7 @@ import bano2Antes from "@/assets/bano-2-antes.jpg";
 import bano2Despues from "@/assets/bano-2-despues.jpg";
 import bano3Antes from "@/assets/bano-3-antes.jpg";
 import bano3Despues from "@/assets/bano-3-despues.jpg";
+import trabajoManitas1 from "@/assets/trabajo-manitas-1.jpg";
 import trabajoManitas2 from "@/assets/trabajo-manitas-2.jpg";
 import murosPiedra from "@/assets/muros-piedra.jpg";
 
@@ -206,6 +207,11 @@ const sections: Section[] = [
         id: 17,
         title: "Todo tipo de trabajos de bricolaje",
         image: trabajoManitas2,
+      },
+      {
+        id: 18,
+        title: "",
+        image: trabajoManitas1,
       },
     ],
   },
@@ -399,16 +405,18 @@ const TrabajosRealizados = () => {
                       />
                     ) : item.image ? (
                       <div className="w-full">
-                        <h4 className="text-lg font-semibold text-foreground mb-3 text-center">
-                          {item.title}
-                        </h4>
+                        {item.title && (
+                          <h4 className="text-lg font-semibold text-foreground mb-3 text-center">
+                            {item.title}
+                          </h4>
+                        )}
                         <div
                           className="relative w-full overflow-hidden rounded-xl cursor-pointer shadow-md group"
                           onClick={() => setSelectedImage(item.image!)}
                         >
                           <img
                             src={item.image}
-                            alt={item.title}
+                            alt={item.title || "Trabajo realizado"}
                             className="w-full h-auto object-contain transition-transform duration-300 group-hover:scale-105"
                           />
                         </div>
