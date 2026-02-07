@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import BeforeAfterSlider from "@/components/BeforeAfterSlider";
 
 // Imágenes existentes "después"
@@ -357,6 +357,41 @@ const sections: Section[] = [
 
 const TrabajosRealizados = () => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [loadedImages, setLoadedImages] = useState<Set<number>>(new Set());
+  const sectionRefs = useRef<Map<string, HTMLDivElement>>(new Map());
+  const [visibleSections, setVisibleSections] = useState<Set<string>>(new Set());
+
+  // Set up IntersectionObserver for each section
+  useEffect(() => {
+    const observers: IntersectionObserver[] = [];
+    
+    sectionRefs.current.forEach((element, sectionId) => {
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            setVisibleSections(prev => new Set(prev).add(sectionId));
+            observer.disconnect();
+          }
+        },
+        { rootMargin: "300px", threshold: 0.01 }
+      );
+      
+      observer.observe(element);
+      observers.push(observer);
+    });
+
+    return () => observers.forEach(obs => obs.disconnect());
+  }, []);
+
+  const setSectionRef = useCallback((sectionId: string) => (el: HTMLDivElement | null) => {
+    if (el) {
+      sectionRefs.current.set(sectionId, el);
+    }
+  }, []);
+
+  const handleImageLoad = useCallback((itemId: number) => {
+    setLoadedImages(prev => new Set(prev).add(itemId));
+  }, []);
 
   return (
     <>
@@ -376,7 +411,12 @@ const TrabajosRealizados = () => {
           </motion.div>
 
           {sections.map((section) => (
-            <div key={section.id} id={section.id} className="mb-20 scroll-mt-44 md:scroll-mt-48">
+            <div 
+              key={section.id} 
+              id={section.id} 
+              ref={setSectionRef(section.id)}
+              className="mb-20 scroll-mt-44 md:scroll-mt-48"
+            >
               <motion.h3
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -412,13 +452,26 @@ const TrabajosRealizados = () => {
                         )}
                         <div
                           className="relative w-full overflow-hidden rounded-xl cursor-pointer shadow-md group"
+                          style={{ minHeight: '200px' }}
                           onClick={() => setSelectedImage(item.image!)}
                         >
-                          <img
-                            src={item.image}
-                            alt={item.title || "Trabajo realizado"}
-                            className="w-full h-auto object-contain transition-transform duration-300 group-hover:scale-105"
-                          />
+                          {/* Skeleton placeholder */}
+                          {!loadedImages.has(item.id) && (
+                            <div className="absolute inset-0 bg-muted animate-pulse" />
+                          )}
+                          
+                          {visibleSections.has(section.id) && (
+                            <img
+                              src={item.image}
+                              alt={item.title || "Trabajo realizado"}
+                              loading="lazy"
+                              decoding="async"
+                              className={`w-full h-auto object-contain transition-all duration-300 group-hover:scale-105 ${
+                                loadedImages.has(item.id) ? 'opacity-100' : 'opacity-0'
+                              }`}
+                              onLoad={() => handleImageLoad(item.id)}
+                            />
+                          )}
                         </div>
                       </div>
                     ) : null}

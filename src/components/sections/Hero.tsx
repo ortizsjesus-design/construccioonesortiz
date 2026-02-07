@@ -14,12 +14,14 @@ const Hero = () => {
 
   return (
     <section className="relative h-[60vh] md:h-[70vh] flex items-center justify-center overflow-hidden">
-      {/* Background Image - Static */}
+      {/* Background Image - Critical, loaded immediately */}
       <div className="absolute inset-0">
         <img
           src={heroEstructura}
           alt="Estructura de madera en caserío de piedra"
           className="w-full h-full object-cover object-center"
+          fetchPriority="high"
+          decoding="sync"
         />
         {/* Dark overlay gradient for better text readability */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/50" />
