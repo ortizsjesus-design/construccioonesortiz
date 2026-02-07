@@ -1,13 +1,38 @@
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import coordinacionGremios from "@/assets/coordinacion-gremios.png";
 
 const CoordinacionGremios = () => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [isInView, setIsInView] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsInView(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "200px", threshold: 0.01 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <>
-      <section id="coordinacion-gremios" className="py-24 bg-background scroll-mt-44 md:scroll-mt-48">
+      <section 
+        ref={sectionRef}
+        id="coordinacion-gremios" 
+        className="py-24 bg-background scroll-mt-44 md:scroll-mt-48"
+      >
         <div className="container mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -34,13 +59,26 @@ const CoordinacionGremios = () => {
           >
             <div
               className="relative w-full overflow-hidden rounded-xl cursor-pointer shadow-md group"
+              style={{ minHeight: '200px' }}
               onClick={() => setSelectedImage(coordinacionGremios)}
             >
-              <img
-                src={coordinacionGremios}
-                alt="Coordinación de Gremios"
-                className="w-full h-auto object-contain transition-transform duration-300 group-hover:scale-105"
-              />
+              {/* Skeleton placeholder */}
+              {!isLoaded && (
+                <div className="absolute inset-0 bg-muted animate-pulse" />
+              )}
+              
+              {isInView && (
+                <img
+                  src={coordinacionGremios}
+                  alt="Coordinación de Gremios"
+                  loading="lazy"
+                  decoding="async"
+                  className={`w-full h-auto object-contain transition-all duration-300 group-hover:scale-105 ${
+                    isLoaded ? 'opacity-100' : 'opacity-0'
+                  }`}
+                  onLoad={() => setIsLoaded(true)}
+                />
+              )}
             </div>
           </motion.div>
         </div>

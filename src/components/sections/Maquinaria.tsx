@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
 import maquinariaGeneral from "@/assets/maquinaria-general.png";
@@ -38,6 +38,27 @@ const machines = [
 
 const Maquinaria = () => {
   const [selectedImage, setSelectedImage] = useState<{ src: string; alt: string } | null>(null);
+  const [isInView, setIsInView] = useState(false);
+  const [loadedImages, setLoadedImages] = useState<Set<string>>(new Set());
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsInView(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "200px", threshold: 0.01 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
 
   const handleScroll = (id: string) => {
     const element = document.getElementById(id);
@@ -54,8 +75,16 @@ const Maquinaria = () => {
     setSelectedImage(null);
   };
 
+  const handleImageLoad = (id: string) => {
+    setLoadedImages(prev => new Set(prev).add(id));
+  };
+
   return (
-    <section id="maquinaria" className="py-24 bg-muted/30 scroll-mt-44 md:scroll-mt-48">
+    <section 
+      ref={sectionRef}
+      id="maquinaria" 
+      className="py-24 bg-muted/30 scroll-mt-44 md:scroll-mt-48"
+    >
       <div className="container mx-auto px-6">
         <div className="max-w-5xl mx-auto">
           {/* Título de sección */}
@@ -78,13 +107,26 @@ const Maquinaria = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1, duration: 0.5 }}
-            className="mb-10 -mt-4"
+            className="mb-10 -mt-4 relative"
+            style={{ minHeight: '200px' }}
           >
-            <img
-              src={maquinariaGeneral}
-              alt="Servicios auxiliares para profesionales - Alquiler de maquinaria para construcción, trabajos agrícolas y particulares"
-              className="w-full rounded-xl shadow-card"
-            />
+            {/* Skeleton placeholder */}
+            {!loadedImages.has('general') && (
+              <div className="absolute inset-0 bg-muted animate-pulse rounded-xl" />
+            )}
+            
+            {isInView && (
+              <img
+                src={maquinariaGeneral}
+                alt="Servicios auxiliares para profesionales - Alquiler de maquinaria para construcción, trabajos agrícolas y particulares"
+                loading="lazy"
+                decoding="async"
+                className={`w-full rounded-xl shadow-card transition-opacity duration-300 ${
+                  loadedImages.has('general') ? 'opacity-100' : 'opacity-0'
+                }`}
+                onLoad={() => handleImageLoad('general')}
+              />
+            )}
           </motion.div>
 
           {/* Lista de enlaces a máquinas - estilo elegante */}
@@ -124,12 +166,29 @@ const Maquinaria = () => {
                 <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-4">
                   {machine.name}
                 </h3>
-                <img
-                  src={machine.image}
-                  alt={`Ficha técnica - ${machine.name}`}
-                  className="w-full rounded-xl shadow-card cursor-pointer transition-transform duration-300 hover:scale-[1.01] hover:shadow-elevated"
-                  onClick={() => openLightbox(machine.image, `Ficha técnica - ${machine.name}`)}
-                />
+                <div 
+                  className="relative"
+                  style={{ minHeight: '200px' }}
+                >
+                  {/* Skeleton placeholder */}
+                  {!loadedImages.has(machine.id) && (
+                    <div className="absolute inset-0 bg-muted animate-pulse rounded-xl" />
+                  )}
+                  
+                  {isInView && (
+                    <img
+                      src={machine.image}
+                      alt={`Ficha técnica - ${machine.name}`}
+                      loading="lazy"
+                      decoding="async"
+                      className={`w-full rounded-xl shadow-card cursor-pointer transition-all duration-300 hover:scale-[1.01] hover:shadow-elevated ${
+                        loadedImages.has(machine.id) ? 'opacity-100' : 'opacity-0'
+                      }`}
+                      onClick={() => openLightbox(machine.image, `Ficha técnica - ${machine.name}`)}
+                      onLoad={() => handleImageLoad(machine.id)}
+                    />
+                  )}
+                </div>
               </motion.div>
             ))}
           </div>

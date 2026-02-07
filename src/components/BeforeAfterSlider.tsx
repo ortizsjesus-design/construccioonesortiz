@@ -1,4 +1,4 @@
-import { useState, useRef, useCallback } from "react";
+import { useState, useRef, useCallback, useEffect } from "react";
 
 interface BeforeAfterSliderProps {
   beforeImage: string;
@@ -17,7 +17,28 @@ const BeforeAfterSlider = ({
 }: BeforeAfterSliderProps) => {
   const [sliderPosition, setSliderPosition] = useState(50);
   const [isDragging, setIsDragging] = useState(false);
+  const [isInView, setIsInView] = useState(false);
+  const [imagesLoaded, setImagesLoaded] = useState({ before: false, after: false });
   const containerRef = useRef<HTMLDivElement>(null);
+
+  // Lazy loading with IntersectionObserver
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsInView(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "200px", threshold: 0.01 }
+    );
+
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
 
   const handleMove = useCallback(
     (clientX: number) => {
@@ -46,6 +67,8 @@ const BeforeAfterSlider = ({
     handleMove(e.clientX);
   };
 
+  const allLoaded = imagesLoaded.before && imagesLoaded.after;
+
   return (
     <div className="w-full">
       {title && (
@@ -56,6 +79,7 @@ const BeforeAfterSlider = ({
       <div
         ref={containerRef}
         className="relative w-full aspect-auto overflow-hidden rounded-xl cursor-ew-resize select-none shadow-md"
+        style={{ minHeight: '200px' }}
         onMouseDown={handleMouseDown}
         onMouseUp={handleMouseUp}
         onMouseLeave={handleMouseUp}
@@ -65,57 +89,79 @@ const BeforeAfterSlider = ({
         onTouchEnd={() => setIsDragging(false)}
         onClick={handleClick}
       >
-        {/* After Image (background) */}
-        <img
-          src={afterImage}
-          alt={afterLabel}
-          className="w-full h-auto object-contain"
-          draggable={false}
-        />
+        {/* Skeleton placeholder */}
+        {!allLoaded && (
+          <div className="absolute inset-0 bg-muted animate-pulse" />
+        )}
 
-        {/* Before Image (clipped) */}
-        <div
-          className="absolute inset-0 overflow-hidden"
-          style={{ clipPath: `inset(0 ${100 - sliderPosition}% 0 0)` }}
-        >
-          <img
-            src={beforeImage}
-            alt={beforeLabel}
-            className="w-full h-full object-contain"
-            draggable={false}
-          />
-        </div>
+        {/* Only render images when in view */}
+        {isInView && (
+          <>
+            {/* After Image (background) */}
+            <img
+              src={afterImage}
+              alt={afterLabel}
+              loading="lazy"
+              decoding="async"
+              className={`w-full h-auto object-contain transition-opacity duration-300 ${allLoaded ? 'opacity-100' : 'opacity-0'}`}
+              draggable={false}
+              onLoad={() => setImagesLoaded(prev => ({ ...prev, after: true }))}
+            />
 
-        {/* Slider Line */}
-        <div
-          className="absolute top-0 bottom-0 w-0.5 bg-white shadow-lg z-10"
-          style={{ left: `${sliderPosition}%` }}
-        >
-          {/* Slider Handle */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 bg-white rounded-full shadow-xl flex items-center justify-center">
-            <svg
-              className="w-5 h-5 text-foreground"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
+            {/* Before Image (clipped) */}
+            <div
+              className="absolute inset-0 overflow-hidden"
+              style={{ clipPath: `inset(0 ${100 - sliderPosition}% 0 0)` }}
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M8 9l4-4 4 4m0 6l-4 4-4-4"
+              <img
+                src={beforeImage}
+                alt={beforeLabel}
+                loading="lazy"
+                decoding="async"
+                className={`w-full h-full object-contain transition-opacity duration-300 ${allLoaded ? 'opacity-100' : 'opacity-0'}`}
+                draggable={false}
+                onLoad={() => setImagesLoaded(prev => ({ ...prev, before: true }))}
               />
-            </svg>
-          </div>
-        </div>
+            </div>
 
-        {/* Labels */}
-        <div className="absolute top-4 left-4 bg-foreground/70 text-primary-foreground px-3 py-1 rounded-full text-sm font-medium">
-          {beforeLabel}
-        </div>
-        <div className="absolute top-4 right-4 bg-accent/90 text-accent-foreground px-3 py-1 rounded-full text-sm font-medium">
-          {afterLabel}
-        </div>
+            {/* Slider Line - only show when loaded */}
+            {allLoaded && (
+              <div
+                className="absolute top-0 bottom-0 w-0.5 bg-white shadow-lg z-10"
+                style={{ left: `${sliderPosition}%` }}
+              >
+                {/* Slider Handle */}
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 bg-white rounded-full shadow-xl flex items-center justify-center">
+                  <svg
+                    className="w-5 h-5 text-foreground"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M8 9l4-4 4 4m0 6l-4 4-4-4"
+                    />
+                  </svg>
+                </div>
+              </div>
+            )}
+
+            {/* Labels - only show when loaded */}
+            {allLoaded && (
+              <>
+                <div className="absolute top-4 left-4 bg-foreground/70 text-primary-foreground px-3 py-1 rounded-full text-sm font-medium">
+                  {beforeLabel}
+                </div>
+                <div className="absolute top-4 right-4 bg-accent/90 text-accent-foreground px-3 py-1 rounded-full text-sm font-medium">
+                  {afterLabel}
+                </div>
+              </>
+            )}
+          </>
+        )}
       </div>
     </div>
   );

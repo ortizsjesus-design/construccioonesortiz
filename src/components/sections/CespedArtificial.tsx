@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import { X } from "lucide-react";
 import cesped1 from "@/assets/cesped-artificial-1.png";
@@ -9,6 +9,27 @@ const images = [cesped1, cesped2];
 const CespedArtificial = () => {
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [currentImage, setCurrentImage] = useState(0);
+  const [isInView, setIsInView] = useState(false);
+  const [loadedImages, setLoadedImages] = useState<Set<number>>(new Set());
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsInView(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "200px", threshold: 0.01 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
 
   const openLightbox = (index: number) => {
     setCurrentImage(index);
@@ -19,8 +40,16 @@ const CespedArtificial = () => {
     setLightboxOpen(false);
   };
 
+  const handleImageLoad = (index: number) => {
+    setLoadedImages(prev => new Set(prev).add(index));
+  };
+
   return (
-    <section id="cesped-artificial" className="py-12 md:py-20 bg-muted/30 scroll-mt-44 md:scroll-mt-48">
+    <section 
+      ref={sectionRef}
+      id="cesped-artificial" 
+      className="py-12 md:py-20 bg-muted/30 scroll-mt-44 md:scroll-mt-48"
+    >
       <div className="container mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -45,14 +74,27 @@ const CespedArtificial = () => {
           {images.map((image, index) => (
             <div
               key={index}
-              className="overflow-hidden rounded-xl cursor-pointer group"
+              className="overflow-hidden rounded-xl cursor-pointer group relative"
+              style={{ minHeight: '200px' }}
               onClick={() => openLightbox(index)}
             >
-              <img
-                src={image}
-                alt={`Instalación de césped artificial ${index + 1}`}
-                className="w-full h-64 md:h-80 object-cover transition-transform duration-500 group-hover:scale-105"
-              />
+              {/* Skeleton placeholder */}
+              {!loadedImages.has(index) && (
+                <div className="absolute inset-0 bg-muted animate-pulse" />
+              )}
+              
+              {isInView && (
+                <img
+                  src={image}
+                  alt={`Instalación de césped artificial ${index + 1}`}
+                  loading="lazy"
+                  decoding="async"
+                  className={`w-full h-64 md:h-80 object-cover transition-all duration-500 group-hover:scale-105 ${
+                    loadedImages.has(index) ? 'opacity-100' : 'opacity-0'
+                  }`}
+                  onLoad={() => handleImageLoad(index)}
+                />
+              )}
             </div>
           ))}
         </motion.div>
