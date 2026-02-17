@@ -37,7 +37,6 @@ import bano2Antes from "@/assets/bano-2-antes.jpg";
 import bano2Despues from "@/assets/bano-2-despues.jpg";
 import bano3Antes from "@/assets/bano-3-antes.jpg";
 import bano3Despues from "@/assets/bano-3-despues.jpg";
-import trabajoManitas1 from "@/assets/trabajo-manitas-1.jpg";
 import trabajoManitas2 from "@/assets/trabajo-manitas-2.jpg";
 import murosPiedra from "@/assets/muros-piedra.jpg";
 
@@ -57,15 +56,19 @@ import localPanaderiaAntes from "@/assets/local-panaderia-antes.jpg";
 import localPanaderiaDespues from "@/assets/local-panaderia-despues.jpg";
 
 // Nuevas imágenes - cuarta tanda
-import cimentacion from "@/assets/cimentacion.png";
-import envolventes from "@/assets/envolventes.png";
 import obraCivil from "@/assets/obra-civil.png";
 import fachadasTrabajo from "@/assets/fachadas-trabajo.jpg";
 import fachadasTrabajo2 from "@/assets/fachadas-trabajo-2.jpg";
 import vivienda3Antes from "@/assets/vivienda-3-antes.png";
 import vivienda3Despues from "@/assets/vivienda-3-despues.jpg";
-import reformaIntegral from "@/assets/reforma-integral.png";
 import alicatadoInterior2 from "@/assets/alicatado-interior-2.png";
+
+// Nuevas imágenes - sexta tanda
+import bano4 from "@/assets/bano-4.webp";
+import fachadaMonocapaAntes from "@/assets/fachada-monocapa-antes.jpeg";
+import fachadaMonocapaDespues from "@/assets/fachada-monocapa-despues.jpeg";
+import fachada4 from "@/assets/fachada-4.jpeg";
+import fachada5 from "@/assets/fachada-5.jpeg";
 
 // Nuevas imágenes - quinta tanda
 import estructuraMaderaPiedra1 from "@/assets/estructura-madera-piedra-1.jpg";
@@ -160,6 +163,11 @@ const sections: Section[] = [
         after: proyectoBanoPiedra,
       },
       {
+        id: 37,
+        title: "Baño moderno",
+        image: bano4,
+      },
+      {
         id: 10,
         title: "Reforma de cocina 1",
         before: cocina1Antes,
@@ -208,39 +216,17 @@ const sections: Section[] = [
         title: "Todo tipo de trabajos de bricolaje",
         image: trabajoManitas2,
       },
-      {
-        id: 18,
-        title: "",
-        image: trabajoManitas1,
-      },
     ],
   },
   {
     id: "cimentacion",
     title: "Cimentación y estructura",
-    items: [
-      {
-        id: 18,
-        title: "Cimentación",
-        image: cimentacion,
-      },
-      {
-        id: 19,
-        title: "Reforma integral",
-        image: reformaIntegral,
-      },
-    ],
+    items: [],
   },
   {
     id: "envolventes",
     title: "Envolventes",
-    items: [
-      {
-        id: 20,
-        title: "Envolventes y aislamiento",
-        image: envolventes,
-      },
-    ],
+    items: [],
   },
   {
     id: "obra-civil",
@@ -299,6 +285,22 @@ const sections: Section[] = [
         id: 29,
         title: "Fachada piedra",
         image: fachadasTrabajo3,
+      },
+      {
+        id: 38,
+        title: "Revestimiento monocapa",
+        before: fachadaMonocapaAntes,
+        after: fachadaMonocapaDespues,
+      },
+      {
+        id: 39,
+        title: "Fachada piedra y monocapa",
+        image: fachada4,
+      },
+      {
+        id: 40,
+        title: "Fachada piedra tradicional",
+        image: fachada5,
       },
     ],
   },
