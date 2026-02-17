@@ -288,7 +288,7 @@ const sections: Section[] = [
       },
       {
         id: 38,
-        title: "Revestimiento monocapa",
+        title: "Revestimiento de monocapa acabado acrílico",
         before: fachadaMonocapaAntes,
         after: fachadaMonocapaDespues,
       },
@@ -412,7 +412,7 @@ const TrabajosRealizados = () => {
             <div className="w-20 h-1 bg-accent mx-auto rounded-full" />
           </motion.div>
 
-          {sections.map((section) => (
+          {sections.filter(section => section.items.length > 0).map((section) => (
             <div 
               key={section.id} 
               id={section.id} 
