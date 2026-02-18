@@ -5,12 +5,12 @@ const Testimonials = () => {
   useEffect(() => {
     // Check if script already exists
     const existingScript = document.querySelector(
-      'script[src="https://static.elfsight.com/platform/platform.js"]'
+      'script[src="https://elfsightcdn.com/platform.js"]'
     );
     
     if (!existingScript) {
       const script = document.createElement("script");
-      script.src = "https://static.elfsight.com/platform/platform.js";
+      script.src = "https://elfsightcdn.com/platform.js";
       script.async = true;
       document.body.appendChild(script);
     }
@@ -46,7 +46,7 @@ const Testimonials = () => {
           style={{ maxWidth: "100%", overflow: "hidden" }}
         >
           <div
-            className="elfsight-app-5e0f714b-aefd-4475-95f0-11a7abc0a0d5"
+            className="elfsight-app-8ac94cdf-646c-40cf-b499-3b7984e5d49d"
             data-elfsight-app-lazy
             style={{ maxWidth: "100%", overflow: "hidden" }}
           />
