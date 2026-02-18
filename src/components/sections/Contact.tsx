@@ -23,19 +23,45 @@ const Contact = () => {
     setIsSubmitting(true);
 
     try {
-      const { error } = await supabase.from("contactos").insert({
+      // 1. Guardar en base de datos
+      const { error: dbError } = await supabase.from("contactos").insert({
         nombre: formData.name.trim(),
         telefono: formData.phone.trim(),
         email: formData.email.trim() || null,
         mensaje: formData.message.trim(),
       });
 
-      if (error) throw error;
+      if (dbError) throw dbError;
 
       toast({
-        title: "Mensaje enviado",
-        description: "Nos pondremos en contacto contigo pronto.",
+        title: "Mensaje guardado",
+        description: "Tus datos han sido registrados correctamente.",
       });
+
+      // 2. Enviar email via edge function
+      const { data, error: fnError } = await supabase.functions.invoke("send-contact-email", {
+        body: {
+          name: formData.name.trim(),
+          phone: formData.phone.trim(),
+          email: formData.email.trim() || undefined,
+          message: formData.message.trim(),
+        },
+      });
+
+      if (fnError) {
+        console.error("Error al enviar email:", fnError);
+        toast({
+          title: "Error al enviar email",
+          description: "El mensaje se guardó, pero no se pudo enviar el email de aviso.",
+          variant: "destructive",
+        });
+      } else {
+        toast({
+          title: "Email enviado",
+          description: "Te hemos enviado un email de confirmación.",
+        });
+      }
+
       setFormData({ name: "", phone: "", email: "", message: "" });
     } catch (error: any) {
       console.error("Error al guardar el mensaje:", error);
