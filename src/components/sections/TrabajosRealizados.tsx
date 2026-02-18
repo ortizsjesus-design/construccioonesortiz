@@ -397,7 +397,7 @@ const TrabajosRealizados = () => {
 
   return (
     <>
-      <section id="trabajos" className="py-24 bg-background">
+      <section id="trabajos" className="py-24 bg-background scroll-mt-24 md:scroll-mt-40">
         <div className="container mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

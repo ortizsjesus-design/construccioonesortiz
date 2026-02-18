@@ -21,7 +21,7 @@ const zones = [
 
 const About = () => {
   return (
-    <section id="empresa" className="py-24 bg-background">
+    <section id="empresa" className="py-24 bg-background scroll-mt-24 md:scroll-mt-40">
       <div className="container mx-auto px-6">
         <div className="max-w-4xl mx-auto">
           <motion.div

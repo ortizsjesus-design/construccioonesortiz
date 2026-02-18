@@ -28,7 +28,12 @@ const Header = () => {
   const scrollToSection = (href: string) => {
     setIsMobileMenuOpen(false);
     const element = document.querySelector(href);
-    element?.scrollIntoView({ behavior: "smooth" });
+    if (element) {
+      const headerOffset = window.innerWidth < 768 ? 100 : 160;
+      const elementPosition = element.getBoundingClientRect().top + window.scrollY;
+      const offsetPosition = elementPosition - headerOffset;
+      window.scrollTo({ top: offsetPosition, behavior: "smooth" });
+    }
   };
 
   return (
