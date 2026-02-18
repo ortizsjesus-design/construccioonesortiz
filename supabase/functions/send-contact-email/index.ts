@@ -4,6 +4,7 @@ import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
 const ALLOWED_ORIGINS = [
   "https://construccioonesortiz.lovable.app",
   "https://id-preview--6ac0f481-48fb-4d46-beb5-41dad4240d51.lovable.app",
+  "https://construccioonesortiz.vercel.app",
   "http://localhost:5173",
   "http://localhost:8080"
 ];
