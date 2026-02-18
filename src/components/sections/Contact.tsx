@@ -23,13 +23,11 @@ const Contact = () => {
     setIsSubmitting(true);
 
     try {
-      const { data, error } = await supabase.functions.invoke("send-contact-email", {
-        body: {
-          name: formData.name.trim(),
-          phone: formData.phone.trim(),
-          email: formData.email.trim() || undefined,
-          message: formData.message.trim(),
-        },
+      const { error } = await supabase.from("contactos").insert({
+        nombre: formData.name.trim(),
+        telefono: formData.phone.trim(),
+        email: formData.email.trim() || null,
+        mensaje: formData.message.trim(),
       });
 
       if (error) throw error;
@@ -40,7 +38,7 @@ const Contact = () => {
       });
       setFormData({ name: "", phone: "", email: "", message: "" });
     } catch (error: any) {
-      console.error("Error sending contact form:", error);
+      console.error("Error al guardar el mensaje:", error);
       toast({
         title: "Error al enviar",
         description: "Por favor, inténtalo de nuevo o llámanos directamente.",
