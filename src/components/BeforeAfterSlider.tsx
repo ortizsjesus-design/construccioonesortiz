@@ -76,10 +76,12 @@ const BeforeAfterSlider = ({
           {title}
         </h3>
       )}
+      {/* aspect-ratio fijo garantiza que la caja ocupa espacio ANTES de cargar las imágenes,
+          evitando que el layout cambie de altura y rompa el scroll por ancla */}
       <div
         ref={containerRef}
-        className="relative w-full aspect-auto overflow-hidden rounded-xl cursor-ew-resize select-none shadow-md"
-        style={{ minHeight: '200px' }}
+        className="relative w-full overflow-hidden rounded-xl cursor-ew-resize select-none shadow-md"
+        style={{ aspectRatio: '4 / 3' }}
         onMouseDown={handleMouseDown}
         onMouseUp={handleMouseUp}
         onMouseLeave={handleMouseUp}
@@ -103,7 +105,7 @@ const BeforeAfterSlider = ({
               alt={afterLabel}
               loading="lazy"
               decoding="async"
-              className={`w-full h-auto object-contain transition-opacity duration-300 ${allLoaded ? 'opacity-100' : 'opacity-0'}`}
+              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-300 ${allLoaded ? 'opacity-100' : 'opacity-0'}`}
               draggable={false}
               onLoad={() => setImagesLoaded(prev => ({ ...prev, after: true }))}
             />
@@ -118,7 +120,7 @@ const BeforeAfterSlider = ({
                 alt={beforeLabel}
                 loading="lazy"
                 decoding="async"
-                className={`w-full h-full object-contain transition-opacity duration-300 ${allLoaded ? 'opacity-100' : 'opacity-0'}`}
+                className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-300 ${allLoaded ? 'opacity-100' : 'opacity-0'}`}
                 draggable={false}
                 onLoad={() => setImagesLoaded(prev => ({ ...prev, before: true }))}
               />

@@ -449,7 +449,7 @@ const TrabajosRealizados = () => {
                         )}
                         <div
                           className="relative w-full overflow-hidden rounded-xl cursor-pointer shadow-md group"
-                          style={{ minHeight: '200px' }}
+                          style={{ aspectRatio: '4 / 3' }}
                           onClick={() => setSelectedImage(item.image!)}
                         >
                           {/* Skeleton placeholder */}
@@ -463,7 +463,7 @@ const TrabajosRealizados = () => {
                               alt={item.title || "Trabajo realizado"}
                               loading="lazy"
                               decoding="async"
-                              className={`w-full h-auto object-contain transition-all duration-300 group-hover:scale-105 ${
+                              className={`absolute inset-0 w-full h-full object-cover transition-all duration-300 group-hover:scale-105 ${
                                 loadedImages.has(item.id) ? 'opacity-100' : 'opacity-0'
                               }`}
                               onLoad={() => handleImageLoad(item.id)}
