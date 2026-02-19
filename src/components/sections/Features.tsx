@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Home, Building2, Wrench, Truck, Leaf, Users } from "lucide-react";
+import { scrollToElement } from "@/lib/scrollTo";
 
 const features = [
   {
@@ -41,20 +42,6 @@ const features = [
 ];
 
 const Features = () => {
-  const scrollToSection = (href: string) => {
-    const element = document.querySelector(href);
-    if (element) {
-      const headerOffset = window.innerWidth < 768 ? 100 : 160;
-      const elementPosition = element.getBoundingClientRect().top + window.scrollY;
-      const offsetPosition = elementPosition - headerOffset;
-      
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth"
-      });
-    }
-  };
-
   return (
     <section id="servicios" className="pt-4 pb-8 md:pt-8 md:pb-16 bg-muted/30">
       <div className="container mx-auto px-6">
@@ -79,7 +66,7 @@ const Features = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1, duration: 0.5 }}
-              onClick={() => scrollToSection(feature.href)}
+              onClick={() => scrollToElement(feature.href)}
               className="group bg-background rounded-xl p-4 md:p-6 shadow-card hover:shadow-elevated transition-all duration-300 hover:-translate-y-1 text-center cursor-pointer overflow-hidden"
             >
               <div className="w-12 h-12 md:w-14 md:h-14 rounded-lg bg-gradient-warm flex items-center justify-center mb-3 md:mb-4 mx-auto group-hover:scale-110 transition-transform duration-300">

@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import logoOrtiz from "@/assets/logo-ortiz.png";
+import { scrollToElement } from "@/lib/scrollTo";
 
 const navLinks = [
   { href: "#servicios", label: "Servicios" },
@@ -27,13 +28,7 @@ const Header = () => {
 
   const scrollToSection = (href: string) => {
     setIsMobileMenuOpen(false);
-    const element = document.querySelector(href);
-    if (element) {
-      const headerOffset = window.innerWidth < 768 ? 100 : 160;
-      const elementPosition = element.getBoundingClientRect().top + window.scrollY;
-      const offsetPosition = elementPosition - headerOffset;
-      window.scrollTo({ top: offsetPosition, behavior: "smooth" });
-    }
+    scrollToElement(href);
   };
 
   return (
