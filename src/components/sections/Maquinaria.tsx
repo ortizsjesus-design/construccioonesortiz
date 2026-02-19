@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
+import { scrollToElement } from "@/lib/scrollTo";
 import maquinariaGeneral from "@/assets/maquinaria-general.png";
 import miniexcavadora from "@/assets/miniexcavadora-kubota.png";
 import dumper from "@/assets/dumper-escalibur.png";
@@ -61,10 +62,7 @@ const Maquinaria = () => {
   }, []);
 
   const handleScroll = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
+    scrollToElement(id);
   };
 
   const openLightbox = (src: string, alt: string) => {

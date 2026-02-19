@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Wrench, Droplets, Hammer, Zap } from "lucide-react";
+import { scrollToElement } from "@/lib/scrollTo";
 
 const services = [
   { icon: Wrench, title: "Reparaciones", titleMobile: "Reparaciones", description: "Arreglos de todo tipo", sectionId: "albanileria" },
@@ -9,20 +10,6 @@ const services = [
 ];
 
 const Mantenimiento = () => {
-  const scrollToSection = (sectionId: string) => {
-    const section = document.getElementById(sectionId);
-    if (section) {
-      const headerOffset = window.innerWidth < 768 ? 100 : 160;
-      const elementPosition = section.getBoundingClientRect().top + window.scrollY;
-      const offsetPosition = elementPosition - headerOffset;
-      
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth"
-      });
-    }
-  };
-
   return (
     <section id="mantenimiento" className="py-24 bg-muted/30 scroll-mt-44 md:scroll-mt-48">
       <div className="container mx-auto px-6">
@@ -51,7 +38,7 @@ const Mantenimiento = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1, duration: 0.5 }}
-                onClick={() => scrollToSection(service.sectionId)}
+                onClick={() => scrollToElement(service.sectionId)}
                 className="bg-background rounded-xl p-4 md:p-6 shadow-card text-center hover:shadow-elevated transition-all cursor-pointer"
               >
                 <div className="w-12 h-12 rounded-full bg-gradient-warm flex items-center justify-center mx-auto mb-4">

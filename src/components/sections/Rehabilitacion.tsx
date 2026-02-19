@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Home, Store, Building2, Layers, TreePine } from "lucide-react";
+import { scrollToElement } from "@/lib/scrollTo";
 
 const services = [
   { icon: Home, title: "Viviendas antiguas", sectionId: "viviendas" },
@@ -10,20 +11,6 @@ const services = [
 ];
 
 const Rehabilitacion = () => {
-  const scrollToSection = (sectionId: string) => {
-    const section = document.getElementById(sectionId);
-    if (section) {
-      const headerOffset = window.innerWidth < 768 ? 100 : 160;
-      const elementPosition = section.getBoundingClientRect().top + window.scrollY;
-      const offsetPosition = elementPosition - headerOffset;
-      
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth"
-      });
-    }
-  };
-
   return (
     <section id="rehabilitacion" className="py-24 bg-background scroll-mt-44 md:scroll-mt-48">
       <div className="container mx-auto px-6">
@@ -48,7 +35,7 @@ const Rehabilitacion = () => {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1, duration: 0.5 }}
-              onClick={() => scrollToSection(service.sectionId)}
+              onClick={() => scrollToElement(service.sectionId)}
               className="bg-muted/30 rounded-xl p-6 flex items-center gap-4 min-w-[220px] hover:bg-muted/50 transition-colors cursor-pointer"
             >
               <div className="w-12 h-12 rounded-full bg-gradient-warm flex items-center justify-center flex-shrink-0">
