@@ -3,13 +3,13 @@ import { Button } from "@/components/ui/button";
 import { Phone } from "lucide-react";
 
 import heroEstructura from "@/assets/hero-estructura.webp";
+import { scrollToElement } from "@/lib/scrollTo";
 
 const Hero = () => {
   const phoneNumber = "+34608918870";
 
   const scrollToContact = () => {
-    const element = document.querySelector("#contacto");
-    element?.scrollIntoView({ behavior: "smooth" });
+    scrollToElement("#contacto");
   };
 
   return (
