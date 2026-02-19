@@ -106,20 +106,18 @@ const Maquinaria = () => {
             viewport={{ once: true }}
             transition={{ delay: 0.1, duration: 0.5 }}
             className="mb-10 -mt-4 relative"
-            style={{ minHeight: '200px' }}
+            style={{ aspectRatio: '16 / 9' }}
           >
-            {/* Skeleton placeholder */}
             {!loadedImages.has('general') && (
               <div className="absolute inset-0 bg-muted animate-pulse rounded-xl" />
             )}
-            
             {isInView && (
               <img
                 src={maquinariaGeneral}
                 alt="Servicios auxiliares para profesionales - Alquiler de maquinaria para construcción, trabajos agrícolas y particulares"
                 loading="lazy"
                 decoding="async"
-                className={`w-full rounded-xl shadow-card transition-opacity duration-300 ${
+                className={`absolute inset-0 w-full h-full object-cover rounded-xl shadow-card transition-opacity duration-300 ${
                   loadedImages.has('general') ? 'opacity-100' : 'opacity-0'
                 }`}
                 onLoad={() => handleImageLoad('general')}
@@ -166,20 +164,18 @@ const Maquinaria = () => {
                 </h3>
                 <div 
                   className="relative"
-                  style={{ minHeight: '200px' }}
+                  style={{ aspectRatio: '16 / 9' }}
                 >
-                  {/* Skeleton placeholder */}
                   {!loadedImages.has(machine.id) && (
                     <div className="absolute inset-0 bg-muted animate-pulse rounded-xl" />
                   )}
-                  
                   {isInView && (
                     <img
                       src={machine.image}
                       alt={`Ficha técnica - ${machine.name}`}
                       loading="lazy"
                       decoding="async"
-                      className={`w-full rounded-xl shadow-card cursor-pointer transition-all duration-300 hover:scale-[1.01] hover:shadow-elevated ${
+                      className={`absolute inset-0 w-full h-full object-cover rounded-xl shadow-card cursor-pointer transition-all duration-300 hover:scale-[1.01] hover:shadow-elevated ${
                         loadedImages.has(machine.id) ? 'opacity-100' : 'opacity-0'
                       }`}
                       onClick={() => openLightbox(machine.image, `Ficha técnica - ${machine.name}`)}
