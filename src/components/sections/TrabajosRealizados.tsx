@@ -75,7 +75,7 @@ import estructuraMaderaPiedra1 from "@/assets/estructura-madera-piedra-1.jpg";
 import estructuraTechumbre1 from "@/assets/estructura-techumbre-1.jpg";
 import estructuraTechumbre2 from "@/assets/estructura-techumbre-2.jpg";
 import fachadasTrabajo3 from "@/assets/fachadas-trabajo-3.jpg";
-import trabajosAlbanileria2 from "@/assets/trabajos-albanileria-2.png";
+
 
 type WorkItem = {
   id: number;
@@ -205,11 +205,6 @@ const sections: Section[] = [
         id: 15,
         title: "Trabajos de albañilería",
         image: trabajosAlbanileria,
-      },
-      {
-        id: 16,
-        title: "Trabajos de albañilería 2",
-        image: trabajosAlbanileria2,
       },
       {
         id: 17,
