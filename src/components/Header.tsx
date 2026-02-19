@@ -61,6 +61,8 @@ const Header = () => {
               src={logoOrtiz} 
               alt="Logo Construcciones y Servicios Jesús Ortiz" 
               className="h-24 sm:h-28 md:h-32 lg:h-28 xl:h-32 w-auto object-contain"
+              width={320}
+              height={128}
               fetchPriority="high"
               decoding="sync"
             />

@@ -48,7 +48,7 @@ const Testimonials = () => {
           <div
             className="elfsight-app-8ac94cdf-646c-40cf-b499-3b7984e5d49d"
             data-elfsight-app-lazy
-            style={{ maxWidth: "100%", overflow: "hidden" }}
+            style={{ maxWidth: "100%", overflow: "hidden", minHeight: "350px" }}
           />
         </motion.div>
       </div>

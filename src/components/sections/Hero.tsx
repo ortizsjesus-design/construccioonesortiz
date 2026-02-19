@@ -20,6 +20,8 @@ const Hero = () => {
           src={heroEstructura}
           alt="Estructura de madera en caserío de piedra"
           className="w-full h-full object-cover object-center"
+          width={1920}
+          height={1080}
           fetchPriority="high"
           decoding="sync"
         />
