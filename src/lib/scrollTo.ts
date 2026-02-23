@@ -28,14 +28,22 @@ export function scrollToElement(target: string | HTMLElement | null) {
 
   const headerOffset = window.innerWidth < 768 ? 110 : 160;
 
-  // Esperamos 2 animationFrames + 80ms para que el layout (aspect-ratio
-  // containers) esté completamente calculado antes de medir offsetTop.
+  // En primera carga las imágenes lazy y aspect-ratio containers pueden
+  // tardar varios frames en estabilizar el layout. Hacemos un doble
+  // intento: uno rápido (150 ms) y una corrección posterior (400 ms)
+  // que compensa cualquier reflow tardío.
+  const doScroll = () => {
+    const top = getAccumulatedTop(element as HTMLElement);
+    window.scrollTo({ top: top - headerOffset, behavior: "smooth" });
+  };
+
   requestAnimationFrame(() => {
     requestAnimationFrame(() => {
       setTimeout(() => {
-        const top = getAccumulatedTop(element as HTMLElement);
-        window.scrollTo({ top: top - headerOffset, behavior: "smooth" });
-      }, 80);
+        doScroll();
+        // Corrección tardía: si el layout cambió, reajustamos
+        setTimeout(doScroll, 300);
+      }, 150);
     });
   });
 }

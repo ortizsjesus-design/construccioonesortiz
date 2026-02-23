@@ -88,7 +88,7 @@ const Testimonials = () => {
         >
           <Button asChild variant="default" size="lg">
             <a
-              href="https://www.google.com/search?q=Construcciones+y+reformas+Jes%C3%BAs+Ortiz+S.L"
+              href="https://www.google.com/maps/place/?q=place_id:ChIJw7KjvjeHTw0RArK3Aemm1Ik"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -97,7 +97,7 @@ const Testimonials = () => {
           </Button>
           <Button asChild variant="outline" size="lg">
             <a
-              href="https://search.google.com/local/writereview?placeid="
+              href="https://search.google.com/local/writereview?placeid=ChIJw7KjvjeHTw0RArK3Aemm1Ik"
               target="_blank"
               rel="noopener noreferrer"
             >
