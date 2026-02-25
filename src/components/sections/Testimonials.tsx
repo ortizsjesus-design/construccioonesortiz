@@ -1,8 +1,30 @@
+import { useState, useCallback, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Star } from "lucide-react";
+import { Star, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import useEmblaCarousel from "embla-carousel-react";
 
 const reviews = [
+  {
+    name: "Beatriz Benitez",
+    text: "Gente muy amable, trabajadores incansables merecen la pena",
+    date: "Hace 23 horas",
+  },
+  {
+    name: "Smathex Smathex",
+    text: "Grandes profesionales",
+    date: "Hace un día",
+  },
+  {
+    name: "Carlos Ortiz",
+    text: "Seriedad y compromiso. Un gusto trabajar con esta gente.",
+    date: "Hace un día",
+  },
+  {
+    name: "Maria Esther Santamaria Fernandez",
+    text: "Servicios chapeau. Trato impresionante. Super recomendable.",
+    date: "Hace un día",
+  },
   {
     name: "Raúl Gonzalez de Durana",
     text: "Gran trabajazo que nos hicieron en nuestra casa del pueblo. Cuando necesitemos otra vez de su ayuda, mi familia no dudará en recurrir os vez a ellos. Gracias!!",
@@ -36,15 +58,49 @@ const reviews = [
 const Stars = () => (
   <div className="flex gap-0.5">
     {[...Array(5)].map((_, i) => (
-      <Star key={i} className="w-5 h-5 fill-amber-400 text-amber-400" />
+      <Star key={i} className="w-4 h-4 fill-amber-400 text-amber-400" />
     ))}
   </div>
 );
 
 const Testimonials = () => {
+  const [emblaRef, emblaApi] = useEmblaCarousel({
+    align: "start",
+    loop: true,
+    slidesToScroll: 1,
+  });
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const [scrollSnaps, setScrollSnaps] = useState<number[]>([]);
+
+  const onSelect = useCallback(() => {
+    if (!emblaApi) return;
+    setSelectedIndex(emblaApi.selectedScrollSnap());
+  }, [emblaApi]);
+
+  useEffect(() => {
+    if (!emblaApi) return;
+    setScrollSnaps(emblaApi.scrollSnapList());
+    emblaApi.on("select", onSelect);
+    onSelect();
+    return () => {
+      emblaApi.off("select", onSelect);
+    };
+  }, [emblaApi, onSelect]);
+
+  const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
+  const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
+  const scrollTo = useCallback(
+    (index: number) => emblaApi?.scrollTo(index),
+    [emblaApi]
+  );
+
   return (
-    <section id="opiniones" className="py-24 bg-muted/30 overflow-hidden scroll-mt-28 md:scroll-mt-44">
+    <section
+      id="opiniones"
+      className="py-24 bg-muted/30 overflow-hidden scroll-mt-28 md:scroll-mt-44"
+    >
       <div className="container mx-auto px-6">
+        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -52,33 +108,116 @@ const Testimonials = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Reseñas y opiniones
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-3">
+            Opiniones
           </h2>
-          <div className="w-20 h-1 bg-accent mx-auto rounded-full" />
+          <div className="flex items-center justify-center gap-1.5 text-muted-foreground">
+            <Stars />
+            <span className="text-sm font-medium ml-1">5/5 en Google</span>
+          </div>
         </motion.div>
 
-        <div className="max-w-3xl mx-auto flex flex-col gap-5">
-          {reviews.map((review, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 18 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-40px" }}
-              transition={{ duration: 0.5, delay: index * 0.07 }}
-              className="rounded-xl border border-border/60 bg-card p-6 shadow-card"
-            >
-              <div className="flex items-center justify-between mb-3">
-                <span className="font-semibold text-foreground">{review.name}</span>
-                <Stars />
-              </div>
-              <p className="text-muted-foreground leading-relaxed whitespace-pre-line text-sm md:text-base">
-                {review.text}
-              </p>
-            </motion.div>
-          ))}
-        </div>
+        {/* Carousel */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="relative max-w-5xl mx-auto"
+        >
+          {/* Arrows — desktop */}
+          <button
+            onClick={scrollPrev}
+            aria-label="Anterior"
+            className="hidden md:flex absolute -left-12 top-1/2 -translate-y-1/2 z-10 h-10 w-10 items-center justify-center rounded-full border border-border bg-card shadow-card text-foreground hover:bg-muted transition-colors"
+          >
+            <ChevronLeft className="w-5 h-5" />
+          </button>
+          <button
+            onClick={scrollNext}
+            aria-label="Siguiente"
+            className="hidden md:flex absolute -right-12 top-1/2 -translate-y-1/2 z-10 h-10 w-10 items-center justify-center rounded-full border border-border bg-card shadow-card text-foreground hover:bg-muted transition-colors"
+          >
+            <ChevronRight className="w-5 h-5" />
+          </button>
 
+          {/* Slides */}
+          <div ref={emblaRef} className="overflow-hidden">
+            <div className="flex">
+              {reviews.map((review, index) => (
+                <div
+                  key={index}
+                  className="min-w-0 shrink-0 grow-0 basis-[85%] md:basis-[48%] pl-4 first:pl-0"
+                >
+                  <div className="bg-card rounded-xl border border-border/60 p-6 shadow-card h-full flex flex-col justify-between">
+                    <div>
+                      <Stars />
+                      <p className="text-foreground leading-relaxed whitespace-pre-line text-sm md:text-base mt-4 mb-5">
+                        {review.text}
+                      </p>
+                    </div>
+                    <div>
+                      <p className="font-semibold text-foreground">
+                        {review.name}
+                      </p>
+                      <div className="flex items-center gap-2 mt-1">
+                        <span className="text-xs text-muted-foreground">
+                          Reseña de Google
+                        </span>
+                        {review.date && (
+                          <>
+                            <span className="text-xs text-muted-foreground">
+                              ·
+                            </span>
+                            <span className="text-xs text-muted-foreground">
+                              {review.date}
+                            </span>
+                          </>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Dots */}
+          <div className="flex justify-center gap-2 mt-6">
+            {scrollSnaps.map((_, idx) => (
+              <button
+                key={idx}
+                onClick={() => scrollTo(idx)}
+                aria-label={`Ir a reseña ${idx + 1}`}
+                className={`w-2.5 h-2.5 rounded-full transition-colors duration-300 ${
+                  idx === selectedIndex
+                    ? "bg-primary"
+                    : "bg-border hover:bg-muted-foreground/40"
+                }`}
+              />
+            ))}
+          </div>
+
+          {/* Mobile arrows */}
+          <div className="flex md:hidden justify-center gap-4 mt-4">
+            <button
+              onClick={scrollPrev}
+              aria-label="Anterior"
+              className="h-9 w-9 flex items-center justify-center rounded-full border border-border bg-card shadow-card text-foreground"
+            >
+              <ChevronLeft className="w-4 h-4" />
+            </button>
+            <button
+              onClick={scrollNext}
+              aria-label="Siguiente"
+              className="h-9 w-9 flex items-center justify-center rounded-full border border-border bg-card shadow-card text-foreground"
+            >
+              <ChevronRight className="w-4 h-4" />
+            </button>
+          </div>
+        </motion.div>
+
+        {/* CTA Buttons */}
         <motion.div
           initial={{ opacity: 0, y: 14 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -92,7 +231,7 @@ const Testimonials = () => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              Ver todas las reseñas en Google
+              Ver reseñas en Google
             </a>
           </Button>
           <Button asChild variant="outline" size="lg">
