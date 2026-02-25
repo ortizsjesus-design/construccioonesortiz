@@ -88,7 +88,7 @@ const Testimonials = () => {
         >
           <Button asChild variant="default" size="lg">
             <a
-              href="https://www.google.com/maps/place/?q=place_id:ChIJw7KjvjeHTw0RArK3Aemm1Ik"
+              href="https://www.google.com/maps/search/?api=1&query_place_id=ChIJw7KjvjeHTw0RArK3Aemm1Ik&query=reviews"
               target="_blank"
               rel="noopener noreferrer"
             >
