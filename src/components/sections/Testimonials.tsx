@@ -6,19 +6,32 @@ import useEmblaCarousel from "embla-carousel-react";
 
 const reviews = [
   {
-    name: "Beatriz Benitez",
-    text: "Gente muy amable, trabajadores incansables merecen la pena",
-    date: "Hace 23 horas",
+    name: "Cristina Muguruza",
+    text: "Acertadísima decisión la que escogimos en contratar a Ortiz.\n\nCon experiencia propia por nuestros negocios hosteleros; la seriedad, calidad de trabajo y precio muy correcto a su labor también hecha.\n\nSolo repito, MUY AGRADECIDOS. Les recomendaré siempre.",
   },
   {
-    name: "Smathex Smathex",
-    text: "Grandes profesionales",
-    date: "Hace un día",
+    name: "JOSE BOLUMBURU",
+    text: "Les contraté para nivelar terreno, echar solera de cemento y embaldosar con suelo cerámico una terraza de 6X4, formalidad (cumpliendo plazos y fecha establecida), profesionalidad y ejecución con acabado impecable. Les recomiendo 100%",
   },
   {
-    name: "Carlos Ortiz",
-    text: "Seriedad y compromiso. Un gusto trabajar con esta gente.",
-    date: "Hace un día",
+    name: "Raúl Gonzalez de Durana",
+    text: "Gran trabajazo que nos hicieron en nuestra casa del pueblo. Cuando necesitemos otra vez de su ayuda, mi familia no dudará en recurrir os vez a ellos. Gracias!!",
+  },
+  {
+    name: "Monica Carballo",
+    text: "Hace un mes nos hicieron una piscina en Cuzcurrita del Rio Tiron, y quedo preciosa son muy buenos professionals nos asesoraron muy bien sin duda Les volvere a llamar",
+  },
+  {
+    name: "cerdeña",
+    text: "Grandes profesionales. Detallistas y ejecución perfecta. Encantados con el trabajazo que nos hicieron. Repetiremos en cuanto les necesitemos.",
+  },
+  {
+    name: "Juan Urbina",
+    text: "Excelentes profesionales. Rápidos en la ejecución de los trabajo que les encargamos y con gran calidad de terminaciones. Muy recomendables.",
+  },
+  {
+    name: "Sara Ozaeta",
+    text: "TEJADO Y CANALONES NUEVO EXCELENTE CALIDAD TRABAJO Y PRECIO MUCHAS GRACIAS ESTOY ENCANTADA CON EL TRABAJO HECHO 😊",
   },
   {
     name: "Maria Esther Santamaria Fernandez",
@@ -26,32 +39,19 @@ const reviews = [
     date: "Hace un día",
   },
   {
-    name: "Raúl Gonzalez de Durana",
-    text: "Gran trabajazo que nos hicieron en nuestra casa del pueblo. Cuando necesitemos otra vez de su ayuda, mi familia no dudará en recurrir os vez a ellos. Gracias!!",
+    name: "Beatriz Benitez",
+    text: "Gente muy amable, trabajadores incansables merecen la pena",
+    date: "Hace 23 horas",
   },
   {
-    name: "cerdeña",
-    text: "Grandes profesionales. Detallistas y ejecución perfecta. Encantados con el trabajazo que nos hicieron. Repetiremos en cuanto les necesitemos.",
+    name: "Carlos Ortiz",
+    text: "Seriedad y compromiso. Un gusto trabajar con esta gente.",
+    date: "Hace un día",
   },
   {
-    name: "Cristina Muguruza",
-    text: "Acertadísima decisión la que escogimos en contratar a Ortiz.\n\nCon experiencia propia por nuestros negocios hosteleros; la seriedad, calidad de trabajo y precio muy correcto a su labor también hecha.\n\nSolo repito, MUY AGRADECIDOS. Les recomendaré siempre.",
-  },
-  {
-    name: "Monica Carballo",
-    text: "Hace un mes nos hicieron una piscina en Cuzcurrita del Rio Tiron, y quedo preciosa son muy buenos professionals nos asesoraron muy bien sin duda Les volvere a llamar",
-  },
-  {
-    name: "Sara Ozaeta",
-    text: "TEJADO Y CANALONES NUEVO EXCELENTE CALIDAD TRABAJO Y PRECIO MUCHAS GRACIAS ESTOY ENCANTADA CON EL TRABAJO HECHO 😊",
-  },
-  {
-    name: "JOSE BOLUMBURU",
-    text: "Les contraté para nivelar terreno, echar solera de cemento y embaldosar con suelo cerámico una terraza de 6X4, formalidad (cumpliendo plazos y fecha establecida), profesionalidad y ejecución con acabado impecable. Les recomiendo 100%",
-  },
-  {
-    name: "Juan Urbina",
-    text: "Excelentes profesionales. Rápidos en la ejecución de los trabajo que les encargamos y con gran calidad de terminaciones. Muy recomendables.",
+    name: "Smathex Smathex",
+    text: "Grandes profesionales",
+    date: "Hace un día",
   },
 ];
 
