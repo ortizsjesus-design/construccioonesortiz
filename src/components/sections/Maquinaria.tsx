@@ -4,6 +4,7 @@ import { X } from "lucide-react";
 import { scrollToElement } from "@/lib/scrollTo";
 import maquinariaGeneral from "@/assets/maquinaria-general.png";
 import miniexcavadora from "@/assets/miniexcavadora-kubota.png";
+import miniexcavadoraRipa from "@/assets/miniexcavadora-ripa-r15.jpeg";
 import dumper from "@/assets/dumper-escalibur.png";
 import plataforma from "@/assets/plataforma-elevadora.png";
 import manipulador from "@/assets/manipulador-telescopico.png";
@@ -14,6 +15,11 @@ const machines = [
     id: "miniexcavadora",
     name: "Miniexcavadora Kubota KB18",
     image: miniexcavadora,
+  },
+  {
+    id: "miniexcavadora-ripa",
+    name: "Miniexcavadora Ripa R15 Kubota",
+    image: miniexcavadoraRipa,
   },
   {
     id: "dumper",
