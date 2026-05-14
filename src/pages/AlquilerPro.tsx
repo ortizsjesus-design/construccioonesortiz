@@ -319,15 +319,27 @@ const AlquilerPro = () => {
               fetchPriority="high"
             />
           </div>
-          {/* Escritorio: nueva cabecera web, banda más estrecha */}
-          <div className="mx-auto hidden w-full max-w-[min(100%,920px)] px-6 xl:max-w-[min(100%,1020px)] lg:block">
-            <img
-              src={`${HERO_WEB_IMAGE}${HERO_IMAGE_QUERY}`}
-              alt={`${HERO_BANNER_TITLE}. ${HERO_BANNER_SUBTITLE}`}
-              className="mx-auto block h-auto w-full max-w-full object-contain object-center print:max-h-[280px]"
-              decoding="async"
-              fetchPriority="high"
-            />
+          {/* Escritorio: cabecera web “incrustada” — marco + viñeta (suaviza bordes duros del PNG) */}
+          <div className="mx-auto hidden w-full max-w-[min(100%,920px)] px-6 pb-1 xl:max-w-[min(100%,1020px)] lg:block">
+            <div className="relative rounded-2xl border border-white/[0.14] bg-gradient-to-b from-white/[0.08] to-white/[0.02] p-[3px] shadow-[0_22px_56px_-14px_rgba(0,0,0,0.82)] ring-1 ring-black/40">
+              <div className="relative overflow-hidden rounded-[calc(1rem-2px)] bg-[#05070b]">
+                <img
+                  src={`${HERO_WEB_IMAGE}${HERO_IMAGE_QUERY}`}
+                  alt={`${HERO_BANNER_TITLE}. ${HERO_BANNER_SUBTITLE}`}
+                  className="mx-auto block h-auto w-full max-w-full object-contain object-center print:max-h-[280px]"
+                  decoding="async"
+                  fetchPriority="high"
+                />
+                <div
+                  className="pointer-events-none absolute inset-0 rounded-[calc(1rem-2px)] shadow-[inset_0_0_52px_rgba(0,0,0,0.72),inset_0_0_120px_rgba(0,0,0,0.38)] print:hidden"
+                  aria-hidden
+                />
+                <div
+                  className="pointer-events-none absolute inset-0 rounded-[calc(1rem-2px)] ring-1 ring-inset ring-white/[0.09] print:hidden"
+                  aria-hidden
+                />
+              </div>
+            </div>
           </div>
         </section>
 
