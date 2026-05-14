@@ -239,36 +239,51 @@ const AlquilerPro = () => {
         </div>
       </header>
 
-      {/* Escritorio: cabecera oscura + ALQUILERES + logo grande */}
-      <header className="no-print sticky top-0 z-30 hidden border-b border-white/[0.07] bg-[#030508] shadow-[0_12px_40px_-12px_rgba(0,0,0,0.85)] backdrop-blur-md lg:block">
+      {/* Escritorio: cabecera oscura + ALQUILERES + logo grande (solo lg+) */}
+      <header className="no-print sticky top-0 z-30 hidden border-b border-white/[0.14] bg-gradient-to-b from-[#0c121c] via-[#070a10] to-[#030508] shadow-[0_16px_48px_-16px_rgba(0,0,0,0.9)] backdrop-blur-md lg:block">
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/25 to-transparent" aria-hidden />
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-8 px-8 py-5">
-          <Link to="/" className="flex min-w-0 flex-1 items-center gap-6">
+          <Link to="/" className="group flex min-w-0 flex-1 items-center gap-6">
             <img
               src={logoOrtiz}
               alt="Construcciones y Servicios Jesús Ortiz"
-              className="h-[4.75rem] w-auto shrink-0 object-contain xl:h-[5.25rem]"
+              className="h-[4.75rem] w-auto shrink-0 object-contain brightness-[1.03] contrast-[1.05] transition duration-300 group-hover:brightness-110 xl:h-[5.25rem]"
               width={280}
               height={112}
               decoding="async"
             />
-            <div className="min-w-0 text-left">
-              <p className="truncate text-xs font-semibold uppercase tracking-[0.28em] text-zinc-600">
-                Construcciones y Servicios · Jesús Ortiz
+            <div className="relative min-w-0 border-l-2 border-[#1679F1]/90 pl-5 text-left xl:pl-6">
+              <span
+                className="pointer-events-none absolute -left-px top-1 bottom-1 w-2 rounded-full blur-md opacity-70"
+                style={{ backgroundColor: `${ACCENT}` }}
+                aria-hidden
+              />
+              <p className="truncate text-[11px] font-semibold uppercase tracking-[0.22em] text-zinc-300 xl:text-xs xl:tracking-[0.26em]">
+                Construcciones y Servicios{" "}
+                <span className="font-normal text-zinc-400">·</span> Jesús Ortiz
               </p>
-              <h1 className="truncate text-4xl font-black uppercase tracking-[0.12em] text-white xl:text-[2.75rem] xl:leading-none">
+              <h1
+                className="mt-1 truncate text-4xl font-black uppercase tracking-[0.06em] text-white xl:mt-1.5 xl:text-[2.85rem] xl:leading-[1.05] xl:tracking-[0.07em]"
+                style={{
+                  textShadow:
+                    "0 1px 0 rgba(0,0,0,0.45), 0 0 42px rgba(22, 121, 241, 0.22), 0 2px 24px rgba(255,255,255,0.06)",
+                }}
+              >
                 ALQUILERES
                 <span className="sr-only">
                   {" "}
                   — {SHARE_TITLE}. {HERO_BANNER_SUBTITLE}
                 </span>
               </h1>
-              <p className="mt-2 max-w-xl text-sm text-zinc-400">{HERO_BANNER_SUBTITLE}</p>
+              <p className="mt-2.5 max-w-xl text-[13px] font-medium leading-relaxed text-zinc-300 xl:text-sm xl:leading-relaxed">
+                {HERO_BANNER_SUBTITLE}
+              </p>
             </div>
           </Link>
           <div className="flex shrink-0 items-center gap-3">
             <a
               href={`tel:${phoneE164}`}
-              className="rounded-lg border border-white/12 bg-white/[0.04] px-4 py-2.5 text-sm font-medium text-zinc-200 transition hover:bg-white/[0.08]"
+              className="rounded-xl border border-white/22 bg-white/[0.09] px-4 py-2.5 text-sm font-semibold text-white shadow-inner shadow-white/[0.04] transition hover:border-white/30 hover:bg-white/[0.14]"
             >
               Llamar
             </a>
@@ -276,7 +291,7 @@ const AlquilerPro = () => {
               href={waHref}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-lg px-5 py-2.5 text-sm font-semibold text-[#0b141a] shadow-lg shadow-black/30 transition hover:opacity-90"
+              className="inline-flex items-center gap-2 rounded-xl px-5 py-2.5 text-sm font-semibold text-[#0b141a] shadow-lg shadow-black/40 ring-1 ring-white/10 transition hover:opacity-[0.96]"
               style={{ backgroundColor: WA_GREEN }}
             >
               <MessageCircle className="h-4 w-4 shrink-0" aria-hidden />
