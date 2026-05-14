@@ -398,15 +398,15 @@ const AlquilerPro = () => {
 
         <div className="mx-auto w-full max-w-7xl px-5 pb-16 pt-12 sm:px-8 lg:max-w-none lg:px-8 xl:px-12 2xl:px-14 lg:pb-24 lg:pt-5">
           <div className="flex flex-col gap-14 lg:gap-10">
-            <div className="grid gap-14 lg:grid-cols-12 lg:items-start lg:gap-10 xl:gap-12">
-              {/* Columna izquierda: escritorio = hero compacto + documentación; móvil = doc + marketing debajo */}
-            <div className="space-y-12 lg:col-span-5 lg:space-y-6">
-              <div className="hidden lg:block">{desktopHeroFramed}</div>
-              <section
-                id="documentacion-contacto"
-                className="rounded-2xl border border-white/10 bg-[#0c1119]/90 p-6 shadow-xl shadow-black/20 backdrop-blur-sm sm:p-8 lg:p-6 xl:p-7"
-                aria-labelledby="documentacion-heading"
-              >
+            <div className="grid gap-14 lg:grid-cols-12 lg:items-stretch lg:gap-10 xl:gap-12">
+              {/* Izquierda: columna completa en escritorio (flex + altura de fila = sin hueco vacío) */}
+              <div className="flex flex-col gap-12 lg:col-span-5 lg:h-full lg:min-h-0 lg:gap-6">
+                <div className="hidden lg:block lg:shrink-0">{desktopHeroFramed}</div>
+                <section
+                  id="documentacion-contacto"
+                  className="shrink-0 rounded-2xl border border-white/10 bg-[#0c1119]/90 p-6 shadow-xl shadow-black/20 backdrop-blur-sm sm:p-8 lg:p-6 xl:p-7"
+                  aria-labelledby="documentacion-heading"
+                >
                 <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-zinc-500">
                   Documentación
                 </p>
@@ -473,10 +473,25 @@ const AlquilerPro = () => {
               </section>
 
               <div className="lg:hidden">{marketingIntroEl}</div>
+
+              {/* Escritorio: mensaje comercial en la misma columna; crece para igualar altura del catálogo */}
+              <div className="relative hidden min-h-0 flex-1 flex-col overflow-hidden rounded-2xl border border-white/[0.09] bg-gradient-to-b from-[#0c1119]/95 via-[#0a1018]/90 to-[#070d14] shadow-inner shadow-black/20 lg:flex">
+                <div
+                  className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#1679F1]/35 to-transparent"
+                  aria-hidden
+                />
+                <div className="flex min-h-0 flex-1 flex-col p-6 xl:p-7">
+                  <div className="shrink-0">{marketingIntroEl}</div>
+                  <div
+                    className="pointer-events-none mt-6 hidden min-h-[3rem] flex-1 rounded-lg bg-[#060a10]/55 ring-1 ring-inset ring-white/[0.04] lg:block"
+                    aria-hidden
+                  />
+                </div>
+              </div>
             </div>
 
-            {/* Columna derecha: catálogo alineado arriba en escritorio (sin sticky que coma alto) */}
-            <div className="lg:col-span-7">
+            {/* Columna derecha: catálogo */}
+            <div className="flex flex-col lg:col-span-7">
               <div className="lg:rounded-xl lg:border lg:border-white/[0.06] lg:bg-[#0b0f14]/85 lg:p-6 lg:backdrop-blur-md xl:p-7">
                 <p className="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500">
                   Catálogo
@@ -530,10 +545,7 @@ const AlquilerPro = () => {
               </div>
             </div>
           </div>
-
-          {/* Escritorio: bloque comercial bajo la cuadrícula para liberar altura y mostrar máquinas antes */}
-          <div className="hidden border-t border-white/10 pt-12 lg:block">{marketingIntroEl}</div>
-        </div>
+          </div>
 
         <Dialog
             open={selectedMachine !== null}
