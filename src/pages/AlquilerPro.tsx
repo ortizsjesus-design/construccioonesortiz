@@ -39,7 +39,7 @@ const HERO_BANNER_SUBTITLE =
   "Alquiler de maquinaria para construcción, trabajos agrícolas y particulares";
 /** Misma URL para hero y Open Graph; súbelo a `public/` y sube el ?v= si cambias el archivo. */
 const HERO_PUBLIC_IMAGE = "/alquiler-pro-hero.png";
-const HERO_IMAGE_QUERY = "?v=6";
+const HERO_IMAGE_QUERY = "?v=7";
 
 /** Rellenar con la ruta del PDF (p. ej. "/modelo-contrato-alquiler.pdf") cuando esté subido. */
 const MODELO_CONTRATO_PDF_URL = "";
@@ -130,14 +130,6 @@ const highlights = [
   },
 ];
 
-const fleet = [
-  "Miniexcavadoras",
-  "Dumper de carga",
-  "Plataformas elevadoras",
-  "Manipuladores telescópicos",
-  "Rodillos compactadores",
-];
-
 function whatsappHrefForMachine(phoneE164: string, machineName: string) {
   const text = `Hola, me interesa consultar disponibilidad de esta máquina: ${machineName}.`;
   return `https://wa.me/${phoneE164.replace(/\D/g, "")}?text=${encodeURIComponent(text)}`;
@@ -202,30 +194,38 @@ const AlquilerPro = () => {
         <meta name="twitter:image" content={ogImageUrl} />
       </Helmet>
 
-      {/* Encabezado compacto fijo — solo móvil/tablet; en escritorio el hero arranca arriba */}
-      <header className="no-print sticky top-0 z-30 border-b border-white/[0.08] bg-[#080b10]/95 backdrop-blur-md lg:hidden">
-        <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-2.5 sm:px-5">
-          <Link to="/" className="flex min-w-0 items-center gap-2.5 sm:gap-3">
+      {/* Cabecera oscura unificada: logo grande en escritorio + título ALQUILERES */}
+      <header className="no-print sticky top-0 z-30 border-b border-white/[0.07] bg-[#030508] shadow-[0_12px_40px_-12px_rgba(0,0,0,0.85)] backdrop-blur-md">
+        <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-2.5 sm:gap-4 sm:px-5 sm:py-3 lg:gap-8 lg:px-8 lg:py-5">
+          <Link to="/" className="flex min-w-0 flex-1 items-center gap-2.5 sm:gap-3 lg:gap-6">
             <img
               src={logoOrtiz}
               alt="Construcciones y Servicios Jesús Ortiz"
-              className="h-12 w-auto shrink-0 object-contain sm:h-[3.75rem]"
-              width={240}
-              height={96}
+              className="h-11 w-auto shrink-0 object-contain sm:h-[3.25rem] lg:h-[4.75rem] xl:h-[5.25rem]"
+              width={280}
+              height={112}
+              decoding="async"
             />
             <div className="min-w-0 text-left">
-              <p className="truncate text-[10px] font-semibold uppercase tracking-[0.15em] text-zinc-500">
-                Jesús Ortiz
+              <p className="truncate text-[10px] font-semibold uppercase tracking-[0.2em] text-zinc-600 sm:text-[11px] lg:text-xs lg:tracking-[0.28em]">
+                Construcciones y Servicios · Jesús Ortiz
               </p>
-              <p className="truncate text-xs font-medium text-zinc-100 sm:text-sm">
-                Alquiler de maquinaria
+              <h1 className="truncate font-black uppercase tracking-[0.06em] text-white lg:tracking-[0.12em] text-xl leading-tight sm:text-2xl lg:text-4xl xl:text-[2.75rem] xl:leading-none">
+                ALQUILERES
+                <span className="sr-only">
+                  {" "}
+                  — {SHARE_TITLE}. {HERO_BANNER_SUBTITLE}
+                </span>
+              </h1>
+              <p className="mt-0.5 line-clamp-2 text-[11px] leading-snug text-zinc-500 sm:text-xs lg:mt-2 lg:line-clamp-none lg:max-w-xl lg:text-sm lg:text-zinc-400">
+                {HERO_BANNER_SUBTITLE}
               </p>
             </div>
           </Link>
-          <div className="flex shrink-0 items-center gap-2">
+          <div className="flex shrink-0 items-center gap-2 lg:gap-3">
             <a
               href={`tel:${phoneE164}`}
-              className="hidden rounded-lg border border-white/10 bg-white/[0.05] px-3 py-2 text-xs font-medium text-zinc-200 transition hover:bg-white/[0.08] sm:inline-flex"
+              className="hidden rounded-lg border border-white/12 bg-white/[0.04] px-3 py-2 text-xs font-medium text-zinc-200 transition hover:bg-white/[0.08] sm:inline-flex lg:px-4 lg:py-2.5 lg:text-sm"
             >
               Llamar
             </a>
@@ -233,7 +233,7 @@ const AlquilerPro = () => {
               href={waHref}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 rounded-lg px-3 py-2 text-xs font-semibold text-[#0b141a] shadow-md transition hover:opacity-90 sm:gap-2 sm:px-4 sm:text-sm"
+              className="inline-flex items-center gap-1.5 rounded-lg px-3 py-2 text-xs font-semibold text-[#0b141a] shadow-lg shadow-black/30 transition hover:opacity-90 sm:gap-2 sm:px-4 sm:text-sm lg:px-5 lg:py-2.5"
               style={{ backgroundColor: WA_GREEN }}
             >
               <MessageCircle className="h-4 w-4 shrink-0" aria-hidden />
@@ -245,14 +245,14 @@ const AlquilerPro = () => {
 
       <main className="alquiler-pro-print-main">
         <section
-          className="relative isolate w-full overflow-hidden border-b border-white/[0.08] bg-[#0a0c10]"
+          className="relative isolate w-full overflow-hidden border-b border-white/[0.08] bg-[#05070b]"
           aria-labelledby="alquiler-pro-hero-heading"
         >
-          <h1 id="alquiler-pro-hero-heading" className="sr-only">
-            {HERO_BANNER_TITLE}. {HERO_BANNER_SUBTITLE}. Alquiler de maquinaria para construcción y trabajos
-            agrícolas; alquiler de maquinaria para trabajos particulares.
-          </h1>
-          <div className="mx-auto w-full max-w-[1920px] px-0 sm:px-3 lg:px-5">
+          <p id="alquiler-pro-hero-heading" className="sr-only">
+            Imagen de cabecera: parque de maquinaria para alquiler profesional.
+          </p>
+          {/* En escritorio banda más estrecha centrada; en móvil ancho completo */}
+          <div className="mx-auto w-full max-w-[1920px] px-0 sm:px-3 lg:max-w-[min(100%,920px)] lg:px-6 xl:max-w-[min(100%,1020px)]">
             <img
               src={`${HERO_PUBLIC_IMAGE}${HERO_IMAGE_QUERY}`}
               alt={`${HERO_BANNER_TITLE}. ${HERO_BANNER_SUBTITLE}`}
@@ -389,51 +389,11 @@ const AlquilerPro = () => {
                   </a>
                 </div>
               </div>
-
-              <aside className="rounded-2xl border border-white/10 bg-[#0f1620]/85 p-6 sm:p-7">
-                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500">
-                  Parque habitual
-                </p>
-                <p className="mt-2 text-lg font-semibold text-white">Equipos solicitados con frecuencia</p>
-                <ul className="mt-5 space-y-2.5 border-t border-white/10 pt-5">
-                  {fleet.map((item) => (
-                    <li
-                      key={item}
-                      className="flex items-center justify-between gap-3 text-sm text-zinc-300"
-                    >
-                      <span>{item}</span>
-                      <span className="h-px flex-1 bg-gradient-to-r from-white/12 to-transparent" />
-                      <span className="text-[10px] font-semibold uppercase tracking-wide text-zinc-500">
-                        Alquiler
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-                <div className="mt-6 grid grid-cols-3 gap-3">
-                  {(
-                    [
-                      { label: "Respuesta", value: "Ágil" },
-                      { label: "Enfoque", value: "Obra real" },
-                      { label: "Estándar", value: "Profesional" },
-                    ] as const
-                  ).map(({ label, value }) => (
-                    <div
-                      key={label}
-                      className="rounded-lg border border-white/10 bg-black/20 px-2 py-3 text-center"
-                    >
-                      <p className="text-[10px] font-semibold uppercase tracking-wider text-zinc-500">
-                        {label}
-                      </p>
-                      <p className="mt-1 text-sm font-bold text-white">{value}</p>
-                    </div>
-                  ))}
-                </div>
-              </aside>
             </div>
 
             {/* Columna derecha: catálogo */}
             <div className="lg:col-span-7">
-              <div className="lg:sticky lg:top-8 lg:z-10 lg:-mt-1 lg:rounded-xl lg:border lg:border-white/[0.06] lg:bg-[#0b0f14]/85 lg:p-6 lg:backdrop-blur-md xl:p-7">
+              <div className="lg:sticky lg:top-[9rem] lg:z-10 lg:-mt-1 lg:rounded-xl lg:border lg:border-white/[0.06] lg:bg-[#0b0f14]/85 lg:p-6 lg:backdrop-blur-md xl:top-[9.5rem] xl:p-7">
                 <p className="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500">
                   Catálogo
                 </p>

@@ -14,7 +14,7 @@ function alquilerProShareHtmlPlugin(siteUrl: string): Plugin {
   const shareTitle = "Catálogo de Alquiler para Profesionales - Jesús Ortiz";
   const shareDesc =
     "Alquiler de maquinaria para construcción, trabajos agrícolas y particulares.";
-  const ogImage = `${siteUrl}/alquiler-pro-hero.png?v=6`;
+  const ogImage = `${siteUrl}/alquiler-pro-hero.png?v=7`;
   const canonical = `${siteUrl}/alquiler-pro`;
 
   return {
