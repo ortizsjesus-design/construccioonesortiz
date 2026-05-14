@@ -20,7 +20,6 @@ import imgPlataforma from "@/assets/plataforma-elevadora.png";
 import imgManitou from "@/assets/manipulador-telescopico.png";
 import imgRodillo from "@/assets/rodillo-compactador.png";
 import imgDumper from "@/assets/dumper-escalibur.png";
-import imgHeroBanner from "@/assets/alquiler-pro-banner-grupo.png";
 import {
   Dialog,
   DialogContent,
@@ -38,7 +37,9 @@ const SHARE_TITLE = "Catálogo de Alquiler para Profesionales - Jesús Ortiz";
 const HERO_BANNER_TITLE = "Servicios auxiliares para profesionales";
 const HERO_BANNER_SUBTITLE =
   "Alquiler de maquinaria para construcción, trabajos agrícolas y particulares";
-const OG_IMAGE_QUERY = "?v=3";
+/** Misma URL para hero y Open Graph; súbelo a `public/` y sube el ?v= si cambias el archivo. */
+const HERO_PUBLIC_IMAGE = "/alquiler-pro-hero.png";
+const HERO_IMAGE_QUERY = "?v=6";
 
 /** Rellenar con la ruta del PDF (p. ej. "/modelo-contrato-alquiler.pdf") cuando esté subido. */
 const MODELO_CONTRATO_PDF_URL = "";
@@ -162,7 +163,7 @@ const AlquilerPro = () => {
   const [selectedMachine, setSelectedMachine] = useState<FleetMachine | null>(null);
 
   const siteUrl = getSiteUrl();
-  const ogImageUrl = `${siteUrl}/og-alquiler-pro.png${OG_IMAGE_QUERY}`;
+  const ogImageUrl = `${siteUrl}${HERO_PUBLIC_IMAGE}${HERO_IMAGE_QUERY}`;
   const pageUrl = `${siteUrl}/alquiler-pro`;
 
   return (
@@ -251,13 +252,11 @@ const AlquilerPro = () => {
             {HERO_BANNER_TITLE}. {HERO_BANNER_SUBTITLE}. Alquiler de maquinaria para construcción y trabajos
             agrícolas; alquiler de maquinaria para trabajos particulares.
           </h1>
-          <div className="relative mx-auto h-[min(52vh,520px)] min-h-[210px] w-full max-w-[1920px] sm:h-[min(48vh,480px)] sm:min-h-[260px] lg:h-[420px] lg:max-h-[460px]">
+          <div className="mx-auto w-full max-w-[1920px] px-0 sm:px-3 lg:px-5">
             <img
-              src={imgHeroBanner}
+              src={`${HERO_PUBLIC_IMAGE}${HERO_IMAGE_QUERY}`}
               alt={`${HERO_BANNER_TITLE}. ${HERO_BANNER_SUBTITLE}`}
-              className="absolute inset-0 h-full w-full object-cover object-[center_top] sm:object-[center_22%] lg:object-center print:relative print:h-auto print:max-h-[280px] print:object-contain"
-              width={1920}
-              height={1080}
+              className="mx-auto block h-auto w-full max-w-full object-contain object-center print:max-h-[280px]"
               decoding="async"
               fetchPriority="high"
             />
