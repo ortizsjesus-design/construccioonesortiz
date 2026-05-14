@@ -159,6 +159,81 @@ const AlquilerPro = () => {
   const ogImageUrl = `${siteUrl}${HERO_WEB_IMAGE}${HERO_IMAGE_QUERY}`;
   const pageUrl = `${siteUrl}/alquiler-pro`;
 
+  /** Solo escritorio: hero compacto “incrustado” para la columna izquierda */
+  const desktopHeroFramed = (
+    <div className="relative rounded-xl border border-white/[0.14] bg-gradient-to-b from-white/[0.08] to-white/[0.02] p-[2px] shadow-[0_14px_40px_-12px_rgba(0,0,0,0.75)] ring-1 ring-black/40">
+      <div className="relative flex max-h-[220px] min-h-[112px] items-center justify-center overflow-hidden rounded-[calc(0.75rem-2px)] bg-[#05070b] px-2 py-3 xl:max-h-[236px]">
+        <img
+          src={`${HERO_WEB_IMAGE}${HERO_IMAGE_QUERY}`}
+          alt={`${HERO_BANNER_TITLE}. ${HERO_BANNER_SUBTITLE}`}
+          className="max-h-[176px] w-full object-contain object-center xl:max-h-[196px]"
+          decoding="async"
+          fetchPriority="high"
+        />
+        <div
+          className="pointer-events-none absolute inset-0 rounded-[calc(0.75rem-2px)] shadow-[inset_0_0_36px_rgba(0,0,0,0.65),inset_0_0_72px_rgba(0,0,0,0.32)] print:hidden"
+          aria-hidden
+        />
+        <div
+          className="pointer-events-none absolute inset-0 rounded-[calc(0.75rem-2px)] ring-1 ring-inset ring-white/[0.09] print:hidden"
+          aria-hidden
+        />
+      </div>
+    </div>
+  );
+
+  const marketingIntroEl = (
+    <div>
+      <div
+        className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-zinc-300 sm:text-xs"
+        style={{ boxShadow: `inset 0 0 0 1px ${ACCENT}33` }}
+      >
+        <HardHat className="h-3.5 w-3.5" style={{ color: ACCENT }} aria-hidden />
+        Maquinaria lista para obra
+      </div>
+      <h2 className="text-balance text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-[2.35rem] lg:leading-[1.15]">
+        Alquiler profesional para <span style={{ color: ACCENT }}>obra y reforma</span>
+      </h2>
+      <p className="mt-4 max-w-xl text-pretty text-base leading-relaxed text-zinc-400 sm:text-lg lg:max-w-none">
+        Equipamiento robusto, entrega ágil y trato directo. Pensado para empresas y particulares que necesitan
+        rendimiento en planta sin complicaciones.
+      </p>
+      <ul className="mt-8 space-y-3 text-sm text-zinc-300 sm:text-base">
+        <li className="flex gap-3">
+          <Construction className="mt-0.5 h-5 w-5 shrink-0" style={{ color: ACCENT }} />
+          Disponibilidad orientativa y tiempos de respuesta claros.
+        </li>
+        <li className="flex gap-3">
+          <Construction className="mt-0.5 h-5 w-5 shrink-0" style={{ color: ACCENT }} />
+          Opciones según accesos, espacio y tipo de trabajo.
+        </li>
+        <li className="flex gap-3">
+          <Construction className="mt-0.5 h-5 w-5 shrink-0" style={{ color: ACCENT }} />
+          La Rioja y entornos habituales de servicio (consultar).
+        </li>
+      </ul>
+      <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+        <a
+          href={waHref}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={`no-print ${btnWa} sm:min-w-[220px]`}
+          style={{ backgroundColor: WA_GREEN }}
+        >
+          <MessageCircle className="h-4 w-4 shrink-0 text-[#0b141a]" aria-hidden />
+          Solicitar disponibilidad
+        </a>
+        <a
+          href={`tel:${phoneE164}`}
+          className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/12 bg-white/[0.04] px-5 py-3 text-center text-sm font-semibold text-zinc-100 transition hover:bg-white/[0.08] sm:min-w-[180px]"
+        >
+          <Phone className="h-4 w-4" style={{ color: ACCENT }} aria-hidden />
+          {phoneDisplay}
+        </a>
+      </div>
+    </div>
+  );
+
   return (
     <div
       className="alquiler-pro-page min-h-screen text-zinc-100 antialiased selection:bg-[#1679F1]/35 selection:text-white"
@@ -242,14 +317,14 @@ const AlquilerPro = () => {
       {/* Escritorio: cabecera oscura + ALQUILERES + logo grande (solo lg+) */}
       <header className="no-print sticky top-0 z-30 hidden border-b border-white/[0.14] bg-gradient-to-b from-[#0c121c] via-[#070a10] to-[#030508] shadow-[0_16px_48px_-16px_rgba(0,0,0,0.9)] backdrop-blur-md lg:block">
         <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/25 to-transparent" aria-hidden />
-        <div className="mx-auto flex w-full items-center justify-between gap-6 px-4 py-5 sm:px-6 xl:gap-10 xl:px-10 2xl:px-14">
-          <Link to="/" className="group flex min-w-0 flex-1 items-center gap-6">
+        <div className="mx-auto flex w-full items-center justify-between gap-6 px-4 py-4 sm:px-6 xl:gap-10 xl:px-10 2xl:px-14">
+          <Link to="/" className="group flex min-w-0 flex-1 items-center gap-6 lg:gap-7 xl:gap-8">
             <img
               src={logoOrtiz}
               alt="Construcciones y Servicios Jesús Ortiz"
-              className="h-[4.75rem] w-auto shrink-0 object-contain brightness-[1.03] contrast-[1.05] transition duration-300 group-hover:brightness-110 xl:h-[5.25rem]"
-              width={280}
-              height={112}
+              className="h-[5.5rem] w-auto shrink-0 object-contain brightness-[1.03] contrast-[1.05] transition duration-300 group-hover:brightness-110 xl:h-[6.25rem] 2xl:h-[6.75rem]"
+              width={360}
+              height={144}
               decoding="async"
             />
             <div className="relative min-w-0 border-l-2 border-[#1679F1]/90 pl-5 text-left xl:pl-6">
@@ -303,7 +378,7 @@ const AlquilerPro = () => {
 
       <main className="alquiler-pro-print-main">
         <section
-          className="relative isolate w-full overflow-hidden border-b border-white/[0.08] bg-[#05070b]"
+          className="relative isolate w-full overflow-hidden border-b border-white/[0.08] bg-[#05070b] lg:hidden"
           aria-labelledby="alquiler-pro-hero-heading"
         >
           <p id="alquiler-pro-hero-heading" className="sr-only">
@@ -319,37 +394,17 @@ const AlquilerPro = () => {
               fetchPriority="high"
             />
           </div>
-          {/* Escritorio: cabecera web “incrustada” — marco + viñeta (suaviza bordes duros del PNG) */}
-          <div className="mx-auto hidden w-full px-4 pb-1 sm:px-6 xl:px-10 2xl:px-14 lg:block">
-            <div className="relative rounded-2xl border border-white/[0.14] bg-gradient-to-b from-white/[0.08] to-white/[0.02] p-[3px] shadow-[0_22px_56px_-14px_rgba(0,0,0,0.82)] ring-1 ring-black/40">
-              <div className="relative overflow-hidden rounded-[calc(1rem-2px)] bg-[#05070b]">
-                <img
-                  src={`${HERO_WEB_IMAGE}${HERO_IMAGE_QUERY}`}
-                  alt={`${HERO_BANNER_TITLE}. ${HERO_BANNER_SUBTITLE}`}
-                  className="mx-auto block h-auto w-full max-w-full object-contain object-center print:max-h-[280px]"
-                  decoding="async"
-                  fetchPriority="high"
-                />
-                <div
-                  className="pointer-events-none absolute inset-0 rounded-[calc(1rem-2px)] shadow-[inset_0_0_52px_rgba(0,0,0,0.72),inset_0_0_120px_rgba(0,0,0,0.38)] print:hidden"
-                  aria-hidden
-                />
-                <div
-                  className="pointer-events-none absolute inset-0 rounded-[calc(1rem-2px)] ring-1 ring-inset ring-white/[0.09] print:hidden"
-                  aria-hidden
-                />
-              </div>
-            </div>
-          </div>
         </section>
 
-        <div className="mx-auto w-full max-w-7xl px-5 pb-16 pt-12 sm:px-8 lg:max-w-none lg:px-8 xl:px-12 2xl:px-14 lg:pb-24 lg:pt-16">
-          <div className="grid gap-14 lg:grid-cols-12 lg:items-start lg:gap-12 xl:gap-16">
-            {/* Columna izquierda: documentación arriba + mensaje + datos */}
-            <div className="space-y-12 lg:col-span-5">
+        <div className="mx-auto w-full max-w-7xl px-5 pb-16 pt-12 sm:px-8 lg:max-w-none lg:px-8 xl:px-12 2xl:px-14 lg:pb-24 lg:pt-5">
+          <div className="flex flex-col gap-14 lg:gap-10">
+            <div className="grid gap-14 lg:grid-cols-12 lg:items-start lg:gap-10 xl:gap-12">
+              {/* Columna izquierda: escritorio = hero compacto + documentación; móvil = doc + marketing debajo */}
+            <div className="space-y-12 lg:col-span-5 lg:space-y-6">
+              <div className="hidden lg:block">{desktopHeroFramed}</div>
               <section
                 id="documentacion-contacto"
-                className="rounded-2xl border border-white/10 bg-[#0c1119]/90 p-6 shadow-xl shadow-black/20 backdrop-blur-sm sm:p-8"
+                className="rounded-2xl border border-white/10 bg-[#0c1119]/90 p-6 shadow-xl shadow-black/20 backdrop-blur-sm sm:p-8 lg:p-6 xl:p-7"
                 aria-labelledby="documentacion-heading"
               >
                 <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-zinc-500">
@@ -417,63 +472,12 @@ const AlquilerPro = () => {
                 </div>
               </section>
 
-              <div>
-                <div
-                  className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-zinc-300 sm:text-xs"
-                  style={{ boxShadow: `inset 0 0 0 1px ${ACCENT}33` }}
-                >
-                  <HardHat className="h-3.5 w-3.5" style={{ color: ACCENT }} aria-hidden />
-                  Maquinaria lista para obra
-                </div>
-                <h2 className="text-balance text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-[2.35rem] lg:leading-[1.15]">
-                  Alquiler profesional para{" "}
-                  <span style={{ color: ACCENT }}>obra y reforma</span>
-                </h2>
-                <p className="mt-4 max-w-xl text-pretty text-base leading-relaxed text-zinc-400 sm:text-lg">
-                  Equipamiento robusto, entrega ágil y trato directo. Pensado para empresas y particulares
-                  que necesitan rendimiento en planta sin complicaciones.
-                </p>
-
-                <ul className="mt-8 space-y-3 text-sm text-zinc-300 sm:text-base">
-                  <li className="flex gap-3">
-                    <Construction className="mt-0.5 h-5 w-5 shrink-0" style={{ color: ACCENT }} />
-                    Disponibilidad orientativa y tiempos de respuesta claros.
-                  </li>
-                  <li className="flex gap-3">
-                    <Construction className="mt-0.5 h-5 w-5 shrink-0" style={{ color: ACCENT }} />
-                    Opciones según accesos, espacio y tipo de trabajo.
-                  </li>
-                  <li className="flex gap-3">
-                    <Construction className="mt-0.5 h-5 w-5 shrink-0" style={{ color: ACCENT }} />
-                    La Rioja y entornos habituales de servicio (consultar).
-                  </li>
-                </ul>
-
-                <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-                  <a
-                    href={waHref}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={`no-print ${btnWa} sm:min-w-[220px]`}
-                    style={{ backgroundColor: WA_GREEN }}
-                  >
-                    <MessageCircle className="h-4 w-4 shrink-0 text-[#0b141a]" aria-hidden />
-                    Solicitar disponibilidad
-                  </a>
-                  <a
-                    href={`tel:${phoneE164}`}
-                    className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/12 bg-white/[0.04] px-5 py-3 text-center text-sm font-semibold text-zinc-100 transition hover:bg-white/[0.08] sm:min-w-[180px]"
-                  >
-                    <Phone className="h-4 w-4" style={{ color: ACCENT }} aria-hidden />
-                    {phoneDisplay}
-                  </a>
-                </div>
-              </div>
+              <div className="lg:hidden">{marketingIntroEl}</div>
             </div>
 
-            {/* Columna derecha: catálogo */}
+            {/* Columna derecha: catálogo alineado arriba en escritorio (sin sticky que coma alto) */}
             <div className="lg:col-span-7">
-              <div className="lg:sticky lg:top-[9rem] lg:z-10 lg:-mt-1 lg:rounded-xl lg:border lg:border-white/[0.06] lg:bg-[#0b0f14]/85 lg:p-6 lg:backdrop-blur-md xl:top-[9.5rem] xl:p-7">
+              <div className="lg:rounded-xl lg:border lg:border-white/[0.06] lg:bg-[#0b0f14]/85 lg:p-6 lg:backdrop-blur-md xl:p-7">
                 <p className="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500">
                   Catálogo
                 </p>
@@ -490,7 +494,7 @@ const AlquilerPro = () => {
 
               <div
                 id="catalogo-maquinaria"
-                className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 xl:gap-6"
+                className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-2 lg:gap-5 xl:gap-6"
               >
                 {fleetMachinery.map((machine) => (
                   <button
@@ -527,7 +531,11 @@ const AlquilerPro = () => {
             </div>
           </div>
 
-          <Dialog
+          {/* Escritorio: bloque comercial bajo la cuadrícula para liberar altura y mostrar máquinas antes */}
+          <div className="hidden border-t border-white/10 pt-12 lg:block">{marketingIntroEl}</div>
+        </div>
+
+        <Dialog
             open={selectedMachine !== null}
             onOpenChange={(open) => {
               if (!open) setSelectedMachine(null);
