@@ -1,0 +1,7 @@
+{
+  "rewrites": [
+    { "source": "/alquiler-pro", "destination": "/alquiler-pro/index.html" },
+    { "source": "/alquiler-pro/", "destination": "/alquiler-pro/index.html" },
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
+}

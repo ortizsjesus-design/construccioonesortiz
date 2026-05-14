@@ -132,3 +132,76 @@
     box-shadow: var(--shadow-card);
   }
 }
+
+/* Impresión — página Alquiler Pro: fondo claro y ocultar interfaz no esencial */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+
+  body:has(.alquiler-pro-page) {
+    background: #fff !important;
+  }
+
+  .alquiler-pro-page {
+    background: #fff !important;
+    background-image: none !important;
+    color: #111827 !important;
+    print-color-adjust: economy;
+    -webkit-print-color-adjust: economy;
+  }
+
+  .alquiler-pro-print-main {
+    background: #fff !important;
+  }
+
+  .alquiler-pro-page main section {
+    border-color: #d1d5db !important;
+    box-shadow: none !important;
+  }
+
+  .alquiler-pro-page [class*="backdrop-blur"],
+  .alquiler-pro-page .shadow-lg,
+  .alquiler-pro-page .shadow-2xl,
+  .alquiler-pro-page .shadow-black {
+    box-shadow: none !important;
+  }
+
+  .alquiler-pro-page .rounded-2xl,
+  .alquiler-pro-page .rounded-xl {
+    background: #f9fafb !important;
+    border: 1px solid #e5e7eb !important;
+  }
+
+  .alquiler-pro-page h1,
+  .alquiler-pro-page h2,
+  .alquiler-pro-page h3 {
+    color: #111827 !important;
+  }
+
+  .alquiler-pro-page p,
+  .alquiler-pro-page li {
+    color: #374151 !important;
+  }
+
+  .alquiler-pro-page a[href^="tel:"] {
+    color: #111827 !important;
+    text-decoration: underline;
+  }
+
+  .alquiler-pro-page img {
+    max-height: 140px !important;
+    object-fit: contain !important;
+    page-break-inside: avoid;
+  }
+
+  .alquiler-pro-page button[class*="border-white"] {
+    border-color: #d1d5db !important;
+  }
+
+  /* Modal Radix (si estuviera abierto al imprimir) */
+  body:has(.alquiler-pro-page) [data-radix-dialog-overlay],
+  body:has(.alquiler-pro-page) [data-radix-dialog-content] {
+    display: none !important;
+  }
+}

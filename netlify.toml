@@ -1,0 +1,19 @@
+# La primera regla sirve HTML con meta Open Graph específicos de /alquiler-pro (generado en build).
+# El fallback SPA debe ir después.
+
+[[redirects]]
+  from = "/alquiler-pro"
+  to = "/alquiler-pro/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/alquiler-pro/"
+  to = "/alquiler-pro/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
