@@ -20,7 +20,7 @@ import imgPlataforma from "@/assets/plataforma-elevadora.png";
 import imgManitou from "@/assets/manipulador-telescopico.png";
 import imgRodillo from "@/assets/rodillo-compactador.png";
 import imgDumper from "@/assets/dumper-escalibur.png";
-import imgHeroGrupo from "@/assets/maquinaria-general.png";
+import imgHeroBanner from "@/assets/alquiler-pro-banner-grupo.png";
 import {
   Dialog,
   DialogContent,
@@ -38,7 +38,7 @@ const SHARE_TITLE = "Catálogo de Alquiler para Profesionales - Jesús Ortiz";
 const HERO_BANNER_TITLE = "Servicios auxiliares para profesionales";
 const HERO_BANNER_SUBTITLE =
   "Alquiler de maquinaria para construcción, trabajos agrícolas y particulares";
-const OG_IMAGE_QUERY = "?v=2";
+const OG_IMAGE_QUERY = "?v=3";
 
 /** Rellenar con la ruta del PDF (p. ej. "/modelo-contrato-alquiler.pdf") cuando esté subido. */
 const MODELO_CONTRATO_PDF_URL = "";
@@ -244,34 +244,23 @@ const AlquilerPro = () => {
 
       <main className="alquiler-pro-print-main">
         <section
-          className="relative isolate w-full overflow-hidden border-b border-white/[0.08]"
+          className="relative isolate w-full overflow-hidden border-b border-white/[0.08] bg-[#0a0c10]"
           aria-labelledby="alquiler-pro-hero-heading"
         >
-          <div className="relative min-h-[200px] sm:min-h-[260px] lg:min-h-[300px]">
+          <h1 id="alquiler-pro-hero-heading" className="sr-only">
+            {HERO_BANNER_TITLE}. {HERO_BANNER_SUBTITLE}. Alquiler de maquinaria para construcción y trabajos
+            agrícolas; alquiler de maquinaria para trabajos particulares.
+          </h1>
+          <div className="relative mx-auto h-[min(52vh,520px)] min-h-[210px] w-full max-w-[1920px] sm:h-[min(48vh,480px)] sm:min-h-[260px] lg:h-[420px] lg:max-h-[460px]">
             <img
-              src={imgHeroGrupo}
-              alt=""
-              className="absolute inset-0 h-full w-full object-cover object-center"
+              src={imgHeroBanner}
+              alt={`${HERO_BANNER_TITLE}. ${HERO_BANNER_SUBTITLE}`}
+              className="absolute inset-0 h-full w-full object-cover object-[center_top] sm:object-[center_22%] lg:object-center print:relative print:h-auto print:max-h-[280px] print:object-contain"
               width={1920}
               height={1080}
               decoding="async"
               fetchPriority="high"
             />
-            <div
-              className="alquiler-pro-hero-mask absolute inset-0 bg-gradient-to-r from-[#0b0f14]/94 via-[#0b0f14]/72 to-[#0b0f14]/35 print:hidden"
-              aria-hidden
-            />
-            <div className="relative mx-auto flex max-w-7xl flex-col justify-center px-5 py-10 sm:px-8 sm:py-12 lg:py-14">
-              <h1
-                id="alquiler-pro-hero-heading"
-                className="max-w-3xl text-balance text-2xl font-bold tracking-tight text-white sm:text-4xl lg:text-[2.75rem] lg:leading-[1.12]"
-              >
-                {HERO_BANNER_TITLE}
-              </h1>
-              <p className="mt-4 max-w-2xl text-pretty text-base leading-relaxed text-zinc-100/95 sm:text-lg">
-                {HERO_BANNER_SUBTITLE}
-              </p>
-            </div>
           </div>
         </section>
 
