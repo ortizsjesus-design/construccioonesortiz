@@ -242,7 +242,7 @@ const AlquilerPro = () => {
       {/* Escritorio: cabecera oscura + ALQUILERES + logo grande (solo lg+) */}
       <header className="no-print sticky top-0 z-30 hidden border-b border-white/[0.14] bg-gradient-to-b from-[#0c121c] via-[#070a10] to-[#030508] shadow-[0_16px_48px_-16px_rgba(0,0,0,0.9)] backdrop-blur-md lg:block">
         <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/25 to-transparent" aria-hidden />
-        <div className="mx-auto flex max-w-7xl items-center justify-between gap-8 px-8 py-5">
+        <div className="mx-auto flex w-full items-center justify-between gap-6 px-4 py-5 sm:px-6 xl:gap-10 xl:px-10 2xl:px-14">
           <Link to="/" className="group flex min-w-0 flex-1 items-center gap-6">
             <img
               src={logoOrtiz}
@@ -275,7 +275,7 @@ const AlquilerPro = () => {
                   — {SHARE_TITLE}. {HERO_BANNER_SUBTITLE}
                 </span>
               </h1>
-              <p className="mt-2.5 max-w-xl text-[13px] font-medium leading-relaxed text-zinc-300 xl:text-sm xl:leading-relaxed">
+              <p className="mt-2.5 max-w-xl text-[13px] font-medium leading-relaxed text-zinc-300 lg:max-w-[52rem] xl:text-sm xl:leading-relaxed">
                 {HERO_BANNER_SUBTITLE}
               </p>
             </div>
@@ -320,7 +320,7 @@ const AlquilerPro = () => {
             />
           </div>
           {/* Escritorio: cabecera web “incrustada” — marco + viñeta (suaviza bordes duros del PNG) */}
-          <div className="mx-auto hidden w-full max-w-[min(100%,920px)] px-6 pb-1 xl:max-w-[min(100%,1020px)] lg:block">
+          <div className="mx-auto hidden w-full px-4 pb-1 sm:px-6 xl:px-10 2xl:px-14 lg:block">
             <div className="relative rounded-2xl border border-white/[0.14] bg-gradient-to-b from-white/[0.08] to-white/[0.02] p-[3px] shadow-[0_22px_56px_-14px_rgba(0,0,0,0.82)] ring-1 ring-black/40">
               <div className="relative overflow-hidden rounded-[calc(1rem-2px)] bg-[#05070b]">
                 <img
@@ -343,7 +343,7 @@ const AlquilerPro = () => {
           </div>
         </section>
 
-        <div className="mx-auto max-w-7xl px-5 pb-16 pt-12 sm:px-8 lg:pb-24 lg:pt-16">
+        <div className="mx-auto w-full max-w-7xl px-5 pb-16 pt-12 sm:px-8 lg:max-w-none lg:px-8 xl:px-12 2xl:px-14 lg:pb-24 lg:pt-16">
           <div className="grid gap-14 lg:grid-cols-12 lg:items-start lg:gap-12 xl:gap-16">
             {/* Columna izquierda: documentación arriba + mensaje + datos */}
             <div className="space-y-12 lg:col-span-5">
