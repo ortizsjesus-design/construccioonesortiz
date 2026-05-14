@@ -37,9 +37,10 @@ const SHARE_TITLE = "Catálogo de Alquiler para Profesionales - Jesús Ortiz";
 const HERO_BANNER_TITLE = "Servicios auxiliares para profesionales";
 const HERO_BANNER_SUBTITLE =
   "Alquiler de maquinaria para construcción, trabajos agrícolas y particulares";
-/** Misma URL para hero y Open Graph; súbelo a `public/` y sube el ?v= si cambias el archivo. */
-const HERO_PUBLIC_IMAGE = "/alquiler-pro-hero.png";
-const HERO_IMAGE_QUERY = "?v=7";
+/** Móvil: imagen anterior (no cambiar composición). Escritorio: cabecera panorámica nueva. OG = imagen web. */
+const HERO_MOBILE_IMAGE = "/alquiler-pro-hero-mobile.png";
+const HERO_WEB_IMAGE = "/alquiler-pro-hero-web.png";
+const HERO_IMAGE_QUERY = "?v=8";
 
 /** Rellenar con la ruta del PDF (p. ej. "/modelo-contrato-alquiler.pdf") cuando esté subido. */
 const MODELO_CONTRATO_PDF_URL = "";
@@ -155,7 +156,7 @@ const AlquilerPro = () => {
   const [selectedMachine, setSelectedMachine] = useState<FleetMachine | null>(null);
 
   const siteUrl = getSiteUrl();
-  const ogImageUrl = `${siteUrl}${HERO_PUBLIC_IMAGE}${HERO_IMAGE_QUERY}`;
+  const ogImageUrl = `${siteUrl}${HERO_WEB_IMAGE}${HERO_IMAGE_QUERY}`;
   const pageUrl = `${siteUrl}/alquiler-pro`;
 
   return (
@@ -194,38 +195,33 @@ const AlquilerPro = () => {
         <meta name="twitter:image" content={ogImageUrl} />
       </Helmet>
 
-      {/* Cabecera oscura unificada: logo grande en escritorio + título ALQUILERES */}
-      <header className="no-print sticky top-0 z-30 border-b border-white/[0.07] bg-[#030508] shadow-[0_12px_40px_-12px_rgba(0,0,0,0.85)] backdrop-blur-md">
-        <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-2.5 sm:gap-4 sm:px-5 sm:py-3 lg:gap-8 lg:px-8 lg:py-5">
-          <Link to="/" className="flex min-w-0 flex-1 items-center gap-2.5 sm:gap-3 lg:gap-6">
+      <h1 className="sr-only lg:hidden">{SHARE_TITLE}. {HERO_BANNER_SUBTITLE}</h1>
+
+      {/* Móvil / tablet: cabecera compacta original (sin ALQUILERES grande) */}
+      <header className="no-print sticky top-0 z-30 border-b border-white/[0.08] bg-[#080b10]/95 backdrop-blur-md lg:hidden">
+        <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-2.5 sm:px-5">
+          <Link to="/" className="flex min-w-0 items-center gap-2.5 sm:gap-3">
             <img
               src={logoOrtiz}
               alt="Construcciones y Servicios Jesús Ortiz"
-              className="h-11 w-auto shrink-0 object-contain sm:h-[3.25rem] lg:h-[4.75rem] xl:h-[5.25rem]"
-              width={280}
-              height={112}
+              className="h-12 w-auto shrink-0 object-contain sm:h-[3.75rem]"
+              width={240}
+              height={96}
               decoding="async"
             />
             <div className="min-w-0 text-left">
-              <p className="truncate text-[10px] font-semibold uppercase tracking-[0.2em] text-zinc-600 sm:text-[11px] lg:text-xs lg:tracking-[0.28em]">
-                Construcciones y Servicios · Jesús Ortiz
+              <p className="truncate text-[10px] font-semibold uppercase tracking-[0.15em] text-zinc-500">
+                Jesús Ortiz
               </p>
-              <h1 className="truncate font-black uppercase tracking-[0.06em] text-white lg:tracking-[0.12em] text-xl leading-tight sm:text-2xl lg:text-4xl xl:text-[2.75rem] xl:leading-none">
-                ALQUILERES
-                <span className="sr-only">
-                  {" "}
-                  — {SHARE_TITLE}. {HERO_BANNER_SUBTITLE}
-                </span>
-              </h1>
-              <p className="mt-0.5 line-clamp-2 text-[11px] leading-snug text-zinc-500 sm:text-xs lg:mt-2 lg:line-clamp-none lg:max-w-xl lg:text-sm lg:text-zinc-400">
-                {HERO_BANNER_SUBTITLE}
+              <p className="truncate text-xs font-medium text-zinc-100 sm:text-sm">
+                Alquiler de maquinaria
               </p>
             </div>
           </Link>
-          <div className="flex shrink-0 items-center gap-2 lg:gap-3">
+          <div className="flex shrink-0 items-center gap-2">
             <a
               href={`tel:${phoneE164}`}
-              className="hidden rounded-lg border border-white/12 bg-white/[0.04] px-3 py-2 text-xs font-medium text-zinc-200 transition hover:bg-white/[0.08] sm:inline-flex lg:px-4 lg:py-2.5 lg:text-sm"
+              className="hidden rounded-lg border border-white/10 bg-white/[0.05] px-3 py-2 text-xs font-medium text-zinc-200 transition hover:bg-white/[0.08] sm:inline-flex"
             >
               Llamar
             </a>
@@ -233,7 +229,54 @@ const AlquilerPro = () => {
               href={waHref}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 rounded-lg px-3 py-2 text-xs font-semibold text-[#0b141a] shadow-lg shadow-black/30 transition hover:opacity-90 sm:gap-2 sm:px-4 sm:text-sm lg:px-5 lg:py-2.5"
+              className="inline-flex items-center gap-1.5 rounded-lg px-3 py-2 text-xs font-semibold text-[#0b141a] shadow-md transition hover:opacity-90 sm:gap-2 sm:px-4 sm:text-sm"
+              style={{ backgroundColor: WA_GREEN }}
+            >
+              <MessageCircle className="h-4 w-4 shrink-0" aria-hidden />
+              WhatsApp
+            </a>
+          </div>
+        </div>
+      </header>
+
+      {/* Escritorio: cabecera oscura + ALQUILERES + logo grande */}
+      <header className="no-print sticky top-0 z-30 hidden border-b border-white/[0.07] bg-[#030508] shadow-[0_12px_40px_-12px_rgba(0,0,0,0.85)] backdrop-blur-md lg:block">
+        <div className="mx-auto flex max-w-7xl items-center justify-between gap-8 px-8 py-5">
+          <Link to="/" className="flex min-w-0 flex-1 items-center gap-6">
+            <img
+              src={logoOrtiz}
+              alt="Construcciones y Servicios Jesús Ortiz"
+              className="h-[4.75rem] w-auto shrink-0 object-contain xl:h-[5.25rem]"
+              width={280}
+              height={112}
+              decoding="async"
+            />
+            <div className="min-w-0 text-left">
+              <p className="truncate text-xs font-semibold uppercase tracking-[0.28em] text-zinc-600">
+                Construcciones y Servicios · Jesús Ortiz
+              </p>
+              <h1 className="truncate text-4xl font-black uppercase tracking-[0.12em] text-white xl:text-[2.75rem] xl:leading-none">
+                ALQUILERES
+                <span className="sr-only">
+                  {" "}
+                  — {SHARE_TITLE}. {HERO_BANNER_SUBTITLE}
+                </span>
+              </h1>
+              <p className="mt-2 max-w-xl text-sm text-zinc-400">{HERO_BANNER_SUBTITLE}</p>
+            </div>
+          </Link>
+          <div className="flex shrink-0 items-center gap-3">
+            <a
+              href={`tel:${phoneE164}`}
+              className="rounded-lg border border-white/12 bg-white/[0.04] px-4 py-2.5 text-sm font-medium text-zinc-200 transition hover:bg-white/[0.08]"
+            >
+              Llamar
+            </a>
+            <a
+              href={waHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-lg px-5 py-2.5 text-sm font-semibold text-[#0b141a] shadow-lg shadow-black/30 transition hover:opacity-90"
               style={{ backgroundColor: WA_GREEN }}
             >
               <MessageCircle className="h-4 w-4 shrink-0" aria-hidden />
@@ -251,10 +294,20 @@ const AlquilerPro = () => {
           <p id="alquiler-pro-hero-heading" className="sr-only">
             Imagen de cabecera: parque de maquinaria para alquiler profesional.
           </p>
-          {/* En escritorio banda más estrecha centrada; en móvil ancho completo */}
-          <div className="mx-auto w-full max-w-[1920px] px-0 sm:px-3 lg:max-w-[min(100%,920px)] lg:px-6 xl:max-w-[min(100%,1020px)]">
+          {/* Móvil: imagen y layout como antes (ancho completo, archivo dedicado) */}
+          <div className="mx-auto w-full max-w-[1920px] px-0 sm:px-3 lg:hidden">
             <img
-              src={`${HERO_PUBLIC_IMAGE}${HERO_IMAGE_QUERY}`}
+              src={`${HERO_MOBILE_IMAGE}${HERO_IMAGE_QUERY}`}
+              alt={`${HERO_BANNER_TITLE}. ${HERO_BANNER_SUBTITLE}`}
+              className="mx-auto block h-auto w-full max-w-full object-contain object-center print:max-h-[280px]"
+              decoding="async"
+              fetchPriority="high"
+            />
+          </div>
+          {/* Escritorio: nueva cabecera web, banda más estrecha */}
+          <div className="mx-auto hidden w-full max-w-[min(100%,920px)] px-6 xl:max-w-[min(100%,1020px)] lg:block">
+            <img
+              src={`${HERO_WEB_IMAGE}${HERO_IMAGE_QUERY}`}
               alt={`${HERO_BANNER_TITLE}. ${HERO_BANNER_SUBTITLE}`}
               className="mx-auto block h-auto w-full max-w-full object-contain object-center print:max-h-[280px]"
               decoding="async"
