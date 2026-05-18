@@ -11,11 +11,12 @@ function attrEscape(value: string): string {
 
 /** Tras el build, genera dist/alquiler-pro/index.html con OG/Twitter meta para compartir en WhatsApp (sin ejecutar JS). */
 function alquilerProShareHtmlPlugin(siteUrl: string): Plugin {
-  const shareTitle = "Catálogo de Alquiler para Profesionales - Jesús Ortiz";
+  const shareTitle =
+    "Catálogo de Alquiler para Profesionales - Construcciones y Servicios Jesús Ortiz";
   const shareDesc =
     "Alquiler de maquinaria para construcción, trabajos agrícolas y particulares.";
   /** JPEG real (antes .png); mismas dimensiones que el archivo en /public. */
-  const ogImage = `${siteUrl}/alquiler-pro-hero-web.jpg?v=9`;
+  const ogImage = `${siteUrl}/alquiler-pro-hero-web.jpg?v=10`;
   const canonical = `${siteUrl}/alquiler-pro`;
 
   return {
@@ -38,6 +39,7 @@ function alquilerProShareHtmlPlugin(siteUrl: string): Plugin {
       const inject = `
     <meta name="description" content="${attrEscape(shareDesc)}" />
     <meta property="og:title" content="${attrEscape(shareTitle)}" />
+    <meta property="og:site_name" content="Construcciones y Servicios Jesús Ortiz" />
     <meta property="og:description" content="${attrEscape(shareDesc)}" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="${attrEscape(canonical)}" />

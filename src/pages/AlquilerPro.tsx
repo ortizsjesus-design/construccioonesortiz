@@ -32,7 +32,8 @@ const ACCENT = "#1679F1";
 /** Verde marca WhatsApp */
 const WA_GREEN = "#25D366";
 
-const SHARE_TITLE = "Catálogo de Alquiler para Profesionales - Jesús Ortiz";
+const SHARE_TITLE =
+  "Catálogo de Alquiler para Profesionales - Construcciones y Servicios Jesús Ortiz";
 const HERO_BANNER_TITLE = "Servicios auxiliares para profesionales";
 const HERO_BANNER_SUBTITLE =
   "Alquiler de maquinaria para construcción, trabajos agrícolas y particulares";
@@ -40,7 +41,7 @@ const HERO_BANNER_SUBTITLE =
 const HERO_MOBILE_IMAGE = "/alquiler-pro-hero-mobile.png";
 const HERO_WEB_IMAGE = "/alquiler-pro-hero-web.jpg";
 /** Query para invalidar caché de redes sociales al cambiar el asset. */
-const HERO_IMAGE_QUERY = "?v=9";
+const HERO_IMAGE_QUERY = "?v=10";
 /** Dimensiones reales del JPEG (Meta/WhatsApp). */
 const OG_SHARE_IMAGE_WIDTH = 666;
 const OG_SHARE_IMAGE_HEIGHT = 232;
@@ -236,6 +237,7 @@ const AlquilerPro = () => {
         <meta name="description" content={HERO_BANNER_SUBTITLE} />
         <link rel="canonical" href={pageUrl} />
         <meta property="og:title" content={SHARE_TITLE} />
+        <meta property="og:site_name" content="Construcciones y Servicios Jesús Ortiz" />
         <meta property="og:description" content={HERO_BANNER_SUBTITLE} />
         <meta property="og:type" content="website" />
         <meta property="og:url" content={pageUrl} />
