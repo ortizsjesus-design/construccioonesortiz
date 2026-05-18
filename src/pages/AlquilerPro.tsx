@@ -8,7 +8,6 @@ import {
   HardHat,
   Phone,
   MessageCircle,
-  Printer,
   ShieldCheck,
   Truck,
   Wrench,
@@ -42,8 +41,8 @@ const HERO_MOBILE_IMAGE = "/alquiler-pro-hero-mobile.png";
 const HERO_WEB_IMAGE = "/alquiler-pro-hero-web.png";
 const HERO_IMAGE_QUERY = "?v=8";
 
-/** Rellenar con la ruta del PDF (p. ej. "/modelo-contrato-alquiler.pdf") cuando esté subido. */
-const MODELO_CONTRATO_PDF_URL = "";
+/** PDF en /public — modelo de contrato de alquiler de maquinaria. */
+const MODELO_CONTRATO_PDF_URL = "/contrato-alquiler-maquinaria.pdf";
 
 type FleetMachine = {
   id: string;
@@ -442,39 +441,21 @@ const AlquilerPro = () => {
                   Documentación
                 </p>
                 <h2 id="documentacion-heading" className="mt-2 text-xl font-bold text-white">
-                  Contrato e impresión
+                  Contrato de alquiler
                 </h2>
                 <p className="mt-3 text-sm leading-relaxed text-zinc-400">
-                  Descarga el modelo cuando esté disponible o imprime esta página para llevar el catálogo a obra.
+                  Descarga el modelo de contrato en PDF para revisarlo o firmarlo.
                 </p>
-                <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+                <div className="mt-6">
                   <a
-                    href={MODELO_CONTRATO_PDF_URL || "#"}
-                    onClick={(e) => {
-                      if (!MODELO_CONTRATO_PDF_URL) e.preventDefault();
-                    }}
-                    className={`no-print inline-flex flex-1 items-center justify-center gap-2 rounded-xl px-5 py-3.5 text-center text-sm font-semibold text-white shadow-lg shadow-black/20 transition sm:min-w-[220px] sm:flex-none ${
-                      MODELO_CONTRATO_PDF_URL ? "hover:brightness-110" : "cursor-not-allowed opacity-75"
-                    }`}
+                    href={MODELO_CONTRATO_PDF_URL}
+                    download="Contrato_Alquiler_Maquinaria.pdf"
+                    className="no-print inline-flex w-full items-center justify-center gap-2 rounded-xl px-5 py-3.5 text-center text-sm font-semibold text-white shadow-lg shadow-black/20 transition hover:brightness-110 sm:w-auto sm:min-w-[220px]"
                     style={{ backgroundColor: ACCENT }}
-                    aria-disabled={!MODELO_CONTRATO_PDF_URL}
-                    title={
-                      MODELO_CONTRATO_PDF_URL
-                        ? undefined
-                        : "Sube el PDF y asigna MODELO_CONTRATO_PDF_URL en el código."
-                    }
                   >
                     <FileText className="h-5 w-5 shrink-0" aria-hidden />
-                    Descargar Modelo de Contrato
+                    Descargar contrato (PDF)
                   </a>
-                  <button
-                    type="button"
-                    onClick={() => window.print()}
-                    className="no-print inline-flex flex-1 items-center justify-center gap-2 rounded-xl border border-white/12 bg-white/[0.04] px-5 py-3.5 text-center text-sm font-semibold text-zinc-100 transition hover:bg-white/[0.08] sm:min-w-[200px] sm:flex-none"
-                  >
-                    <Printer className="h-5 w-5 shrink-0" style={{ color: ACCENT }} aria-hidden />
-                    Imprimir esta página
-                  </button>
                 </div>
 
                 <div className="mt-8 border-t border-white/10 pt-6">
