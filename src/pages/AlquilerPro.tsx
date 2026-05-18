@@ -32,12 +32,11 @@ const ACCENT = "#1679F1";
 /** Verde marca WhatsApp */
 const WA_GREEN = "#25D366";
 
-/** Línea principal al compartir (WhatsApp suele truncar títulos largos si van en un solo campo). */
-const SHARE_TITLE_OG = "Catálogo de Alquiler para Profesionales";
-/** Marca que Meta/WhatsApp muestran junto al título (`og:site_name`). */
-const SHARE_BRAND = "Construcciones y Servicios Jesús Ortiz";
-/** Pestaña del navegador y lectores de pantalla (nombre completo). */
-const DOCUMENT_TITLE = `${SHARE_TITLE_OG} | ${SHARE_BRAND}`;
+/** Título al compartir (un solo campo; sin `og:site_name`: WhatsApp suele añadir " - " + final truncado del site_name → solo "Jesús Ortiz"). */
+const SHARE_TITLE_OG =
+  "Catálogo de Alquiler para Profesionales · Construcciones y Servicios Jesús Ortiz";
+/** Pestaña del navegador y lectores de pantalla. */
+const DOCUMENT_TITLE = "Catálogo de Alquiler para Profesionales | Construcciones y Servicios Jesús Ortiz";
 const HERO_BANNER_TITLE = "Servicios auxiliares para profesionales";
 const HERO_BANNER_SUBTITLE =
   "Alquiler de maquinaria para construcción, trabajos agrícolas y particulares";
@@ -45,7 +44,7 @@ const HERO_BANNER_SUBTITLE =
 const HERO_MOBILE_IMAGE = "/alquiler-pro-hero-mobile.png";
 const HERO_WEB_IMAGE = "/alquiler-pro-hero-web.jpg";
 /** Query para invalidar caché de redes sociales al cambiar el asset. */
-const HERO_IMAGE_QUERY = "?v=11";
+const HERO_IMAGE_QUERY = "?v=12";
 /** Dimensiones reales del JPEG (Meta/WhatsApp). */
 const OG_SHARE_IMAGE_WIDTH = 666;
 const OG_SHARE_IMAGE_HEIGHT = 232;
@@ -241,7 +240,6 @@ const AlquilerPro = () => {
         <meta name="description" content={HERO_BANNER_SUBTITLE} />
         <link rel="canonical" href={pageUrl} />
         <meta property="og:title" content={SHARE_TITLE_OG} />
-        <meta property="og:site_name" content={SHARE_BRAND} />
         <meta property="og:description" content={HERO_BANNER_SUBTITLE} />
         <meta property="og:type" content="website" />
         <meta property="og:url" content={pageUrl} />
