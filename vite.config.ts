@@ -14,7 +14,8 @@ function alquilerProShareHtmlPlugin(siteUrl: string): Plugin {
   const shareTitle = "Catálogo de Alquiler para Profesionales - Jesús Ortiz";
   const shareDesc =
     "Alquiler de maquinaria para construcción, trabajos agrícolas y particulares.";
-  const ogImage = `${siteUrl}/alquiler-pro-hero-web.png?v=8`;
+  /** JPEG real (antes .png); mismas dimensiones que el archivo en /public. */
+  const ogImage = `${siteUrl}/alquiler-pro-hero-web.jpg?v=9`;
   const canonical = `${siteUrl}/alquiler-pro`;
 
   return {
@@ -43,12 +44,15 @@ function alquilerProShareHtmlPlugin(siteUrl: string): Plugin {
     <meta property="og:locale" content="es_ES" />
     <meta property="og:image" content="${attrEscape(ogImage)}" />
     <meta property="og:image:secure_url" content="${attrEscape(ogImage)}" />
-    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="666" />
+    <meta property="og:image:height" content="232" />
     <meta property="og:image:alt" content="${attrEscape(shareTitle)}" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="${attrEscape(shareTitle)}" />
     <meta name="twitter:description" content="${attrEscape(shareDesc)}" />
     <meta name="twitter:image" content="${attrEscape(ogImage)}" />
+    <link rel="image_src" href="${attrEscape(ogImage)}" />
     <link rel="canonical" href="${attrEscape(canonical)}" />`;
 
       html = html.replace(

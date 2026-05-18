@@ -36,10 +36,14 @@ const SHARE_TITLE = "Catálogo de Alquiler para Profesionales - Jesús Ortiz";
 const HERO_BANNER_TITLE = "Servicios auxiliares para profesionales";
 const HERO_BANNER_SUBTITLE =
   "Alquiler de maquinaria para construcción, trabajos agrícolas y particulares";
-/** Móvil: imagen anterior (no cambiar composición). Escritorio: cabecera panorámica nueva. OG = imagen web. */
+/** Móvil: imagen anterior (no cambiar composición). OG / miniatura al compartir = hero web (JPEG en /public). */
 const HERO_MOBILE_IMAGE = "/alquiler-pro-hero-mobile.png";
-const HERO_WEB_IMAGE = "/alquiler-pro-hero-web.png";
-const HERO_IMAGE_QUERY = "?v=8";
+const HERO_WEB_IMAGE = "/alquiler-pro-hero-web.jpg";
+/** Query para invalidar caché de redes sociales al cambiar el asset. */
+const HERO_IMAGE_QUERY = "?v=9";
+/** Dimensiones reales del JPEG (Meta/WhatsApp). */
+const OG_SHARE_IMAGE_WIDTH = 666;
+const OG_SHARE_IMAGE_HEIGHT = 232;
 
 /** PDF en /public — modelo de contrato de alquiler de maquinaria. */
 const MODELO_CONTRATO_PDF_URL = "/contrato-alquiler-maquinaria.pdf";
@@ -238,12 +242,15 @@ const AlquilerPro = () => {
         <meta property="og:locale" content="es_ES" />
         <meta property="og:image" content={ogImageUrl} />
         <meta property="og:image:secure_url" content={ogImageUrl} />
-        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:type" content="image/jpeg" />
+        <meta property="og:image:width" content={String(OG_SHARE_IMAGE_WIDTH)} />
+        <meta property="og:image:height" content={String(OG_SHARE_IMAGE_HEIGHT)} />
         <meta property="og:image:alt" content={SHARE_TITLE} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={SHARE_TITLE} />
         <meta name="twitter:description" content={HERO_BANNER_SUBTITLE} />
         <meta name="twitter:image" content={ogImageUrl} />
+        <link rel="image_src" href={ogImageUrl} />
       </Helmet>
 
       <h1 className="sr-only lg:hidden">{SHARE_TITLE}. {HERO_BANNER_SUBTITLE}</h1>

@@ -13,6 +13,13 @@
   status = 200
   force = true
 
+# Hero OG: el archivo es JPEG; antes estaba como .png (MIME incorrecto en algunos CDNs).
+[[redirects]]
+  from = "/alquiler-pro-hero-web.png"
+  to = "/alquiler-pro-hero-web.jpg"
+  status = 301
+  force = true
+
 [[redirects]]
   from = "/*"
   to = "/index.html"

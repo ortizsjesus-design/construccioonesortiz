@@ -1,4 +1,11 @@
 {
+  "redirects": [
+    {
+      "source": "/alquiler-pro-hero-web.png",
+      "destination": "/alquiler-pro-hero-web.jpg",
+      "permanent": true
+    }
+  ],
   "rewrites": [
     { "source": "/alquiler-pro", "destination": "/alquiler-pro/index.html" },
     { "source": "/alquiler-pro/", "destination": "/alquiler-pro/index.html" },
