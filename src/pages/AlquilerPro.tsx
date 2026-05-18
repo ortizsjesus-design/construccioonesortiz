@@ -251,20 +251,23 @@ const AlquilerPro = () => {
       {/* Móvil / tablet: cabecera compacta original (sin ALQUILERES grande) */}
       <header className="no-print sticky top-0 z-30 border-b border-white/[0.08] bg-[#080b10]/95 backdrop-blur-md lg:hidden">
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-2.5 sm:px-5">
-          <Link to="/" className="flex min-w-0 items-center gap-2.5 sm:gap-3">
+          <Link to="/" className="flex min-w-0 items-center gap-3 sm:gap-3.5">
             <img
               src={logoOrtiz}
               alt="Construcciones y Servicios Jesús Ortiz"
-              className="h-12 w-auto shrink-0 object-contain sm:h-[3.75rem]"
-              width={240}
-              height={96}
+              className="h-16 w-auto shrink-0 object-contain sm:h-[4.5rem]"
+              width={260}
+              height={104}
               decoding="async"
             />
-            <div className="min-w-0 text-left">
-              <p className="truncate text-[10px] font-semibold uppercase tracking-[0.15em] text-zinc-500">
-                Jesús Ortiz
+            <div className="min-w-0 text-left leading-tight">
+              <p className="text-[9px] font-semibold uppercase leading-snug tracking-[0.08em] text-zinc-500 sm:text-[10px] sm:tracking-[0.1em]">
+                <span className="block">Construcciones y Servicios</span>
+                <span className="mt-0.5 block normal-case tracking-normal text-zinc-400">
+                  Jesús Ortiz
+                </span>
               </p>
-              <p className="truncate text-xs font-medium text-zinc-100 sm:text-sm">
+              <p className="mt-1 truncate text-xs font-medium text-zinc-100 sm:text-sm">
                 Alquiler de maquinaria
               </p>
             </div>
@@ -375,8 +378,8 @@ const AlquilerPro = () => {
         <div className="mx-auto w-full max-w-7xl px-5 pb-16 pt-12 sm:px-8 lg:max-w-none lg:px-8 xl:px-12 2xl:px-14 lg:pb-24 lg:pt-5">
           <div className="flex flex-col gap-14 lg:gap-10">
             <div className="grid gap-14 lg:grid-cols-12 lg:items-stretch lg:gap-10 xl:gap-12">
-              {/* Escritorio: catálogo arriba a ancho completo; móvil: después de documentación + marketing */}
-              <div className="order-2 flex flex-col lg:order-1 lg:col-span-12">
+              {/* Escritorio: catálogo arriba a ancho completo; móvil: maquinaria primero, luego contrato y marketing */}
+              <div className="order-1 flex flex-col lg:order-1 lg:col-span-12">
                 <div className="lg:rounded-xl lg:border lg:border-white/[0.06] lg:bg-[#0b0f14]/85 lg:p-6 lg:backdrop-blur-md xl:p-7">
                   <p className="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500">
                     Catálogo
@@ -430,8 +433,8 @@ const AlquilerPro = () => {
                 </div>
               </div>
 
-              {/* Móvil: bloque doc + marketing; escritorio: lg:contents reparte en 5+7 bajo el catálogo */}
-              <div className="order-1 flex flex-col gap-12 lg:contents">
+              {/* Móvil: contrato + contacto y marketing tras el catálogo; escritorio: lg:contents reparte en 5+7 */}
+              <div className="order-2 flex flex-col gap-12 lg:contents">
                 <section
                   id="documentacion-contacto"
                   className="shrink-0 rounded-2xl border border-white/10 bg-[#0c1119]/90 p-6 shadow-xl shadow-black/20 backdrop-blur-sm sm:p-8 lg:col-span-5 lg:row-start-2 lg:self-start lg:p-6 xl:p-7"
