@@ -159,29 +159,6 @@ const AlquilerPro = () => {
   const ogImageUrl = `${siteUrl}${HERO_WEB_IMAGE}${HERO_IMAGE_QUERY}`;
   const pageUrl = `${siteUrl}/alquiler-pro`;
 
-  /** Solo escritorio: hero compacto “incrustado” para la columna izquierda */
-  const desktopHeroFramed = (
-    <div className="relative rounded-xl border border-white/[0.14] bg-gradient-to-b from-white/[0.08] to-white/[0.02] p-[2px] shadow-[0_14px_40px_-12px_rgba(0,0,0,0.75)] ring-1 ring-black/40">
-      <div className="relative flex max-h-[220px] min-h-[112px] items-center justify-center overflow-hidden rounded-[calc(0.75rem-2px)] bg-[#05070b] px-2 py-3 xl:max-h-[236px]">
-        <img
-          src={`${HERO_WEB_IMAGE}${HERO_IMAGE_QUERY}`}
-          alt={`${HERO_BANNER_TITLE}. ${HERO_BANNER_SUBTITLE}`}
-          className="max-h-[176px] w-full object-contain object-center xl:max-h-[196px]"
-          decoding="async"
-          fetchPriority="high"
-        />
-        <div
-          className="pointer-events-none absolute inset-0 rounded-[calc(0.75rem-2px)] shadow-[inset_0_0_36px_rgba(0,0,0,0.65),inset_0_0_72px_rgba(0,0,0,0.32)] print:hidden"
-          aria-hidden
-        />
-        <div
-          className="pointer-events-none absolute inset-0 rounded-[calc(0.75rem-2px)] ring-1 ring-inset ring-white/[0.09] print:hidden"
-          aria-hidden
-        />
-      </div>
-    </div>
-  );
-
   const marketingIntroEl = (
     <div>
       <div
@@ -399,12 +376,66 @@ const AlquilerPro = () => {
         <div className="mx-auto w-full max-w-7xl px-5 pb-16 pt-12 sm:px-8 lg:max-w-none lg:px-8 xl:px-12 2xl:px-14 lg:pb-24 lg:pt-5">
           <div className="flex flex-col gap-14 lg:gap-10">
             <div className="grid gap-14 lg:grid-cols-12 lg:items-stretch lg:gap-10 xl:gap-12">
-              {/* Izquierda: columna completa en escritorio (flex + altura de fila = sin hueco vacío) */}
-              <div className="flex flex-col gap-12 lg:col-span-5 lg:h-full lg:min-h-0 lg:gap-6">
-                <div className="hidden lg:block lg:shrink-0">{desktopHeroFramed}</div>
+              {/* Escritorio: catálogo arriba a ancho completo; móvil: después de documentación + marketing */}
+              <div className="order-2 flex flex-col lg:order-1 lg:col-span-12">
+                <div className="lg:rounded-xl lg:border lg:border-white/[0.06] lg:bg-[#0b0f14]/85 lg:p-6 lg:backdrop-blur-md xl:p-7">
+                  <p className="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500">
+                    Catálogo
+                  </p>
+                  <h2
+                    id="catalogo-maquinaria-heading"
+                    className="mt-2 text-2xl font-bold text-white sm:text-3xl lg:text-[1.85rem]"
+                  >
+                    Maquinaria disponible
+                  </h2>
+                  <p className="mt-3 text-sm leading-relaxed text-zinc-400 sm:text-base">
+                    Pulsa una tarjeta para ver la ficha completa y consultar disponibilidad por WhatsApp.
+                  </p>
+                </div>
+
+                <div
+                  id="catalogo-maquinaria"
+                  className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-2 lg:gap-5 xl:gap-6"
+                >
+                  {fleetMachinery.map((machine) => (
+                    <button
+                      key={machine.id}
+                      type="button"
+                      onClick={() => setSelectedMachine(machine)}
+                      className="group cursor-pointer rounded-2xl border border-white/10 bg-[#0f1620]/90 text-left shadow-lg shadow-black/25 outline-none transition hover:border-[#1679F1]/50 hover:bg-[#121a26] focus-visible:ring-2 focus-visible:ring-[#1679F1] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0b0f14]"
+                    >
+                      <div className="relative aspect-[4/3] overflow-hidden bg-[#070a10]">
+                        <img
+                          src={machine.image}
+                          alt={machine.name}
+                          className="h-full w-full object-cover transition duration-300 group-hover:scale-[1.02]"
+                        />
+                        <div
+                          className="pointer-events-none absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-black/80 to-transparent"
+                          aria-hidden
+                        />
+                      </div>
+                      <div className="border-t border-white/10 px-4 py-4 sm:px-5 sm:py-4">
+                        <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-zinc-500">
+                          Ver ficha técnica
+                        </p>
+                        <p className="mt-1.5 text-[15px] font-semibold leading-snug text-white sm:text-base">
+                          {machine.name}
+                        </p>
+                        <p className="mt-2.5 text-xs font-medium text-zinc-500 transition group-hover:text-[#1679F1]">
+                          Abrir detalle →
+                        </p>
+                      </div>
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Móvil: bloque doc + marketing; escritorio: lg:contents reparte en 5+7 bajo el catálogo */}
+              <div className="order-1 flex flex-col gap-12 lg:contents">
                 <section
                   id="documentacion-contacto"
-                  className="shrink-0 rounded-2xl border border-white/10 bg-[#0c1119]/90 p-6 shadow-xl shadow-black/20 backdrop-blur-sm sm:p-8 lg:p-6 xl:p-7"
+                  className="shrink-0 rounded-2xl border border-white/10 bg-[#0c1119]/90 p-6 shadow-xl shadow-black/20 backdrop-blur-sm sm:p-8 lg:col-span-5 lg:row-start-2 lg:self-start lg:p-6 xl:p-7"
                   aria-labelledby="documentacion-heading"
                 >
                 <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-zinc-500">
@@ -474,8 +505,8 @@ const AlquilerPro = () => {
 
               <div className="lg:hidden">{marketingIntroEl}</div>
 
-              {/* Escritorio: mensaje comercial en la misma columna; crece para igualar altura del catálogo */}
-              <div className="relative hidden min-h-0 flex-1 flex-col overflow-hidden rounded-2xl border border-white/[0.09] bg-gradient-to-b from-[#0c1119]/95 via-[#0a1018]/90 to-[#070d14] shadow-inner shadow-black/20 lg:flex">
+              {/* Escritorio: columna derecha bajo el catálogo; crece para igualar altura de documentación */}
+              <div className="relative hidden min-h-0 h-auto flex-col overflow-hidden rounded-2xl border border-white/[0.09] bg-gradient-to-b from-[#0c1119]/95 via-[#0a1018]/90 to-[#070d14] shadow-inner shadow-black/20 lg:col-span-7 lg:row-start-2 lg:flex lg:h-full">
                 <div
                   className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#1679F1]/35 to-transparent"
                   aria-hidden
@@ -488,63 +519,8 @@ const AlquilerPro = () => {
                   />
                 </div>
               </div>
-            </div>
-
-            {/* Columna derecha: catálogo */}
-            <div className="flex flex-col lg:col-span-7">
-              <div className="lg:rounded-xl lg:border lg:border-white/[0.06] lg:bg-[#0b0f14]/85 lg:p-6 lg:backdrop-blur-md xl:p-7">
-                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500">
-                  Catálogo
-                </p>
-                <h2
-                  id="catalogo-maquinaria-heading"
-                  className="mt-2 text-2xl font-bold text-white sm:text-3xl lg:text-[1.85rem]"
-                >
-                  Maquinaria disponible
-                </h2>
-                <p className="mt-3 text-sm leading-relaxed text-zinc-400 sm:text-base">
-                  Pulsa una tarjeta para ver la ficha completa y consultar disponibilidad por WhatsApp.
-                </p>
-              </div>
-
-              <div
-                id="catalogo-maquinaria"
-                className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-2 lg:gap-5 xl:gap-6"
-              >
-                {fleetMachinery.map((machine) => (
-                  <button
-                    key={machine.id}
-                    type="button"
-                    onClick={() => setSelectedMachine(machine)}
-                    className="group cursor-pointer rounded-2xl border border-white/10 bg-[#0f1620]/90 text-left shadow-lg shadow-black/25 outline-none transition hover:border-[#1679F1]/50 hover:bg-[#121a26] focus-visible:ring-2 focus-visible:ring-[#1679F1] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0b0f14]"
-                  >
-                    <div className="relative aspect-[4/3] overflow-hidden bg-[#070a10]">
-                      <img
-                        src={machine.image}
-                        alt={machine.name}
-                        className="h-full w-full object-cover transition duration-300 group-hover:scale-[1.02]"
-                      />
-                      <div
-                        className="pointer-events-none absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-black/80 to-transparent"
-                        aria-hidden
-                      />
-                    </div>
-                    <div className="border-t border-white/10 px-4 py-4 sm:px-5 sm:py-4">
-                      <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-zinc-500">
-                        Ver ficha técnica
-                      </p>
-                      <p className="mt-1.5 text-[15px] font-semibold leading-snug text-white sm:text-base">
-                        {machine.name}
-                      </p>
-                      <p className="mt-2.5 text-xs font-medium text-zinc-500 transition group-hover:text-[#1679F1]">
-                        Abrir detalle →
-                      </p>
-                    </div>
-                  </button>
-                ))}
               </div>
             </div>
-          </div>
           </div>
 
         <Dialog
