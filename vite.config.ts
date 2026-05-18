@@ -11,12 +11,13 @@ function attrEscape(value: string): string {
 
 /** Tras el build, genera dist/alquiler-pro/index.html con OG/Twitter meta para compartir en WhatsApp (sin ejecutar JS). */
 function alquilerProShareHtmlPlugin(siteUrl: string): Plugin {
-  const shareTitle =
-    "Catálogo de Alquiler para Profesionales - Construcciones y Servicios Jesús Ortiz";
+  const shareTitleOg = "Catálogo de Alquiler para Profesionales";
+  const shareBrand = "Construcciones y Servicios Jesús Ortiz";
+  const documentTitle = `${shareTitleOg} | ${shareBrand}`;
   const shareDesc =
     "Alquiler de maquinaria para construcción, trabajos agrícolas y particulares.";
   /** JPEG real (antes .png); mismas dimensiones que el archivo en /public. */
-  const ogImage = `${siteUrl}/alquiler-pro-hero-web.jpg?v=10`;
+  const ogImage = `${siteUrl}/alquiler-pro-hero-web.jpg?v=11`;
   const canonical = `${siteUrl}/alquiler-pro`;
 
   return {
@@ -27,7 +28,7 @@ function alquilerProShareHtmlPlugin(siteUrl: string): Plugin {
 
       let html = fs.readFileSync(indexPath, "utf-8");
 
-      html = html.replace(/<title>[^<]*<\/title>/, `<title>${attrEscape(shareTitle)}</title>`);
+      html = html.replace(/<title>[^<]*<\/title>/, `<title>${attrEscape(documentTitle)}</title>`);
 
       html = html.replace(/<meta\s+name="description"\s+content="[^"]*"\s*\/?>\s*/i, "");
 
@@ -38,8 +39,8 @@ function alquilerProShareHtmlPlugin(siteUrl: string): Plugin {
 
       const inject = `
     <meta name="description" content="${attrEscape(shareDesc)}" />
-    <meta property="og:title" content="${attrEscape(shareTitle)}" />
-    <meta property="og:site_name" content="Construcciones y Servicios Jesús Ortiz" />
+    <meta property="og:title" content="${attrEscape(shareTitleOg)}" />
+    <meta property="og:site_name" content="${attrEscape(shareBrand)}" />
     <meta property="og:description" content="${attrEscape(shareDesc)}" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="${attrEscape(canonical)}" />
@@ -49,9 +50,9 @@ function alquilerProShareHtmlPlugin(siteUrl: string): Plugin {
     <meta property="og:image:type" content="image/jpeg" />
     <meta property="og:image:width" content="666" />
     <meta property="og:image:height" content="232" />
-    <meta property="og:image:alt" content="${attrEscape(shareTitle)}" />
+    <meta property="og:image:alt" content="${attrEscape(documentTitle)}" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="${attrEscape(shareTitle)}" />
+    <meta name="twitter:title" content="${attrEscape(shareTitleOg)}" />
     <meta name="twitter:description" content="${attrEscape(shareDesc)}" />
     <meta name="twitter:image" content="${attrEscape(ogImage)}" />
     <link rel="image_src" href="${attrEscape(ogImage)}" />

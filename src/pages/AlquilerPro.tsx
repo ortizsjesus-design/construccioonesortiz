@@ -32,8 +32,12 @@ const ACCENT = "#1679F1";
 /** Verde marca WhatsApp */
 const WA_GREEN = "#25D366";
 
-const SHARE_TITLE =
-  "Catálogo de Alquiler para Profesionales - Construcciones y Servicios Jesús Ortiz";
+/** Línea principal al compartir (WhatsApp suele truncar títulos largos si van en un solo campo). */
+const SHARE_TITLE_OG = "Catálogo de Alquiler para Profesionales";
+/** Marca que Meta/WhatsApp muestran junto al título (`og:site_name`). */
+const SHARE_BRAND = "Construcciones y Servicios Jesús Ortiz";
+/** Pestaña del navegador y lectores de pantalla (nombre completo). */
+const DOCUMENT_TITLE = `${SHARE_TITLE_OG} | ${SHARE_BRAND}`;
 const HERO_BANNER_TITLE = "Servicios auxiliares para profesionales";
 const HERO_BANNER_SUBTITLE =
   "Alquiler de maquinaria para construcción, trabajos agrícolas y particulares";
@@ -41,7 +45,7 @@ const HERO_BANNER_SUBTITLE =
 const HERO_MOBILE_IMAGE = "/alquiler-pro-hero-mobile.png";
 const HERO_WEB_IMAGE = "/alquiler-pro-hero-web.jpg";
 /** Query para invalidar caché de redes sociales al cambiar el asset. */
-const HERO_IMAGE_QUERY = "?v=10";
+const HERO_IMAGE_QUERY = "?v=11";
 /** Dimensiones reales del JPEG (Meta/WhatsApp). */
 const OG_SHARE_IMAGE_WIDTH = 666;
 const OG_SHARE_IMAGE_HEIGHT = 232;
@@ -233,11 +237,11 @@ const AlquilerPro = () => {
       }}
     >
       <Helmet prioritizeSeoTags>
-        <title>{SHARE_TITLE}</title>
+        <title>{DOCUMENT_TITLE}</title>
         <meta name="description" content={HERO_BANNER_SUBTITLE} />
         <link rel="canonical" href={pageUrl} />
-        <meta property="og:title" content={SHARE_TITLE} />
-        <meta property="og:site_name" content="Construcciones y Servicios Jesús Ortiz" />
+        <meta property="og:title" content={SHARE_TITLE_OG} />
+        <meta property="og:site_name" content={SHARE_BRAND} />
         <meta property="og:description" content={HERO_BANNER_SUBTITLE} />
         <meta property="og:type" content="website" />
         <meta property="og:url" content={pageUrl} />
@@ -247,15 +251,15 @@ const AlquilerPro = () => {
         <meta property="og:image:type" content="image/jpeg" />
         <meta property="og:image:width" content={String(OG_SHARE_IMAGE_WIDTH)} />
         <meta property="og:image:height" content={String(OG_SHARE_IMAGE_HEIGHT)} />
-        <meta property="og:image:alt" content={SHARE_TITLE} />
+        <meta property="og:image:alt" content={DOCUMENT_TITLE} />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={SHARE_TITLE} />
+        <meta name="twitter:title" content={SHARE_TITLE_OG} />
         <meta name="twitter:description" content={HERO_BANNER_SUBTITLE} />
         <meta name="twitter:image" content={ogImageUrl} />
         <link rel="image_src" href={ogImageUrl} />
       </Helmet>
 
-      <h1 className="sr-only lg:hidden">{SHARE_TITLE}. {HERO_BANNER_SUBTITLE}</h1>
+      <h1 className="sr-only lg:hidden">{DOCUMENT_TITLE}. {HERO_BANNER_SUBTITLE}</h1>
 
       {/* Móvil / tablet: cabecera compacta original (sin ALQUILERES grande) */}
       <header className="no-print sticky top-0 z-30 border-b border-white/[0.08] bg-[#080b10]/95 backdrop-blur-md lg:hidden">
@@ -335,7 +339,7 @@ const AlquilerPro = () => {
                 ALQUILERES
                 <span className="sr-only">
                   {" "}
-                  — {SHARE_TITLE}. {HERO_BANNER_SUBTITLE}
+                  — {DOCUMENT_TITLE}. {HERO_BANNER_SUBTITLE}
                 </span>
               </h1>
               <p className="mt-2.5 max-w-xl text-[13px] font-medium leading-relaxed text-zinc-300 lg:max-w-[52rem] xl:text-sm xl:leading-relaxed">
