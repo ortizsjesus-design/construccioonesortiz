@@ -16,9 +16,11 @@ import logoOrtiz from "@/assets/logo-ortiz.png";
 import imgRipaR15 from "@/assets/miniexcavadora-ripa-r15.jpeg";
 import imgKingBull from "@/assets/miniexcavadora-kubota.png";
 import imgPlataforma from "@/assets/plataforma-elevadora.png";
+import imgPlataforma176 from "@/assets/plataforma-manitou-176at.png";
 import imgManitou from "@/assets/manipulador-telescopico.png";
 import imgRodillo from "@/assets/rodillo-compactador.png";
 import imgDumper from "@/assets/dumper-escalibur.png";
+import imgDumperAusa from "@/assets/dumper-ausa-d1500.png";
 import {
   Dialog,
   DialogContent,
@@ -93,6 +95,17 @@ const fleetMachinery: FleetMachine[] = [
     ],
   },
   {
+    id: "plataforma-manitou-176at",
+    name: "Plataforma elevadora de brazo articulado Manitou 176AT",
+    image: imgPlataforma176,
+    specs: [
+      "Versatilidad excepcional con gran alcance lateral",
+      "Altura de trabajo hasta 17,60 m",
+      "Cesta espaciosa y ergonómica para 2 operarios",
+      "Tracción 4x4 y eje oscilante para excelente maniobrabilidad",
+    ],
+  },
+  {
     id: "manitou",
     name: "Manipulador Manitou MT 1740",
     image: imgManitou,
@@ -116,6 +129,16 @@ const fleetMachinery: FleetMachine[] = [
       "Capacidad de carga para 1200 kilos",
       "Tolva giratoria",
       "Muy eficaz para trabajar en espacios reducidos",
+    ],
+  },
+  {
+    id: "dumper-ausa-d1500",
+    name: "Dumper giratorio 4x4 AUSA D1500",
+    image: imgDumperAusa,
+    specs: [
+      "Ideal para obras estrechas y terrenos difíciles",
+      "Volquete giratorio 180° de 1500 kg de capacidad",
+      "Tracción total 4x4 permanente",
     ],
   },
 ];

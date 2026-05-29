@@ -6,7 +6,9 @@ import maquinariaGeneral from "@/assets/maquinaria-general.png";
 import miniexcavadora from "@/assets/miniexcavadora-kubota.png";
 import miniexcavadoraRipa from "@/assets/miniexcavadora-ripa-r15.jpeg";
 import dumper from "@/assets/dumper-escalibur.png";
+import dumperAusa from "@/assets/dumper-ausa-d1500.png";
 import plataforma from "@/assets/plataforma-elevadora.png";
+import plataformaManitou176 from "@/assets/plataforma-manitou-176at.png";
 import manipulador from "@/assets/manipulador-telescopico.png";
 import rodillo from "@/assets/rodillo-compactador.png";
 
@@ -27,9 +29,19 @@ const machines = [
     image: dumper,
   },
   {
+    id: "dumper-ausa-d1500",
+    name: "Dumper giratorio 4x4 AUSA D1500 (1500 kg)",
+    image: dumperAusa,
+  },
+  {
     id: "plataforma",
     name: "Plataforma elevadora articulada 15,80 m",
     image: plataforma,
+  },
+  {
+    id: "plataforma-manitou-176at",
+    name: "Plataforma elevadora de brazo articulado Manitou 176AT",
+    image: plataformaManitou176,
   },
   {
     id: "manipulador",
