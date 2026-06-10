@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Home, Building2, Wrench, Truck, Leaf, Users } from "lucide-react";
+import { Home, Building2, Truck, Leaf, Users } from "lucide-react";
 import { scrollToElement } from "@/lib/scrollTo";
 
 const features = [
@@ -20,12 +20,6 @@ const features = [
     title: "Alquiler de maquinaria",
     description: "Equipos profesionales",
     href: "#maquinaria",
-  },
-  {
-    icon: Wrench,
-    title: "Mantenimiento, reparaciones y trabajos de bricolaje",
-    description: "Soluciones rápidas",
-    href: "#mantenimiento",
   },
   {
     icon: Leaf,
@@ -58,7 +52,7 @@ const Features = () => {
           <div className="w-20 h-1 bg-accent rounded-full mx-auto" />
         </motion.div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
           {features.map((feature, index) => (
             <motion.button
               key={feature.title}
