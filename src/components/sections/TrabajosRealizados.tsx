@@ -37,7 +37,6 @@ import bano2Antes from "@/assets/bano-2-antes.jpg";
 import bano2Despues from "@/assets/bano-2-despues.jpg";
 import bano3Antes from "@/assets/bano-3-antes.jpg";
 import bano3Despues from "@/assets/bano-3-despues.jpg";
-import trabajoManitas2 from "@/assets/trabajo-manitas-2.jpg";
 import murosPiedra from "@/assets/muros-piedra.jpg";
 
 // Nuevas imágenes - segunda tanda
@@ -205,11 +204,6 @@ const sections: Section[] = [
         id: 15,
         title: "Trabajos de albañilería",
         image: trabajosAlbanileria,
-      },
-      {
-        id: 17,
-        title: "Todo tipo de trabajos de bricolaje",
-        image: trabajoManitas2,
       },
     ],
   },

@@ -48,7 +48,6 @@ const About = () => {
               Más de 30 años de experiencia en el sector de la construcción y la reforma integral.
               Soluciones completas, planificación rigurosa y ejecución con altos estándares de calidad.
               Además, ponemos a disposición un servicio de alquiler de maquinaria para profesionales, particulares y trabajos agrícolas, garantizando fiabilidad, seguridad y rendimiento.
-              Completamos nuestra oferta con servicios de mantenimiento, reparación y pequeños trabajos de bricolaje para particulares y empresas.
             </p>
 
             <h3 className="text-xl font-semibold text-foreground mb-6">
