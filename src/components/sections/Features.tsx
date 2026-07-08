@@ -44,7 +44,7 @@ const iconContainerClass =
 
 const pulseTransition = {
   repeat: Infinity,
-  duration: 1.8,
+  duration: 1.5,
   ease: "easeInOut" as const,
 };
 
@@ -94,13 +94,13 @@ const Features = () => {
                 {hasPulse ? (
                   <motion.div
                     className={cn(iconContainerClass, "relative")}
-                    animate={{ scale: [1, 1.08, 1] }}
+                    animate={{ scale: [1, 1.1, 1] }}
                     transition={pulseTransition}
                   >
                     <motion.span
-                      className="absolute inset-0 rounded-lg bg-accent/20"
+                      className="absolute inset-0 rounded-lg bg-accent/25"
                       aria-hidden
-                      animate={{ opacity: [0.45, 0.1, 0.45], scale: [1, 1.1, 1] }}
+                      animate={{ opacity: [0.5, 0.12, 0.5], scale: [1, 1.14, 1] }}
                       transition={pulseTransition}
                     />
                     <feature.icon className="relative w-6 h-6 md:w-7 md:h-7 text-primary-foreground" />
