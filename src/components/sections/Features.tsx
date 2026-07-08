@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import { Home, Building2, Truck, Leaf, Users } from "lucide-react";
-import { useNavigate } from "react-router-dom";
 import { scrollToElement } from "@/lib/scrollTo";
 import { cn } from "@/lib/utils";
 
@@ -20,10 +19,11 @@ const features = [
   {
     icon: Truck,
     title: "Alquiler de maquinaria",
-    description: "Nueva maquinaria disponible",
+    description: "¡Nueva maquinaria disponible!",
     href: "/alquiler-pro",
     pulse: true,
     highlight: true,
+    openInNewTab: true,
   },
   {
     icon: Leaf,
@@ -42,15 +42,20 @@ const features = [
 const iconContainerClass =
   "w-12 h-12 md:w-14 md:h-14 rounded-lg bg-gradient-warm flex items-center justify-center mb-3 md:mb-4 mx-auto group-hover:scale-110 transition-transform duration-300";
 
-const Features = () => {
-  const navigate = useNavigate();
+const heartbeatTransition = {
+  repeat: Infinity,
+  duration: 1.1,
+  ease: "easeInOut" as const,
+  times: [0, 0.2, 0.35, 0.55, 1],
+};
 
-  const handleFeatureClick = (href: string) => {
-    if (href.startsWith("/")) {
-      navigate(href);
+const Features = () => {
+  const handleFeatureClick = (feature: (typeof features)[number]) => {
+    if ("openInNewTab" in feature && feature.openInNewTab) {
+      window.open(feature.href, "_blank", "noopener,noreferrer");
       return;
     }
-    scrollToElement(href);
+    scrollToElement(feature.href);
   };
 
   return (
@@ -70,50 +75,78 @@ const Features = () => {
         </motion.div>
 
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
-          {features.map((feature, index) => (
-            <motion.button
-              key={feature.title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1, duration: 0.5 }}
-              onClick={() => handleFeatureClick(feature.href)}
-              className={cn(
-                "group bg-background rounded-xl p-4 md:p-6 shadow-card hover:shadow-elevated transition-all duration-300 hover:-translate-y-1 text-center cursor-pointer overflow-hidden",
-                feature.highlight && "ring-1 ring-accent/25"
-              )}
-            >
-              {"pulse" in feature && feature.pulse ? (
-                <motion.div
-                  className={cn(iconContainerClass, "relative")}
-                  animate={{ scale: [1, 1.05, 1] }}
-                  transition={{ repeat: Infinity, duration: 2.2, ease: "easeInOut" }}
-                >
+          {features.map((feature, index) => {
+            const isHighlighted = "highlight" in feature && feature.highlight;
+            const hasPulse = "pulse" in feature && feature.pulse;
+
+            return (
+              <motion.button
+                key={feature.title}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1, duration: 0.5 }}
+                onClick={() => handleFeatureClick(feature)}
+                animate={
+                  isHighlighted
+                    ? {
+                        scale: [1, 1.03, 1, 1.02, 1],
+                        boxShadow: [
+                          "0 0 0 0 hsl(205 85% 45% / 0.55)",
+                          "0 0 0 10px hsl(205 85% 45% / 0)",
+                          "0 0 0 0 hsl(205 85% 45% / 0.45)",
+                          "0 0 0 6px hsl(205 85% 45% / 0)",
+                          "0 0 0 0 hsl(205 85% 45% / 0.55)",
+                        ],
+                      }
+                    : undefined
+                }
+                transition={isHighlighted ? heartbeatTransition : undefined}
+                className={cn(
+                  "group bg-background rounded-xl p-4 md:p-6 shadow-card hover:shadow-elevated transition-colors duration-300 hover:-translate-y-1 text-center cursor-pointer overflow-visible",
+                  isHighlighted && "ring-2 ring-accent bg-accent/5 shadow-elevated z-10"
+                )}
+              >
+                {hasPulse ? (
+                  <motion.div
+                    className={cn(iconContainerClass, "relative")}
+                    animate={{ scale: [1, 1.2, 1, 1.12, 1] }}
+                    transition={heartbeatTransition}
+                  >
+                    <span
+                      className="absolute inset-0 rounded-lg bg-accent/40 animate-ping"
+                      aria-hidden
+                    />
+                    <span
+                      className="absolute -inset-1 rounded-xl bg-accent/25 animate-ping [animation-delay:300ms]"
+                      aria-hidden
+                    />
+                    <feature.icon className="relative w-6 h-6 md:w-7 md:h-7 text-primary-foreground drop-shadow-sm" />
+                  </motion.div>
+                ) : (
+                  <div className={iconContainerClass}>
+                    <feature.icon className="w-6 h-6 md:w-7 md:h-7 text-primary-foreground" />
+                  </div>
+                )}
+                <h3 className="text-xs md:text-base font-semibold text-foreground mb-1 break-words hyphens-auto leading-tight">
+                  {feature.title}
+                </h3>
+                {isHighlighted ? (
                   <motion.span
-                    className="absolute inset-0 rounded-lg bg-accent/15"
-                    aria-hidden
-                    animate={{ opacity: [0.5, 0.15, 0.5], scale: [1, 1.12, 1] }}
-                    transition={{ repeat: Infinity, duration: 2.2, ease: "easeInOut" }}
-                  />
-                  <feature.icon className="relative w-6 h-6 md:w-7 md:h-7 text-primary-foreground" />
-                </motion.div>
-              ) : (
-                <div className={iconContainerClass}>
-                  <feature.icon className="w-6 h-6 md:w-7 md:h-7 text-primary-foreground" />
-                </div>
-              )}
-              <h3 className="text-xs md:text-base font-semibold text-foreground mb-1 break-words hyphens-auto leading-tight">
-                {feature.title}
-              </h3>
-              {"highlight" in feature && feature.highlight ? (
-                <span className="inline-block mt-0.5 text-[10px] md:text-xs font-bold uppercase tracking-wide text-accent bg-accent/10 px-2 py-1 rounded-full ring-1 ring-accent/30 leading-tight">
-                  {feature.description}
-                </span>
-              ) : (
-                <p className="text-xs md:text-sm text-muted-foreground leading-tight">{feature.description}</p>
-              )}
-            </motion.button>
-          ))}
+                    animate={{ scale: [1, 1.08, 1], opacity: [1, 0.85, 1] }}
+                    transition={heartbeatTransition}
+                    className="inline-block mt-1 text-[10px] md:text-sm font-extrabold uppercase tracking-wide text-white bg-accent px-2.5 py-1.5 rounded-full shadow-lg ring-2 ring-accent/50 leading-tight"
+                  >
+                    {feature.description}
+                  </motion.span>
+                ) : (
+                  <p className="text-xs md:text-sm text-muted-foreground leading-tight">
+                    {feature.description}
+                  </p>
+                )}
+              </motion.button>
+            );
+          })}
         </div>
       </div>
     </section>
