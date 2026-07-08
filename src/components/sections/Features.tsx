@@ -1,6 +1,8 @@
 import { motion } from "framer-motion";
 import { Home, Building2, Truck, Leaf, Users } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import { scrollToElement } from "@/lib/scrollTo";
+import { cn } from "@/lib/utils";
 
 const features = [
   {
@@ -18,8 +20,10 @@ const features = [
   {
     icon: Truck,
     title: "Alquiler de maquinaria",
-    description: "Equipos profesionales",
-    href: "#maquinaria",
+    description: "Nueva maquinaria disponible",
+    href: "/alquiler-pro",
+    pulse: true,
+    highlight: true,
   },
   {
     icon: Leaf,
@@ -35,7 +39,20 @@ const features = [
   },
 ];
 
+const iconContainerClass =
+  "w-12 h-12 md:w-14 md:h-14 rounded-lg bg-gradient-warm flex items-center justify-center mb-3 md:mb-4 mx-auto group-hover:scale-110 transition-transform duration-300";
+
 const Features = () => {
+  const navigate = useNavigate();
+
+  const handleFeatureClick = (href: string) => {
+    if (href.startsWith("/")) {
+      navigate(href);
+      return;
+    }
+    scrollToElement(href);
+  };
+
   return (
     <section id="servicios" className="pt-4 pb-8 md:pt-8 md:pb-16 bg-muted/30">
       <div className="container mx-auto px-6">
@@ -60,16 +77,41 @@ const Features = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1, duration: 0.5 }}
-              onClick={() => scrollToElement(feature.href)}
-              className="group bg-background rounded-xl p-4 md:p-6 shadow-card hover:shadow-elevated transition-all duration-300 hover:-translate-y-1 text-center cursor-pointer overflow-hidden"
+              onClick={() => handleFeatureClick(feature.href)}
+              className={cn(
+                "group bg-background rounded-xl p-4 md:p-6 shadow-card hover:shadow-elevated transition-all duration-300 hover:-translate-y-1 text-center cursor-pointer overflow-hidden",
+                feature.highlight && "ring-1 ring-accent/25"
+              )}
             >
-              <div className="w-12 h-12 md:w-14 md:h-14 rounded-lg bg-gradient-warm flex items-center justify-center mb-3 md:mb-4 mx-auto group-hover:scale-110 transition-transform duration-300">
-                <feature.icon className="w-6 h-6 md:w-7 md:h-7 text-primary-foreground" />
-              </div>
+              {"pulse" in feature && feature.pulse ? (
+                <motion.div
+                  className={cn(iconContainerClass, "relative")}
+                  animate={{ scale: [1, 1.05, 1] }}
+                  transition={{ repeat: Infinity, duration: 2.2, ease: "easeInOut" }}
+                >
+                  <motion.span
+                    className="absolute inset-0 rounded-lg bg-accent/15"
+                    aria-hidden
+                    animate={{ opacity: [0.5, 0.15, 0.5], scale: [1, 1.12, 1] }}
+                    transition={{ repeat: Infinity, duration: 2.2, ease: "easeInOut" }}
+                  />
+                  <feature.icon className="relative w-6 h-6 md:w-7 md:h-7 text-primary-foreground" />
+                </motion.div>
+              ) : (
+                <div className={iconContainerClass}>
+                  <feature.icon className="w-6 h-6 md:w-7 md:h-7 text-primary-foreground" />
+                </div>
+              )}
               <h3 className="text-xs md:text-base font-semibold text-foreground mb-1 break-words hyphens-auto leading-tight">
                 {feature.title}
               </h3>
-              <p className="text-xs md:text-sm text-muted-foreground leading-tight">{feature.description}</p>
+              {"highlight" in feature && feature.highlight ? (
+                <span className="inline-block mt-0.5 text-[10px] md:text-xs font-bold uppercase tracking-wide text-accent bg-accent/10 px-2 py-1 rounded-full ring-1 ring-accent/30 leading-tight">
+                  {feature.description}
+                </span>
+              ) : (
+                <p className="text-xs md:text-sm text-muted-foreground leading-tight">{feature.description}</p>
+              )}
             </motion.button>
           ))}
         </div>
