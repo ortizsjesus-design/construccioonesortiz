@@ -42,11 +42,10 @@ const features = [
 const iconContainerClass =
   "w-12 h-12 md:w-14 md:h-14 rounded-lg bg-gradient-warm flex items-center justify-center mb-3 md:mb-4 mx-auto group-hover:scale-110 transition-transform duration-300";
 
-const heartbeatTransition = {
+const pulseTransition = {
   repeat: Infinity,
-  duration: 1.1,
+  duration: 1.8,
   ease: "easeInOut" as const,
-  times: [0, 0.2, 0.35, 0.55, 1],
 };
 
 const Features = () => {
@@ -87,41 +86,24 @@ const Features = () => {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1, duration: 0.5 }}
                 onClick={() => handleFeatureClick(feature)}
-                animate={
-                  isHighlighted
-                    ? {
-                        scale: [1, 1.03, 1, 1.02, 1],
-                        boxShadow: [
-                          "0 0 0 0 hsl(205 85% 45% / 0.55)",
-                          "0 0 0 10px hsl(205 85% 45% / 0)",
-                          "0 0 0 0 hsl(205 85% 45% / 0.45)",
-                          "0 0 0 6px hsl(205 85% 45% / 0)",
-                          "0 0 0 0 hsl(205 85% 45% / 0.55)",
-                        ],
-                      }
-                    : undefined
-                }
-                transition={isHighlighted ? heartbeatTransition : undefined}
                 className={cn(
-                  "group bg-background rounded-xl p-4 md:p-6 shadow-card hover:shadow-elevated transition-colors duration-300 hover:-translate-y-1 text-center cursor-pointer overflow-visible",
-                  isHighlighted && "ring-2 ring-accent bg-accent/5 shadow-elevated z-10"
+                  "group bg-background rounded-xl p-4 md:p-6 shadow-card hover:shadow-elevated transition-all duration-300 hover:-translate-y-1 text-center cursor-pointer overflow-hidden",
+                  isHighlighted && "ring-1 ring-accent/35"
                 )}
               >
                 {hasPulse ? (
                   <motion.div
                     className={cn(iconContainerClass, "relative")}
-                    animate={{ scale: [1, 1.2, 1, 1.12, 1] }}
-                    transition={heartbeatTransition}
+                    animate={{ scale: [1, 1.08, 1] }}
+                    transition={pulseTransition}
                   >
-                    <span
-                      className="absolute inset-0 rounded-lg bg-accent/40 animate-ping"
+                    <motion.span
+                      className="absolute inset-0 rounded-lg bg-accent/20"
                       aria-hidden
+                      animate={{ opacity: [0.45, 0.1, 0.45], scale: [1, 1.1, 1] }}
+                      transition={pulseTransition}
                     />
-                    <span
-                      className="absolute -inset-1 rounded-xl bg-accent/25 animate-ping [animation-delay:300ms]"
-                      aria-hidden
-                    />
-                    <feature.icon className="relative w-6 h-6 md:w-7 md:h-7 text-primary-foreground drop-shadow-sm" />
+                    <feature.icon className="relative w-6 h-6 md:w-7 md:h-7 text-primary-foreground" />
                   </motion.div>
                 ) : (
                   <div className={iconContainerClass}>
@@ -132,13 +114,9 @@ const Features = () => {
                   {feature.title}
                 </h3>
                 {isHighlighted ? (
-                  <motion.span
-                    animate={{ scale: [1, 1.08, 1], opacity: [1, 0.85, 1] }}
-                    transition={heartbeatTransition}
-                    className="inline-block mt-1 text-[10px] md:text-sm font-extrabold uppercase tracking-wide text-white bg-accent px-2.5 py-1.5 rounded-full shadow-lg ring-2 ring-accent/50 leading-tight"
-                  >
+                  <span className="inline-block mt-1 text-[10px] md:text-xs font-bold uppercase tracking-wide text-accent bg-accent/15 px-2 py-1 rounded-full ring-1 ring-accent/40 leading-tight">
                     {feature.description}
-                  </motion.span>
+                  </span>
                 ) : (
                   <p className="text-xs md:text-sm text-muted-foreground leading-tight">
                     {feature.description}
