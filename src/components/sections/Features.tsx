@@ -114,9 +114,13 @@ const Features = () => {
                   {feature.title}
                 </h3>
                 {isHighlighted ? (
-                  <span className="inline-block mt-1 text-[10px] md:text-xs font-bold uppercase tracking-wide text-accent bg-accent/15 px-2 py-1 rounded-full ring-1 ring-accent/40 leading-tight">
+                  <motion.span
+                    animate={{ scale: [1, 1.05, 1], opacity: [1, 0.88, 1] }}
+                    transition={pulseTransition}
+                    className="inline-block mt-1 text-[10px] md:text-xs font-bold uppercase tracking-wide text-accent bg-accent/15 px-2 py-1 rounded-full ring-1 ring-accent/40 leading-tight"
+                  >
                     {feature.description}
-                  </span>
+                  </motion.span>
                 ) : (
                   <p className="text-xs md:text-sm text-muted-foreground leading-tight">
                     {feature.description}
