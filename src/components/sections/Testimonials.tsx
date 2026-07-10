@@ -6,6 +6,22 @@ import useEmblaCarousel from "embla-carousel-react";
 
 const reviews = [
   {
+    name: "Cesar Peña",
+    text: "Muy recomendable. Persona seria, puntual y muy colaboradora.\n\nAlquilé una retro de 1.500 kilos y un camión con volquete, todo perfecto. Seguro volveré a contar con sus servicios.",
+  },
+  {
+    name: "RiojaRuralRooms",
+    text: "Súper recomendables. Serios, eficaces y un trato exquisito. Grandes profesionales!!",
+  },
+  {
+    name: "eko kia",
+    text: "Tienen un buen equipo de trabajo, todo lo coordinan bien, son muy eficientes.\n\nDiversidad de maquinaria reduciendo tiempo de ejecución de la obra. Han hecho un buen trabajo, muy profesionales. Volveré a contar con ellos.",
+  },
+  {
+    name: "Gloria Nicasio",
+    text: "Una experiencia perfecta. Volveremos a contar con sus servicios, súper recomendables. Gracias por todo!!!",
+  },
+  {
     name: "Cristina Muguruza",
     text: "Acertadísima decisión la que escogimos en contratar a Ortiz.\n\nCon experiencia propia por nuestros negocios hosteleros; la seriedad, calidad de trabajo y precio muy correcto a su labor también hecha.\n\nSolo repito, MUY AGRADECIDOS. Les recomendaré siempre.",
   },
@@ -19,7 +35,7 @@ const reviews = [
   },
   {
     name: "Monica Carballo",
-    text: "Hace un mes nos hicieron una piscina en Cuzcurrita del Rio Tiron, y quedo preciosa son muy buenos professionals nos asesoraron muy bien sin duda Les volvere a llamar",
+    text: "Nos hicieron una piscina en Cuzcurrita del Rio Tiron, y quedó preciosa. Son muy buenos profesionales, nos asesoraron muy bien. Sin duda les volveré a llamar.",
   },
   {
     name: "cerdeña",
@@ -36,22 +52,18 @@ const reviews = [
   {
     name: "Maria Esther Santamaria Fernandez",
     text: "Servicios chapeau. Trato impresionante. Super recomendable.",
-    date: "Hace un día",
   },
   {
     name: "Beatriz Benitez",
     text: "Gente muy amable, trabajadores incansables merecen la pena",
-    date: "Hace 23 horas",
   },
   {
     name: "Carlos Ortiz",
     text: "Seriedad y compromiso. Un gusto trabajar con esta gente.",
-    date: "Hace un día",
   },
   {
     name: "Smathex Smathex",
     text: "Grandes profesionales",
-    date: "Hace un día",
   },
 ];
 
@@ -164,16 +176,6 @@ const Testimonials = () => {
                         <span className="text-xs text-muted-foreground">
                           Reseña de Google
                         </span>
-                        {review.date && (
-                          <>
-                            <span className="text-xs text-muted-foreground">
-                              ·
-                            </span>
-                            <span className="text-xs text-muted-foreground">
-                              {review.date}
-                            </span>
-                          </>
-                        )}
                       </div>
                     </div>
                   </div>
