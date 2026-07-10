@@ -4,6 +4,8 @@ import { Star, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import useEmblaCarousel from "embla-carousel-react";
 
+const GOOGLE_REVIEW_COUNT = 17;
+
 const reviews = [
   {
     name: "Cesar Peña",
@@ -120,12 +122,19 @@ const Testimonials = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-3">
-            Opiniones
-          </h2>
+          <div className="flex items-center justify-center gap-3 mb-3">
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground">
+              Opiniones
+            </h2>
+            <span className="inline-flex items-center justify-center min-w-9 h-9 px-3 rounded-full bg-primary/10 text-primary text-base font-bold tabular-nums">
+              {GOOGLE_REVIEW_COUNT}
+            </span>
+          </div>
           <div className="flex items-center justify-center gap-1.5 text-muted-foreground">
             <Stars />
-            <span className="text-sm font-medium ml-1">5/5 en Google</span>
+            <span className="text-sm font-medium ml-1">
+              {GOOGLE_REVIEW_COUNT} opiniones de 5 estrellas en Google
+            </span>
           </div>
         </motion.div>
 
