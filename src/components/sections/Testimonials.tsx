@@ -69,11 +69,28 @@ const reviews = [
   },
 ];
 
-const Stars = () => (
+const pulseTransition = {
+  repeat: Infinity,
+  duration: 1.5,
+  ease: "easeInOut" as const,
+};
+
+const Stars = ({ pulse = false }: { pulse?: boolean }) => (
   <div className="flex gap-0.5">
-    {[...Array(5)].map((_, i) => (
-      <Star key={i} className="w-4 h-4 fill-amber-400 text-amber-400" />
-    ))}
+    {[...Array(5)].map((_, i) =>
+      pulse ? (
+        <motion.span
+          key={i}
+          animate={{ scale: [1, 1.1, 1], opacity: [1, 0.88, 1] }}
+          transition={{ ...pulseTransition, delay: i * 0.1 }}
+          className="inline-flex"
+        >
+          <Star className="w-4 h-4 fill-amber-400 text-amber-400" />
+        </motion.span>
+      ) : (
+        <Star key={i} className="w-4 h-4 fill-amber-400 text-amber-400" />
+      )
+    )}
   </div>
 );
 
@@ -122,16 +139,11 @@ const Testimonials = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <div className="flex items-center justify-center gap-3 mb-3">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground">
-              Opiniones
-            </h2>
-            <span className="inline-flex items-center justify-center min-w-9 h-9 px-3 rounded-full bg-primary/10 text-primary text-base font-bold tabular-nums">
-              {GOOGLE_REVIEW_COUNT}
-            </span>
-          </div>
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-3">
+            Opiniones
+          </h2>
           <div className="flex items-center justify-center gap-1.5 text-muted-foreground">
-            <Stars />
+            <Stars pulse />
             <span className="text-sm font-medium ml-1">
               {GOOGLE_REVIEW_COUNT} opiniones de 5 estrellas en Google
             </span>
