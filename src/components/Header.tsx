@@ -18,9 +18,46 @@ const navLinks = [
 
 const pulseTransition = {
   repeat: Infinity,
-  duration: 1.5,
+  duration: 1.2,
   ease: "easeInOut" as const,
 };
+
+const AlquilerNavButton = ({
+  onClick,
+  twoLine = false,
+  className,
+}: {
+  onClick: () => void;
+  twoLine?: boolean;
+  className?: string;
+}) => (
+  <motion.button
+    onClick={onClick}
+    animate={{
+      scale: [1, 1.1, 1],
+      opacity: [1, 0.78, 1],
+      textShadow: [
+        "0 0 0 hsl(205 85% 45% / 0)",
+        "0 0 10px hsl(205 85% 45% / 0.55)",
+        "0 0 0 hsl(205 85% 45% / 0)",
+      ],
+    }}
+    transition={pulseTransition}
+    className={cn(
+      "font-bold text-accent transition-colors hover:text-accent/80",
+      className
+    )}
+  >
+    {twoLine ? (
+      <span className="flex flex-col items-center leading-[1.05] text-center">
+        <span>Alquiler</span>
+        <span>maquinaria</span>
+      </span>
+    ) : (
+      "Alquiler maquinaria"
+    )}
+  </motion.button>
+);
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -44,11 +81,6 @@ const Header = () => {
     setIsMobileMenuOpen(false);
     window.open(ALQUILER_PRO_URL, "_blank", "noopener,noreferrer");
   };
-
-  const alquilerNavClassName = cn(
-    "font-semibold text-accent transition-colors hover:text-accent/80 whitespace-nowrap",
-    "text-[13px] xl:text-sm px-1 xl:px-2"
-  );
 
   return (
     <motion.header
@@ -89,15 +121,12 @@ const Header = () => {
           </a>
 
           {/* Desktop Navigation - Derecha */}
-          <nav className="hidden lg:flex items-center gap-1 xl:gap-2 flex-shrink-0">
-            <motion.button
+          <nav className="hidden lg:flex items-center gap-0.5 xl:gap-1 flex-shrink min-w-0">
+            <AlquilerNavButton
               onClick={openAlquilerPro}
-              animate={{ scale: [1, 1.05, 1], opacity: [1, 0.88, 1] }}
-              transition={pulseTransition}
-              className={alquilerNavClassName}
-            >
-              Alquiler maquinaria
-            </motion.button>
+              twoLine
+              className="text-[11px] xl:text-xs px-1 xl:px-1.5 shrink-0"
+            />
             {navLinks.map((link) => (
               <button
                 key={link.href}
@@ -139,14 +168,10 @@ const Header = () => {
           className="lg:hidden bg-background border-t border-border"
         >
           <nav className="container mx-auto px-6 py-4 flex flex-col gap-4">
-            <motion.button
+            <AlquilerNavButton
               onClick={openAlquilerPro}
-              animate={{ scale: [1, 1.05, 1], opacity: [1, 0.88, 1] }}
-              transition={pulseTransition}
-              className="text-left text-accent font-semibold hover:text-accent/80 py-2 transition-colors text-base"
-            >
-              Alquiler maquinaria
-            </motion.button>
+              className="text-left py-2 text-base"
+            />
             {navLinks.map((link) => (
               <button
                 key={link.href}
