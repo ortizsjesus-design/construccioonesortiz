@@ -4,6 +4,9 @@ import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import logoOrtiz from "@/assets/logo-ortiz.png";
 import { scrollToElement } from "@/lib/scrollTo";
+import { cn } from "@/lib/utils";
+
+const ALQUILER_PRO_URL = "/alquiler-pro";
 
 const navLinks = [
   { href: "#servicios", label: "Servicios" },
@@ -12,6 +15,12 @@ const navLinks = [
   { href: "#empresa", label: "Empresa" },
   { href: "#contacto", label: "Contacto" },
 ];
+
+const pulseTransition = {
+  repeat: Infinity,
+  duration: 1.5,
+  ease: "easeInOut" as const,
+};
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -30,6 +39,16 @@ const Header = () => {
     setIsMobileMenuOpen(false);
     scrollToElement(href);
   };
+
+  const openAlquilerPro = () => {
+    setIsMobileMenuOpen(false);
+    window.open(ALQUILER_PRO_URL, "_blank", "noopener,noreferrer");
+  };
+
+  const alquilerNavClassName = cn(
+    "font-semibold text-accent transition-colors hover:text-accent/80 whitespace-nowrap",
+    "text-[13px] xl:text-sm px-1 xl:px-2"
+  );
 
   return (
     <motion.header
@@ -52,16 +71,16 @@ const Header = () => {
               window.scrollTo({ top: 0, behavior: "smooth" });
             }}
           >
-            <img 
-              src={logoOrtiz} 
-              alt="Logo Construcciones y Servicios Jesús Ortiz" 
+            <img
+              src={logoOrtiz}
+              alt="Logo Construcciones y Servicios Jesús Ortiz"
               className="h-24 sm:h-28 md:h-32 lg:h-28 xl:h-32 w-auto object-contain"
               width={320}
               height={128}
               fetchPriority="high"
               decoding="sync"
             />
-            <span 
+            <span
               className="text-sm sm:text-base md:text-lg lg:text-base xl:text-lg font-bold leading-tight max-w-[160px] sm:max-w-none lg:max-w-[180px] xl:max-w-none lg:mr-8 xl:mr-12"
               style={{ color: "#000000" }}
             >
@@ -71,6 +90,14 @@ const Header = () => {
 
           {/* Desktop Navigation - Derecha */}
           <nav className="hidden lg:flex items-center gap-1 xl:gap-2 flex-shrink-0">
+            <motion.button
+              onClick={openAlquilerPro}
+              animate={{ scale: [1, 1.05, 1], opacity: [1, 0.88, 1] }}
+              transition={pulseTransition}
+              className={alquilerNavClassName}
+            >
+              Alquiler maquinaria
+            </motion.button>
             {navLinks.map((link) => (
               <button
                 key={link.href}
@@ -112,6 +139,14 @@ const Header = () => {
           className="lg:hidden bg-background border-t border-border"
         >
           <nav className="container mx-auto px-6 py-4 flex flex-col gap-4">
+            <motion.button
+              onClick={openAlquilerPro}
+              animate={{ scale: [1, 1.05, 1], opacity: [1, 0.88, 1] }}
+              transition={pulseTransition}
+              className="text-left text-accent font-semibold hover:text-accent/80 py-2 transition-colors text-base"
+            >
+              Alquiler maquinaria
+            </motion.button>
             {navLinks.map((link) => (
               <button
                 key={link.href}
