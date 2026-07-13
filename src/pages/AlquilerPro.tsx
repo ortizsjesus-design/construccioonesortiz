@@ -96,11 +96,11 @@ const fleetMachinery: FleetMachine[] = [
   },
   {
     id: "plataforma-manitou-176at",
-    name: "Plataforma elevadora de brazo articulado Manitou 176AT",
+    name: "MANITOU 180ATJ (M02152)",
     image: imgPlataforma176,
     specs: [
       "Versatilidad excepcional con gran alcance lateral",
-      "Altura de trabajo hasta 17,60 m",
+      "Brazo diesel de 17,65 metros",
       "Cesta espaciosa y ergonómica para 2 operarios",
       "Tracción 4x4 y eje oscilante para excelente maniobrabilidad",
     ],

@@ -40,7 +40,7 @@ const machines = [
   },
   {
     id: "plataforma-manitou-176at",
-    name: "Plataforma elevadora de brazo articulado Manitou 176AT",
+    name: "MANITOU 180ATJ (M02152)",
     image: plataformaManitou176,
   },
   {
