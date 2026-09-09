@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Home, Building2, Truck, Leaf, Users } from "lucide-react";
+import { Home, Building2, Truck, Leaf, Users, Building } from "lucide-react";
 import { scrollToElement } from "@/lib/scrollTo";
 import { cn } from "@/lib/utils";
 
@@ -13,6 +13,11 @@ const features = [
     icon: Building2,
     title: "Construcción obra nueva",
     href: "#construccion",
+  },
+  {
+    icon: Building,
+    title: "Obra Civil",
+    href: "#obra-civil",
   },
   {
     icon: Truck,
@@ -68,7 +73,7 @@ const Features = () => {
           <div className="w-20 h-1 bg-accent rounded-full mx-auto" />
         </motion.div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
           {features.map((feature, index) => {
             const isHighlighted = "highlight" in feature && feature.highlight;
             const hasPulse = "pulse" in feature && feature.pulse;
