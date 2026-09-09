@@ -105,7 +105,7 @@ const Features = () => {
                     <feature.icon className="w-6 h-6 md:w-7 md:h-7 text-primary-foreground" />
                   </div>
                 )}
-                <h3 className="text-xs md:text-base font-semibold text-foreground break-words hyphens-auto leading-tight">
+                <h3 className="text-xs md:text-base font-semibold text-foreground hyphens-none leading-tight">
                   {feature.title}
                 </h3>
               </motion.button>
