@@ -40,11 +40,8 @@ import bano3Despues from "@/assets/bano-3-despues.jpg";
 import murosPiedra from "@/assets/muros-piedra.jpg";
 
 // Nuevas imágenes - segunda tanda
-import vivienda1Antes from "@/assets/vivienda-1-antes.jpg";
-import vivienda1Despues from "@/assets/vivienda-1-despues.jpg";
 import vivienda2Antes from "@/assets/vivienda-2-antes.jpg";
 import vivienda2Despues from "@/assets/vivienda-2-despues.jpg";
-import murosPiedraExterior from "@/assets/muros-piedra-exterior.jpg";
 import alicatadosExteriores from "@/assets/alicatados-exteriores.jpg";
 import trabajosAlbanileria from "@/assets/trabajos-albanileria.jpg";
 import localEsteticaAntes from "@/assets/local-estetica-antes.jpg";
@@ -96,14 +93,8 @@ const sections: Section[] = [
     title: "Reforma integral de viviendas",
     items: [
       {
-        id: 1,
-        title: "Reforma integral vivienda 1",
-        before: vivienda1Antes,
-        after: vivienda1Despues,
-      },
-      {
         id: 2,
-        title: "Reforma integral vivienda 2",
+        title: "Reforma integral vivienda",
         before: vivienda2Antes,
         after: vivienda2Despues,
       },
@@ -264,11 +255,6 @@ const sections: Section[] = [
         id: 27,
         title: "Muros de piedra",
         image: murosPiedra,
-      },
-      {
-        id: 28,
-        title: "Muros de piedra exterior",
-        image: murosPiedraExterior,
       },
       {
         id: 29,
