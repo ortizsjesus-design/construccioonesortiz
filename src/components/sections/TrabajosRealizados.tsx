@@ -285,7 +285,7 @@ const sections: Section[] = [
     items: [
       {
         id: 30,
-        title: "Estructura techumbre",
+        title: "Estructura de cubierta rehabilitada",
         before: antesEstructuraTechumbre,
         after: proyectoVigasMadera,
       },
