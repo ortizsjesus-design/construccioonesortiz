@@ -7,19 +7,16 @@ const features = [
   {
     icon: Home,
     title: "Reformas integrales",
-    description: "Viviendas, locales y baños",
     href: "#reformas",
   },
   {
     icon: Building2,
     title: "Construcción obra nueva",
-    description: "Cimentación, estructura y acabados",
     href: "#construccion",
   },
   {
     icon: Truck,
     title: "Alquiler de maquinaria",
-    description: "¡Nueva maquinaria disponible!",
     href: "/alquiler-pro",
     pulse: true,
     highlight: true,
@@ -28,13 +25,11 @@ const features = [
   {
     icon: Leaf,
     title: "Instalación de césped artificial",
-    description: "Jardines y espacios verdes",
     href: "#cesped-artificial",
   },
   {
     icon: Users,
     title: "Coordinación de Gremios",
-    description: "Gestión integral de oficios",
     href: "#coordinacion-gremios",
   },
 ];
@@ -110,22 +105,9 @@ const Features = () => {
                     <feature.icon className="w-6 h-6 md:w-7 md:h-7 text-primary-foreground" />
                   </div>
                 )}
-                <h3 className="text-xs md:text-base font-semibold text-foreground mb-1 break-words hyphens-auto leading-tight">
+                <h3 className="text-xs md:text-base font-semibold text-foreground break-words hyphens-auto leading-tight">
                   {feature.title}
                 </h3>
-                {isHighlighted ? (
-                  <motion.span
-                    animate={{ scale: [1, 1.05, 1], opacity: [1, 0.88, 1] }}
-                    transition={pulseTransition}
-                    className="inline-block mt-1 text-[10px] md:text-xs font-bold uppercase tracking-wide text-accent bg-accent/15 px-2 py-1 rounded-full ring-1 ring-accent/40 leading-tight"
-                  >
-                    {feature.description}
-                  </motion.span>
-                ) : (
-                  <p className="text-xs md:text-sm text-muted-foreground leading-tight">
-                    {feature.description}
-                  </p>
-                )}
               </motion.button>
             );
           })}
