@@ -37,7 +37,6 @@ import bano2Antes from "@/assets/bano-2-antes.jpg";
 import bano2Despues from "@/assets/bano-2-despues.jpg";
 import bano3Antes from "@/assets/bano-3-antes.jpg";
 import bano3Despues from "@/assets/bano-3-despues.jpg";
-import murosPiedra from "@/assets/muros-piedra.jpg";
 
 // Nuevas imágenes - segunda tanda
 import vivienda2Antes from "@/assets/vivienda-2-antes.jpg";
@@ -230,11 +229,6 @@ const sections: Section[] = [
         id: 26,
         title: "Fachada piedra terminada",
         image: fachadasTrabajo2,
-      },
-      {
-        id: 27,
-        title: "Muros de piedra",
-        image: murosPiedra,
       },
       {
         id: 29,
