@@ -42,8 +42,6 @@ import murosPiedra from "@/assets/muros-piedra.jpg";
 // Nuevas imágenes - segunda tanda
 import vivienda2Antes from "@/assets/vivienda-2-antes.jpg";
 import vivienda2Despues from "@/assets/vivienda-2-despues.jpg";
-import alicatadosExteriores from "@/assets/alicatados-exteriores.jpg";
-import trabajosAlbanileria from "@/assets/trabajos-albanileria.jpg";
 import localEsteticaAntes from "@/assets/local-estetica-antes.jpg";
 import localEsteticaDespues from "@/assets/local-estetica-despues.jpg";
 
@@ -57,7 +55,6 @@ import fachadasTrabajo from "@/assets/fachadas-trabajo.jpg";
 import fachadasTrabajo2 from "@/assets/fachadas-trabajo-2.jpg";
 import vivienda3Antes from "@/assets/vivienda-3-antes.png";
 import vivienda3Despues from "@/assets/vivienda-3-despues.jpg";
-import alicatadoInterior2 from "@/assets/alicatado-interior-2.png";
 
 // Nuevas imágenes - sexta tanda
 import bano4 from "@/assets/bano-4.webp";
@@ -174,29 +171,12 @@ const sections: Section[] = [
   {
     id: "solados",
     title: "Solados y alicatados",
-    items: [
-      {
-        id: 13,
-        title: "Alicatados exteriores",
-        image: alicatadosExteriores,
-      },
-      {
-        id: 14,
-        title: "Alicatados interiores",
-        image: alicatadoInterior2,
-      },
-    ],
+    items: [],
   },
   {
     id: "albanileria",
     title: "Albañilería",
-    items: [
-      {
-        id: 15,
-        title: "Trabajos de albañilería",
-        image: trabajosAlbanileria,
-      },
-    ],
+    items: [],
   },
   {
     id: "cimentacion",

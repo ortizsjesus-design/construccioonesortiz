@@ -1,13 +1,14 @@
 import { motion } from "framer-motion";
 import { Home, Store, Bath, Grid3X3, Hammer, Mountain } from "lucide-react";
 import { scrollToElement } from "@/lib/scrollTo";
+import { cn } from "@/lib/utils";
 
 const services = [
   { icon: Home, title: "Viviendas", description: "Reformas completas de hogares", sectionId: "viviendas" },
   { icon: Store, title: "Locales comerciales", description: "Adaptación y renovación", sectionId: "locales" },
   { icon: Bath, title: "Baños y cocinas", description: "Instalaciones modernas", sectionId: "banos-cocinas" },
-  { icon: Grid3X3, title: "Solados y alicatados", description: "Pavimentos y revestimientos", sectionId: "solados" },
-  { icon: Hammer, title: "Albañilería", description: "Trabajos de albañilería", sectionId: "albanileria" },
+  { icon: Grid3X3, title: "Solados y alicatados", description: "Pavimentos y revestimientos" },
+  { icon: Hammer, title: "Albañilería", description: "Trabajos de albañilería" },
   { icon: Mountain, title: "Todo tipo de Fachadas", description: "Acabados de calidad", sectionId: "fachadas" },
 ];
 
@@ -29,23 +30,36 @@ const Reformas = () => {
         </motion.div>
 
         <div className="grid grid-cols-2 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-          {services.map((service, index) => (
-            <motion.button
-              key={service.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1, duration: 0.5 }}
-              onClick={() => scrollToElement(service.sectionId)}
-              className="bg-muted/30 rounded-xl p-6 text-center hover:bg-muted/50 transition-colors cursor-pointer"
-            >
-              <div className="w-12 h-12 rounded-full bg-gradient-warm flex items-center justify-center mx-auto mb-4">
-                <service.icon className="w-6 h-6 text-primary-foreground" />
-              </div>
-              <h3 className="font-semibold text-foreground mb-1">{service.title}</h3>
-              <p className="text-sm text-muted-foreground">{service.description}</p>
-            </motion.button>
-          ))}
+          {services.map((service, index) => {
+            const isClickable = Boolean(service.sectionId);
+
+            return (
+              <motion.button
+                key={service.title}
+                type="button"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1, duration: 0.5 }}
+                onClick={() => {
+                  if (service.sectionId) scrollToElement(service.sectionId);
+                }}
+                disabled={!isClickable}
+                className={cn(
+                  "bg-muted/30 rounded-xl p-6 text-center transition-colors",
+                  isClickable
+                    ? "hover:bg-muted/50 cursor-pointer"
+                    : "cursor-default"
+                )}
+              >
+                <div className="w-12 h-12 rounded-full bg-gradient-warm flex items-center justify-center mx-auto mb-4">
+                  <service.icon className="w-6 h-6 text-primary-foreground" />
+                </div>
+                <h3 className="font-semibold text-foreground mb-1">{service.title}</h3>
+                <p className="text-sm text-muted-foreground">{service.description}</p>
+              </motion.button>
+            );
+          })}
         </div>
       </div>
     </section>
