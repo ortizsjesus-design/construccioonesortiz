@@ -274,7 +274,7 @@ const sections: Section[] = [
       },
       {
         id: 40,
-        title: "Fachada piedra tradicional",
+        title: "Fachada de piedra",
         image: fachada5,
       },
     ],
